@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ConveyorBelt : MonoBehaviour
@@ -9,13 +7,13 @@ public class ConveyorBelt : MonoBehaviour
 
     void Update()
     {
-        // Move objects on top of the conveyor belt in the specified direction and speed
+        //Move objects on top of the conveyor belt in the specified direction and speed.
         Collider[] colliders = Physics.OverlapBox(transform.position, transform.localScale / 2f);
         foreach (Collider collider in colliders)
         {
             if (collider.CompareTag("MoveableObject"))
             {
-                Debug.Log("MoveableObject detected: " + collider.name);
+                //Debug.Log("MoveableObject detected: " + collider.name);
                 collider.transform.Translate(direction * speed * Time.deltaTime);
             }
         }

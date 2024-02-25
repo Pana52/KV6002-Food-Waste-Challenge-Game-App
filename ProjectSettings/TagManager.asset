@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - MoveableObject
+  - Paper Bin
+  - Plastic Bin
+  - Glass Bin
+  - Incinerator
   layers:
   - Default
   - TransparentFX
