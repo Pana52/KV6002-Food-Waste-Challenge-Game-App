@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -4400119270766408538}
   - component: {fileID: -3919521468924163045}
   m_Layer: 0
-  m_Name: TrashItemBase
+  m_Name: TrashParent
   m_TagString: MoveableObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

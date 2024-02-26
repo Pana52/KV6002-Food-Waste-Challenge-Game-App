@@ -9,6 +9,8 @@ TagManager:
   - Plastic Bin
   - Glass Bin
   - Incinerator
+  - Food Bin
+  - Metal Bin
   layers:
   - Default
   - TransparentFX
