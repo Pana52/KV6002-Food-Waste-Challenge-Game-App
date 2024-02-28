@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     public void SetIsDragging(bool value)
     {
         isDragging = value;
-        Debug.Log("isDragging bool value changed.");
+        //Debug.Log("isDragging bool value changed.");
     }
     void Update()
     {
@@ -26,20 +26,20 @@ public class GameManager : MonoBehaviour
     public void generateTrash()
     {
         int randomIndex = Random.Range(0, trash.Length);
-        Vector3 spawnLocation = new Vector3(-13, 5, 10);
+        Vector3 spawnLocation = new Vector3(-13, 2, 10);
 
         Instantiate(trash[randomIndex], spawnLocation, Quaternion.identity);
     }
 
     public void correctBin()
     {
-        Debug.Log("Trash placed in the correct Bin - Object Destroyed.");
+        Debug.Log("CORRECT");
         Destroy(gameObject);
         SetIsDragging(false);
     }
     public void wrongBin()
     {
-        Debug.Log("Trash placed in the incorrect bin - Object Destroyed.");
+        Debug.Log("INCORRECT");
         Destroy(gameObject);
         SetIsDragging(false);
     }

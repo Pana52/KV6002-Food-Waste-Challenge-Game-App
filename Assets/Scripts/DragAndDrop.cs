@@ -6,7 +6,7 @@ public class DragAndDrop : GameManager
     private Vector3 initialPosition; //Initial position when object is clicked.
     private Vector3 offset;
     private Collider coll;
-    public float floatBackTime = 4f;
+    public float floatBackTime = 0.5f;
     private void Start()
     {
         coll = GetComponent<Collider>();
@@ -33,7 +33,7 @@ public class DragAndDrop : GameManager
         initialPosition = transform.position;
 
         //Calculate offset between object's position and mouse position.
-        Debug.Log("Is dragging object.");
+        //Debug.Log("Is dragging object.");
         offset = transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
         SetIsDragging(true);
         coll.enabled = false;
@@ -43,7 +43,7 @@ public class DragAndDrop : GameManager
     {
 
         SetIsDragging(false);
-        Debug.Log("Dropped object.");
+        //Debug.Log("Dropped object.");
         coll.enabled = true;
         //Check if object is in valid location.
         if (!IsValidDropLocation())
@@ -76,16 +76,18 @@ public class DragAndDrop : GameManager
     IEnumerator FloatBackToInitialPosition()
     {
         float elapsedTime = 0f;
+        Vector3 startPosition = transform.position;
 
-        // Gradually move the object back to its initial position over time.
+        //Move object back to  initial position over time.
         while (elapsedTime < floatBackTime)
         {
-            transform.position = Vector3.Lerp(transform.position, initialPosition, elapsedTime / floatBackTime);
+            float t = elapsedTime / floatBackTime;
+            transform.position = Vector3.Lerp(startPosition, initialPosition, t);
             elapsedTime += Time.deltaTime;
             yield return null;
         }
 
-        // Ensure the object snaps back to its initial position.
+        //Ensure object snaps back to initial position.
         transform.position = initialPosition;
     }
 }
