@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public GameObject[] trash;
+
     private bool isDragging;
     public bool GetIsDragging()
     {
@@ -13,22 +13,6 @@ public class GameManager : MonoBehaviour
     {
         isDragging = value;
         //Debug.Log("isDragging bool value changed.");
-    }
-    void Update()
-    {
-        //For testing
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            generateTrash();
-        }
-    }
-
-    public void generateTrash()
-    {
-        int randomIndex = Random.Range(0, trash.Length);
-        Vector3 spawnLocation = new Vector3(-13, 2, 10);
-
-        Instantiate(trash[randomIndex], spawnLocation, Quaternion.identity);
     }
 
     public void correctBin()
