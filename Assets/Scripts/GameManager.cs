@@ -1,68 +1,31 @@
-
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public GameObject[] trash;
-    private bool isDragging;
-    public bool GetIsDragging()
+    public TrashItemManager trashItemManager;
+
+    private void Start()
     {
-        return isDragging;
+        
     }
-    public void SetIsDragging(bool value)
+
+    private void Update()
     {
-        isDragging = value;
-        //Debug.Log("isDragging bool value changed.");
-    }
-    void Update()
-    {
-        //For testing
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.P))
         {
-            generateTrash();
+            GenerateRandomTrashItem();
         }
     }
 
-    public void generateTrash()
+    public void GenerateRandomTrashItem()
     {
-        int randomIndex = Random.Range(0, trash.Length);
-        Vector3 spawnLocation = new Vector3(-13, 2, 10);
-
-        Instantiate(trash[randomIndex], spawnLocation, Quaternion.identity);
-    }
-
-    public void correctBin()
-    {
-        Debug.Log("CORRECT");
-        Destroy(gameObject);
-        SetIsDragging(false);
-    }
-    public void wrongBin()
-    {
-        Debug.Log("INCORRECT");
-        Destroy(gameObject);
-        SetIsDragging(false);
-    }
-    public void incinerate()
-    {
-        Debug.Log("Trash item incinerated.");
-        Destroy(gameObject);
-    }
-    public void checkTrash(string binType, string correctBinType)
-    {
-        
-            if (binType == correctBinType)
-            {
-                correctBin();
-            }
-            else if (binType == "Incinerator")
-            {
-                incinerate();
-            }
-            else
-            {
-                wrongBin();
-            }
-        
+        GameObject prefab = trashItemManager.GetRandomTrashItemPrefab();
+        if (prefab != null)
+        {
+            // Instantiate the prefab at a desired position and rotation
+            Instantiate(prefab, new Vector3(0, 0, 0), Quaternion.identity);
+        }
     }
 }
