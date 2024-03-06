@@ -5,6 +5,8 @@ public class GameManager : MonoBehaviour
 {
     private float conveyorSpeed;
     private bool isDragging;
+    private const int baseScoreValue = 10;
+
     public bool GetIsDragging()
     {
         return isDragging;
@@ -12,7 +14,6 @@ public class GameManager : MonoBehaviour
     public void SetIsDragging(bool value)
     {
         isDragging = value;
-        //Debug.Log("isDragging bool value changed.");
     }
     public float GetConveyorSpeed()
     {
@@ -22,39 +23,56 @@ public class GameManager : MonoBehaviour
     {
         conveyorSpeed = value;
     }
+    
+    private void Start()
+    {
 
-    public void correctBin()
-    {
-        Debug.Log("CORRECT");
-        Destroy(gameObject);
-        SetIsDragging(false);
+        int playerScore = PlayerPrefs.GetInt("PlayerScore", 0);
+        int comboValue = PlayerPrefs.GetInt("ComboValue", 1);
     }
-    public void wrongBin()
-    {
-        Debug.Log("INCORRECT");
-        Destroy(gameObject);
-        SetIsDragging(false);
-    }
-    public void generalWaste()
-    {
-        Debug.Log("Trash item added to general waste.");
-        Destroy(gameObject);
-    }
+    
     public void checkTrash(string binType, string correctBinType)
     {
-        
+        int comboValue = PlayerPrefs.GetInt("ComboValue", 0);
+
             if (binType == correctBinType)
             {
-                correctBin();
-            }
+                Debug.Log("CORRECT");
+                calculateScore(baseScoreValue);
+                SetIsDragging(false);
+                
+        }
             else if (binType == "Incinerator")
             {
-            generalWaste();
-            }
+                Debug.Log("Trash item added to general waste.");
+                
+                comboValue = 1;
+                PlayerPrefs.SetInt("ComboValue", comboValue);
+        }
             else
             {
-                wrongBin();
-            }
-        
+                Debug.Log("INCORRECT");
+                SetIsDragging(false);
+                comboValue = 1;
+                PlayerPrefs.SetInt("ComboValue", comboValue);
+          
+        }
+        PlayerPrefs.Save();
+        Destroy(gameObject);
+    }
+    private void calculateScore(int score)
+    {
+        int playerScore = PlayerPrefs.GetInt("PlayerScore", 0);
+        int comboValue = PlayerPrefs.GetInt("ComboValue", 1);
+
+        int scoreToAdd = score * comboValue;
+        playerScore += scoreToAdd;
+        comboValue++;
+
+        PlayerPrefs.SetInt("PlayerScore", playerScore);
+        PlayerPrefs.SetInt("ComboValue", comboValue);
+        PlayerPrefs.Save();
+
+        Debug.Log((scoreToAdd) + " points added. Current score: " + playerScore + ". Combo Value: " + comboValue + ".");
     }
 }
