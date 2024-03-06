@@ -75,13 +75,13 @@ public class TrashManager : GameManager
 
 
 
-    // Method to pause the coroutine
+    //Method to pause the coroutine.
     public void PauseCoroutine()
     {
         coroutinePaused = true;
     }
 
-    // Method to resume the coroutine
+    //Method to resume the coroutine.
     public void ResumeCoroutine()
     {
         coroutinePaused = false;
@@ -91,39 +91,39 @@ public class TrashManager : GameManager
 
     IEnumerator EndLevelCoroutine()
     {
-        // Wait for 30 seconds before ending the level
+        //Wait for 30 seconds before ending the level.
         yield return new WaitForSeconds(levelInterval);
 
-        // End the level
+        //End the level.
         EndLevel();
     }
 
     void EndLevel()
     {
-        // Increment the current level number
+        //Increment the current level number.
         currentLevel++;
         Debug.Log("END OF LEVEL. Level " + currentLevel + " active.");
-        // Check if the current level number exceeds the maximum number of levels
+        //Check if the current level number exceeds the maximum number of levels.
         if (currentLevel == 3)
         {
-            //Endless
+            //Endless.
             
         }
         else
         {
-            // If not, start the next level
+            //If not, start the next level.
             StartNextLevel();
         }
     }
     void StartNextLevel()
     {
-        // Reset levelActive to true for the next level
+        //Reset levelActive to true for the next level.
         levelActive = true;
 
-        // Start the coroutine to generate items for the next level
+        //Start the coroutine to generate items for the next level.
         //StartCoroutine(GenerateTrashCoroutine());
 
-        // Start the coroutine to end the level after 30 seconds
+        //Start the coroutine to end the level after 30 seconds.
         StartCoroutine(EndLevelCoroutine());
     }
 

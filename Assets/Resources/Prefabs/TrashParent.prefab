@@ -28,9 +28,9 @@ Transform:
   m_GameObject: {fileID: 3915950882664814355}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -34.600353, y: -2.221583, z: -77.637985}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -73,7 +73,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 521b4b2bc53ca374b952f92b96782b48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trash: []
   floatBackTime: 0.2
 --- !u!212 &6994722625481566541
 SpriteRenderer:

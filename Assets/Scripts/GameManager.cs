@@ -26,7 +26,6 @@ public class GameManager : MonoBehaviour
     
     private void Start()
     {
-
         int playerScore = PlayerPrefs.GetInt("PlayerScore", 0);
         int comboValue = PlayerPrefs.GetInt("ComboValue", 1);
     }
@@ -73,6 +72,6 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.SetInt("ComboValue", comboValue);
         PlayerPrefs.Save();
 
-        Debug.Log((scoreToAdd) + " points added. Current score: " + playerScore + ". Combo Value: " + comboValue + ".");
+        Debug.Log(scoreToAdd + " points added. Current score: " + playerScore + ". Combo Value: " + comboValue + ".");
     }
 }
