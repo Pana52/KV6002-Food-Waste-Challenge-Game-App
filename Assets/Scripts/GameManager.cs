@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-
+    private float conveyorSpeed;
     private bool isDragging;
     public bool GetIsDragging()
     {
@@ -13,6 +13,14 @@ public class GameManager : MonoBehaviour
     {
         isDragging = value;
         //Debug.Log("isDragging bool value changed.");
+    }
+    public float GetConveyorSpeed()
+    {
+        return conveyorSpeed;
+    }
+    public void SetConveyorSpeed (float value)
+    {
+        conveyorSpeed = value;
     }
 
     public void correctBin()
@@ -27,9 +35,9 @@ public class GameManager : MonoBehaviour
         Destroy(gameObject);
         SetIsDragging(false);
     }
-    public void incinerate()
+    public void generalWaste()
     {
-        Debug.Log("Trash item incinerated.");
+        Debug.Log("Trash item added to general waste.");
         Destroy(gameObject);
     }
     public void checkTrash(string binType, string correctBinType)
@@ -41,7 +49,7 @@ public class GameManager : MonoBehaviour
             }
             else if (binType == "Incinerator")
             {
-                incinerate();
+            generalWaste();
             }
             else
             {

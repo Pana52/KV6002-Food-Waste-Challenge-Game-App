@@ -1,10 +1,12 @@
 using UnityEngine;
 
-public class ConveyorBelt : MonoBehaviour
+public class ConveyorBelt : GameManager
 { 
-    public float speed = 1.0f;
     public Vector3 direction = Vector3.right;
-
+    private void Start()
+    {
+        SetConveyorSpeed(2f);
+    }
     void Update()
     {
         //Move objects on top of the conveyor belt in the specified direction and speed.
@@ -14,7 +16,7 @@ public class ConveyorBelt : MonoBehaviour
             if (collider.CompareTag("MoveableObject"))
             {
                 //Debug.Log("MoveableObject detected: " + collider.name);
-                collider.transform.Translate(direction * speed * Time.deltaTime);
+                collider.transform.Translate(direction * GetConveyorSpeed() * Time.deltaTime);
             }
         }
     }
