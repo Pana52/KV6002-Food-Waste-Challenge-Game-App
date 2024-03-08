@@ -9,14 +9,11 @@ public class TrashManager : GameManager
 
     private float trashInterval = 5f;
     private float levelInterval = 10f;
-
     private bool levelActive = true;
 
     //Boolean to indicate if the coroutine is paused.
     private bool coroutinePaused = false;
     private int currentLevel = 1;
-
-
 
     //Ensure only one instance of TrashManager exists.
     private void Awake()
@@ -42,6 +39,22 @@ public class TrashManager : GameManager
         StartCoroutine(GenerateTrashCoroutine());
         StartCoroutine(EndLevelCoroutine());
 
+        //--------Work in progress.
+        /**
+        foreach (GameObject trashObject in trash)
+        {
+            // Get the component with the script containing the trashType variable
+            Trash trashScript = trashObject.GetComponent<Trash>();
+
+            // Check if the trashScript is not null and if its trashType matches the desired value
+            if (trashScript != null && trashScript.trashType == "Paper")
+            {
+                // Instantiate the trashObject if it meets the desired criteria
+                Instantiate(trashObject, transform.position, Quaternion.identity);
+            }
+        }**/
+        //--------------
+
     }
     private void Update()
     {
@@ -51,12 +64,53 @@ public class TrashManager : GameManager
             generateTrash();
         }
     }
+
+    public void levelOneTrash()
+    {
+        foreach (GameObject trashObject in trash)
+        {
+            // Get the component with the script containing the trashType variable
+            Trash trashScript = trashObject.GetComponent<Trash>();
+
+            // Check if the trashScript is not null and if its trashType matches the desired value
+            if (trashScript != null && trashScript.trashType == "Paper" || trashScript.trashType == "Glass")
+            {
+                // Instantiate the trashObject if it meets the desired criteria
+                Instantiate(trashObject, transform.position, Quaternion.identity);
+            }
+        }
+    }
+    public void levelTwoTrash()
+    {
+
+    }
+
+    public void levelThreeTrash()
+    {
+
+    }
+
     public void generateTrash()
     {
-        Debug.Log("Trash Generated");
-        int randomIndex = Random.Range(0, trash.Length);
-        Vector3 spawnLocation = new Vector3(-13, 2, 10);
-        Instantiate(trash[randomIndex], spawnLocation, Quaternion.identity);
+
+        if (currentLevel == 1)
+        {
+            levelOneTrash();
+        }
+        if (currentLevel == 2)
+        {
+            levelTwoTrash();
+        }
+        if (currentLevel == 3)
+        {
+            levelThreeTrash();
+        }
+        /**
+                Debug.Log("Trash Generated");
+                int randomIndex = Random.Range(0, trash.Length);
+                Vector3 spawnLocation = new Vector3(-13, 2, 10);
+                Instantiate(trash[randomIndex], spawnLocation, Quaternion.identity);
+            **/
     }
 
     IEnumerator GenerateTrashCoroutine()

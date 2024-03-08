@@ -28,7 +28,6 @@ public class DragAndDrop : GameManager
 
     void OnMouseDown()
     {
-        
         //Store initial position when object is clicked.
         initialPosition = transform.position;
 
@@ -41,7 +40,6 @@ public class DragAndDrop : GameManager
 
     void OnMouseUp()
     {
-
         SetIsDragging(false);
         //Debug.Log("Dropped object.");
         coll.enabled = true;

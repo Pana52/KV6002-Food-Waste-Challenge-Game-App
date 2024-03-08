@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
     private float conveyorSpeed;
     private bool isDragging;
     private const int baseScoreValue = 10;
+    private bool isClean;
 
     public bool GetIsDragging()
     {
