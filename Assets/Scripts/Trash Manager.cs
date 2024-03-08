@@ -14,11 +14,9 @@ public class TrashManager : GameManager
     //Boolean to indicate if the coroutine is paused.
     private bool coroutinePaused = false;
     private int currentLevel = 1;
-<<<<<<< HEAD
-=======
+
     public GameObject spawnLocation;
 
->>>>>>> 3f294ad71a7ecf8c3cfc04dc3bc44548ecf3530d
 
     //Ensure only one instance of TrashManager exists.
     private void Awake()
@@ -72,7 +70,7 @@ public class TrashManager : GameManager
 
     public void levelOneTrash()
     {
-        foreach (GameObject trashObject in trash)
+        /**foreach (GameObject trashObject in trash)
         {
             // Get the component with the script containing the trashType variable
             Trash trashScript = trashObject.GetComponent<Trash>();
@@ -83,7 +81,7 @@ public class TrashManager : GameManager
                 // Instantiate the trashObject if it meets the desired criteria
                 Instantiate(trashObject, transform.position, Quaternion.identity);
             }
-        }
+        }**/
     }
     public void levelTwoTrash()
     {
@@ -97,7 +95,7 @@ public class TrashManager : GameManager
 
     public void generateTrash()
     {
-<<<<<<< HEAD
+
 
         if (currentLevel == 1)
         {
@@ -111,18 +109,13 @@ public class TrashManager : GameManager
         {
             levelThreeTrash();
         }
-        /**
-                Debug.Log("Trash Generated");
-                int randomIndex = Random.Range(0, trash.Length);
-                Vector3 spawnLocation = new Vector3(-13, 2, 10);
-                Instantiate(trash[randomIndex], spawnLocation, Quaternion.identity);
-            **/
-=======
+
+
         Debug.Log("Trash Generated");
         int randomIndex = Random.Range(0, trash.Length);
         Vector3 targetPosition = spawnLocation.transform.position;
         Instantiate(trash[randomIndex], targetPosition, Quaternion.identity);
->>>>>>> 3f294ad71a7ecf8c3cfc04dc3bc44548ecf3530d
+
     }
 
     IEnumerator GenerateTrashCoroutine()
