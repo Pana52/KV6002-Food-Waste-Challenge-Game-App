@@ -9,16 +9,8 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2095315831547193771, guid: 30e15e9bb656ea64a9f303b609003f7a, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2095315831547193771, guid: 30e15e9bb656ea64a9f303b609003f7a, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2095315831547193771, guid: 30e15e9bb656ea64a9f303b609003f7a, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 2095315831547193771, guid: 30e15e9bb656ea64a9f303b609003f7a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -60,10 +52,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2095315831547193771, guid: 30e15e9bb656ea64a9f303b609003f7a, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3915950882664814355, guid: 30e15e9bb656ea64a9f303b609003f7a, type: 3}
       propertyPath: m_Name
       value: Food
@@ -93,6 +81,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74360ac24ea6a1f4dbe8c3f6a03385a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  trash: []
   trashName: 
   trashType: Food
   trashDesc: 
