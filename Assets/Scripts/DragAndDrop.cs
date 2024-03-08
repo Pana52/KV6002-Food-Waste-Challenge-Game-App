@@ -18,7 +18,7 @@ public class DragAndDrop : GameManager
         {
             //Calculate position of object based on mouse position.
             Vector3 mousePosition = Input.mousePosition;
-            mousePosition.z = 5; //Adjust based on camera setup.
+            mousePosition.z = 1.25F; //Adjust based on camera setup.
             Vector3 objPosition = Camera.main.ScreenToWorldPoint(mousePosition) + offset;
 
             //Update the position of the object

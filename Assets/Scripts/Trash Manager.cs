@@ -15,7 +15,7 @@ public class TrashManager : GameManager
     //Boolean to indicate if the coroutine is paused.
     private bool coroutinePaused = false;
     private int currentLevel = 1;
-
+    public GameObject spawnLocation;
 
 
     //Ensure only one instance of TrashManager exists.
@@ -55,8 +55,8 @@ public class TrashManager : GameManager
     {
         Debug.Log("Trash Generated");
         int randomIndex = Random.Range(0, trash.Length);
-        Vector3 spawnLocation = new Vector3(-13, 2, 10);
-        Instantiate(trash[randomIndex], spawnLocation, Quaternion.identity);
+        Vector3 targetPosition = spawnLocation.transform.position;
+        Instantiate(trash[randomIndex], targetPosition, Quaternion.identity);
     }
 
     IEnumerator GenerateTrashCoroutine()
