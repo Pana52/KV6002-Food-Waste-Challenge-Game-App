@@ -9,18 +9,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2095315831547193771, guid: 30e15e9bb656ea64a9f303b609003f7a, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2095315831547193771, guid: 30e15e9bb656ea64a9f303b609003f7a, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2095315831547193771, guid: 30e15e9bb656ea64a9f303b609003f7a, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2095315831547193771, guid: 30e15e9bb656ea64a9f303b609003f7a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -59,10 +47,6 @@ PrefabInstance:
     - target: {fileID: 2095315831547193771, guid: 30e15e9bb656ea64a9f303b609003f7a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2095315831547193771, guid: 30e15e9bb656ea64a9f303b609003f7a, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2372346198592614998, guid: 30e15e9bb656ea64a9f303b609003f7a, type: 3}
       propertyPath: m_Height
@@ -142,6 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76184a6c52b1e6e469e8d6a20aba1613, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  trash: []
   trashName: 
   trashType: Paper
   trashDesc: 

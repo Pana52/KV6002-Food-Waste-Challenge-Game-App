@@ -14,6 +14,11 @@ public class TrashManager : GameManager
     //Boolean to indicate if the coroutine is paused.
     private bool coroutinePaused = false;
     private int currentLevel = 1;
+<<<<<<< HEAD
+=======
+    public GameObject spawnLocation;
+
+>>>>>>> 3f294ad71a7ecf8c3cfc04dc3bc44548ecf3530d
 
     //Ensure only one instance of TrashManager exists.
     private void Awake()
@@ -92,6 +97,7 @@ public class TrashManager : GameManager
 
     public void generateTrash()
     {
+<<<<<<< HEAD
 
         if (currentLevel == 1)
         {
@@ -111,6 +117,12 @@ public class TrashManager : GameManager
                 Vector3 spawnLocation = new Vector3(-13, 2, 10);
                 Instantiate(trash[randomIndex], spawnLocation, Quaternion.identity);
             **/
+=======
+        Debug.Log("Trash Generated");
+        int randomIndex = Random.Range(0, trash.Length);
+        Vector3 targetPosition = spawnLocation.transform.position;
+        Instantiate(trash[randomIndex], targetPosition, Quaternion.identity);
+>>>>>>> 3f294ad71a7ecf8c3cfc04dc3bc44548ecf3530d
     }
 
     IEnumerator GenerateTrashCoroutine()
@@ -129,13 +141,13 @@ public class TrashManager : GameManager
 
 
 
-    //Method to pause the coroutine.
+    // Method to pause the coroutine
     public void PauseCoroutine()
     {
         coroutinePaused = true;
     }
 
-    //Method to resume the coroutine.
+    // Method to resume the coroutine
     public void ResumeCoroutine()
     {
         coroutinePaused = false;
@@ -145,39 +157,39 @@ public class TrashManager : GameManager
 
     IEnumerator EndLevelCoroutine()
     {
-        //Wait for 30 seconds before ending the level.
+        // Wait for 30 seconds before ending the level
         yield return new WaitForSeconds(levelInterval);
 
-        //End the level.
+        // End the level
         EndLevel();
     }
 
     void EndLevel()
     {
-        //Increment the current level number.
+        // Increment the current level number
         currentLevel++;
         Debug.Log("END OF LEVEL. Level " + currentLevel + " active.");
-        //Check if the current level number exceeds the maximum number of levels.
+        // Check if the current level number exceeds the maximum number of levels
         if (currentLevel == 3)
         {
-            //Endless.
+            //Endless
             
         }
         else
         {
-            //If not, start the next level.
+            // If not, start the next level
             StartNextLevel();
         }
     }
     void StartNextLevel()
     {
-        //Reset levelActive to true for the next level.
+        // Reset levelActive to true for the next level
         levelActive = true;
 
-        //Start the coroutine to generate items for the next level.
+        // Start the coroutine to generate items for the next level
         //StartCoroutine(GenerateTrashCoroutine());
 
-        //Start the coroutine to end the level after 30 seconds.
+        // Start the coroutine to end the level after 30 seconds
         StartCoroutine(EndLevelCoroutine());
     }
 
