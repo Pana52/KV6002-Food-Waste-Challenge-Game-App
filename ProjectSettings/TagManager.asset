@@ -11,6 +11,7 @@ TagManager:
   - Incinerator
   - Food Bin
   - Metal Bin
+  - Hazardous Bin
   layers:
   - Default
   - TransparentFX
