@@ -1,6 +1,3 @@
-
-using UnityEngine;
-
 public class Trash : GameManager
 {
     public string trashName;

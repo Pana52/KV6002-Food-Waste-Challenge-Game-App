@@ -6,16 +6,32 @@ public class DragAndDrop : GameManager
     private Vector3 initialPosition; //Initial position when object is clicked.
     private Vector3 offset;
     private Collider coll;
-    public float floatBackTime = 0.5f;
+    public float transitionTime = 0.5f;
+    private Camera mainCamera;
+
+
+    // Define threshold for initial y-axis movement
+    public float yToZThreshold = 0.5f;
+    // Define threshold for y-axis movement
+    public float yThreshold = 0.1f;
+    // Define threshold for x-axis movement
+    public float xThreshold = 0.1f;
+    // Define z-axis movement factor
+    public float zMovementFactor = 0.1f;
+
+    private Vector3 initialMousePosition;
     private void Start()
     {
         coll = GetComponent<Collider>();
+        mainCamera = Camera.main;
+        
+
     }
     void Update()
         
     {
         if (GetIsDragging())
-        {
+        {/**
             //Calculate position of object based on mouse position.
             Vector3 mousePosition = Input.mousePosition;
             mousePosition.z = 1.25F; //Adjust based on camera setup.
@@ -23,19 +39,60 @@ public class DragAndDrop : GameManager
 
             //Update the position of the object
             transform.position = objPosition;
+        }**/
         }
     }
 
-    void OnMouseDown()
+    void OnMouseDrag()
+    {
+        if (!GetIsDragging()) return;
+        
+        //Calculate current mouse position in world space.
+        Vector3 currentMousePosition = GetMouseWorldPos();
+        //Calculate x and y-axis movement.
+        float xMovement = currentMousePosition.x - initialMousePosition.x;
+        float yMovement = currentMousePosition.y - initialMousePosition.y;
+
+        //Check if object is moving upwards and has reached the yToZThreshold.
+        if (yMovement > 0 && Mathf.Abs(yMovement) > yToZThreshold)
+        {
+            // Calculate z-axis movement based on y-axis movement
+            float zMovement = (Mathf.Abs(yMovement) - yToZThreshold) * zMovementFactor;
+            // Update object's position (including z-axis movement towards the camera)
+            transform.position = initialPosition + new Vector3(xMovement/6, Mathf.Clamp(yMovement, -yThreshold, yThreshold), zMovement*2);
+        }
+        else
+        {
+            //Update object's position (without z-axis movement).
+            transform.position = initialPosition + new Vector3(xMovement/6, Mathf.Clamp(yMovement, -yThreshold, yThreshold), 0);
+        }
+    }
+        
+
+
+
+        void OnMouseDown()
     {
         //Store initial position when object is clicked.
         initialPosition = transform.position;
+        initialMousePosition = GetMouseWorldPos();
 
         //Calculate offset between object's position and mouse position.
         //Debug.Log("Is dragging object.");
-        offset = transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        //offset = transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+        offset = transform.position - GetMouseWorldPos();
+
         SetIsDragging(true);
         coll.enabled = false;
+    }
+
+    Vector3 GetMouseWorldPos()
+    {
+        Vector3 mousePos = Input.mousePosition;
+        mousePos.z = -mainCamera.transform.position.z; // Adjust z position based on camera's z position
+
+        return mainCamera.ScreenToWorldPoint(mousePos);
     }
 
     void OnMouseUp()
@@ -46,8 +103,6 @@ public class DragAndDrop : GameManager
         //Check if object is in valid location.
         if (!IsValidDropLocation())
         {
-            //If drop is invalid, return the object to its initial position.
-            //transform.position = initialPosition;
             StartCoroutine(FloatBackToInitialPosition());
         }
     }
@@ -77,14 +132,13 @@ public class DragAndDrop : GameManager
         Vector3 startPosition = transform.position;
 
         //Move object back to  initial position over time.
-        while (elapsedTime < floatBackTime)
+        while (elapsedTime < transitionTime)
         {
-            float t = elapsedTime / floatBackTime;
+            float t = elapsedTime / transitionTime;
             transform.position = Vector3.Lerp(startPosition, initialPosition, t);
             elapsedTime += Time.deltaTime;
             yield return null;
         }
-
         //Ensure object snaps back to initial position.
         transform.position = initialPosition;
     }
