@@ -1,0 +1,124 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &6384082298203880468
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -1350393092593030409, guid: 62e42b5958fcdc148b57291f5cb3b900, type: 3}
+      propertyPath: trashName
+      value: Plastic Straw
+      objectReference: {fileID: 0}
+    - target: {fileID: 1976276218073754577, guid: 62e42b5958fcdc148b57291f5cb3b900, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.035
+      objectReference: {fileID: 0}
+    - target: {fileID: 1976276218073754577, guid: 62e42b5958fcdc148b57291f5cb3b900, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.035
+      objectReference: {fileID: 0}
+    - target: {fileID: 1976276218073754577, guid: 62e42b5958fcdc148b57291f5cb3b900, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.035
+      objectReference: {fileID: 0}
+    - target: {fileID: 1976276218073754577, guid: 62e42b5958fcdc148b57291f5cb3b900, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1976276218073754577, guid: 62e42b5958fcdc148b57291f5cb3b900, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1976276218073754577, guid: 62e42b5958fcdc148b57291f5cb3b900, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1976276218073754577, guid: 62e42b5958fcdc148b57291f5cb3b900, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1976276218073754577, guid: 62e42b5958fcdc148b57291f5cb3b900, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1976276218073754577, guid: 62e42b5958fcdc148b57291f5cb3b900, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1976276218073754577, guid: 62e42b5958fcdc148b57291f5cb3b900, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1976276218073754577, guid: 62e42b5958fcdc148b57291f5cb3b900, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1976276218073754577, guid: 62e42b5958fcdc148b57291f5cb3b900, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1976276218073754577, guid: 62e42b5958fcdc148b57291f5cb3b900, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1976276218073754577, guid: 62e42b5958fcdc148b57291f5cb3b900, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3468170349740610921, guid: 62e42b5958fcdc148b57291f5cb3b900, type: 3}
+      propertyPath: m_Name
+      value: PlasticStraw
+      objectReference: {fileID: 0}
+    - target: {fileID: 7452073309719407415, guid: 62e42b5958fcdc148b57291f5cb3b900, type: 3}
+      propertyPath: m_Size.x
+      value: 20.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 7452073309719407415, guid: 62e42b5958fcdc148b57291f5cb3b900, type: 3}
+      propertyPath: m_Size.y
+      value: 20.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 7452073309719407415, guid: 62e42b5958fcdc148b57291f5cb3b900, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 844899cc8c4e93a40a7633e397ac62dd, type: 3}
+    - target: {fileID: 7452073309719407415, guid: 62e42b5958fcdc148b57291f5cb3b900, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3468170349740610921, guid: 62e42b5958fcdc148b57291f5cb3b900, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5433262317420224669}
+  m_SourcePrefab: {fileID: 100100000, guid: 62e42b5958fcdc148b57291f5cb3b900, type: 3}
+--- !u!1 &7546268845398944125 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3468170349740610921, guid: 62e42b5958fcdc148b57291f5cb3b900, type: 3}
+  m_PrefabInstance: {fileID: 6384082298203880468}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &5433262317420224669
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7546268845398944125}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 11.322609, y: 18.66626, z: 0.20000003}
+  m_Center: {x: 1.2745712, y: -0.39748633, z: 0}
