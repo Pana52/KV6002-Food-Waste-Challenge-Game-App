@@ -5,8 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class ButtonManager : MonoBehaviour
 {
-    public void GoToScene () 
+
+    public void GoToScene()
     {
+
         SceneManager.LoadScene(1);
     }
 
@@ -15,5 +17,7 @@ public class ButtonManager : MonoBehaviour
         Application.Quit();
         Debug.Log("Application closed");
     }
+
+
 
 }
