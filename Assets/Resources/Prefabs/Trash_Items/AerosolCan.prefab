@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -9132741265509385899, guid: c774b9f5da11e244bb6238d977b58169, type: 3}
+      propertyPath: trashName
+      value: Aerosol Can
+      objectReference: {fileID: 0}
     - target: {fileID: 375501898715780455, guid: c774b9f5da11e244bb6238d977b58169, type: 3}
       propertyPath: m_Name
       value: AerosolCan
