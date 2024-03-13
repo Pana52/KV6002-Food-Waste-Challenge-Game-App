@@ -1,128 +1,132 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class DragAndDrop : GameManager
-{    
-    private Vector3 initialPosition; //Initial position when object is clicked.
-    private Vector3 offset;
+{
+    private Vector3 initialPosition; // Initial position when object is clicked.
+    private Vector3 initialMousePosition; // Initial mouse position in world space.
     private Collider coll;
     public float transitionTime = 0.5f;
     private Camera mainCamera;
+    float mouseSpeed = 0.2f;
 
+    // New: Keep track of previously hovered bins
+    private List<Animator> previouslyHoveredBins = new List<Animator>();
 
-    // Define threshold for initial y-axis movement
-    public float yToZThreshold = 0.5f;
-    // Define threshold for y-axis movement
-    public float yThreshold = 0.1f;
-    // Define threshold for x-axis movement
-    public float xThreshold = 0.1f;
-    // Define z-axis movement factor
-    public float zMovementFactor = 0.1f;
-
-    private Vector3 initialMousePosition;
     private void Start()
     {
         coll = GetComponent<Collider>();
         mainCamera = Camera.main;
-        
-
-    }
-    void Update()
-        
-    {
-        if (GetIsDragging())
-        {/**
-            //Calculate position of object based on mouse position.
-            Vector3 mousePosition = Input.mousePosition;
-            mousePosition.z = 1.25F; //Adjust based on camera setup.
-            Vector3 objPosition = Camera.main.ScreenToWorldPoint(mousePosition) + offset;
-
-            //Update the position of the object
-            transform.position = objPosition;
-        }**/
-        }
     }
 
     void OnMouseDrag()
     {
         if (!GetIsDragging()) return;
-        
-        //Calculate current mouse position in world space.
+
+        Cursor.visible = false;
         Vector3 currentMousePosition = GetMouseWorldPos();
-        //Calculate x and y-axis movement.
-        float xMovement = currentMousePosition.x - initialMousePosition.x;
-        float yMovement = currentMousePosition.y - initialMousePosition.y;
+        Vector3 positionDelta = currentMousePosition - initialMousePosition;
+        Vector3 newPosition = initialPosition + new Vector3(positionDelta.x * mouseSpeed, 0, positionDelta.y * mouseSpeed);
+        transform.position = newPosition;
 
-        //Check if object is moving upwards and has reached the yToZThreshold.
-        if (yMovement > 0 && Mathf.Abs(yMovement) > yToZThreshold)
-        {
-            // Calculate z-axis movement based on y-axis movement
-            float zMovement = (Mathf.Abs(yMovement) - yToZThreshold) * zMovementFactor;
-            // Update object's position (including z-axis movement towards the camera)
-            transform.position = initialPosition + new Vector3(xMovement/6, Mathf.Clamp(yMovement, -yThreshold, yThreshold), zMovement*2);
-        }
-        else
-        {
-            //Update object's position (without z-axis movement).
-            transform.position = initialPosition + new Vector3(xMovement/6, Mathf.Clamp(yMovement, -yThreshold, yThreshold), 0);
-        }
+        // Check and update bin hover states
+        CheckForBinBelow();
     }
-        
 
-
-
-        void OnMouseDown()
+    void OnMouseDown()
     {
-        //Store initial position when object is clicked.
         initialPosition = transform.position;
         initialMousePosition = GetMouseWorldPos();
-
-        //Calculate offset between object's position and mouse position.
-        //Debug.Log("Is dragging object.");
-        //offset = transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
-        offset = transform.position - GetMouseWorldPos();
-
         SetIsDragging(true);
         coll.enabled = false;
-    }
 
-    Vector3 GetMouseWorldPos()
-    {
-        Vector3 mousePos = Input.mousePosition;
-        mousePos.z = -mainCamera.transform.position.z; // Adjust z position based on camera's z position
-
-        return mainCamera.ScreenToWorldPoint(mousePos);
+        Rigidbody rb = GetComponent<Rigidbody>();
+        if (rb != null)
+        {
+            rb.isKinematic = true;
+        }
     }
 
     void OnMouseUp()
     {
+        Cursor.visible = true;
         SetIsDragging(false);
-        //Debug.Log("Dropped object.");
         coll.enabled = true;
-        //Check if object is in valid location.
+
+        Rigidbody rb = GetComponent<Rigidbody>();
+        if (rb != null)
+        {
+            rb.isKinematic = false;
+        }
+
+        // Reset all bins' hover state when dragging stops
+        ResetHoverState();
+
         if (!IsValidDropLocation())
         {
             StartCoroutine(FloatBackToInitialPosition());
         }
     }
 
-    bool IsValidDropLocation()
+    void CheckForBinBelow()
     {
-       RaycastHit hit;
-        if (Physics.Raycast(transform.position, Vector3.down, out hit))
+        float radius = 0.25f; // Adjust as needed
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, radius);
+        HashSet<Animator> currentlyHoveredBins = new HashSet<Animator>();
+
+        foreach (var hitCollider in hitColliders)
         {
-            //Check if the ray hits a collider.
-            if (hit.collider != null)
+            if (hitCollider.CompareTag("Bin"))
             {
-                if (hit.collider.CompareTag("Paper Bin") || hit.collider.CompareTag("Plastic Bin") || hit.collider.CompareTag("Glass Bin"))
+                Animator binAnimator = hitCollider.GetComponent<Animator>();
+                if (binAnimator != null)
                 {
-                    //Return true for valid drop location.
-                    return true;
+                    binAnimator.SetBool("isHover", true);
+                    currentlyHoveredBins.Add(binAnimator);
                 }
             }
-        }  
-        //If no collider is hit, the drop location is invalid.
+        }
+
+        // Reset bins that are no longer hovered over
+        foreach (var prevBin in previouslyHoveredBins)
+        {
+            if (!currentlyHoveredBins.Contains(prevBin))
+            {
+                prevBin.SetBool("isHover", false);
+            }
+        }
+
+        previouslyHoveredBins = new List<Animator>(currentlyHoveredBins);
+    }
+
+    // New method to reset the hover state of all previously hovered bins when needed
+    void ResetHoverState()
+    {
+        foreach (var binAnimator in previouslyHoveredBins)
+        {
+            binAnimator.SetBool("isHover", false);
+        }
+        previouslyHoveredBins.Clear();
+    }
+
+    Vector3 GetMouseWorldPos()
+    {
+        Vector3 mousePos = Input.mousePosition;
+        mousePos.z = mainCamera.WorldToScreenPoint(initialPosition).z;
+        return mainCamera.ScreenToWorldPoint(mousePos);
+    }
+
+    bool IsValidDropLocation()
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, Vector3.down, out hit))
+        {
+            if (hit.collider != null)
+            {
+                return hit.collider.CompareTag("Paper Bin") || hit.collider.CompareTag("Plastic Bin") || hit.collider.CompareTag("Glass Bin");
+            }
+        }
         return false;
     }
 
@@ -131,16 +135,13 @@ public class DragAndDrop : GameManager
         float elapsedTime = 0f;
         Vector3 startPosition = transform.position;
 
-        //Move object back to  initial position over time.
         while (elapsedTime < transitionTime)
         {
-            float t = elapsedTime / transitionTime;
-            transform.position = Vector3.Lerp(startPosition, initialPosition, t);
+            transform.position = Vector3.Lerp(startPosition, initialPosition, elapsedTime / transitionTime);
             elapsedTime += Time.deltaTime;
             yield return null;
         }
-        //Ensure object snaps back to initial position.
+
         transform.position = initialPosition;
     }
 }
-

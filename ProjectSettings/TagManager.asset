@@ -16,15 +16,16 @@ TagManager:
   - GameManager
   - Blue Bin
   - General Waste
+  - Bin
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Trash_Move_Area
   - Water
   - UI
-  - 
-  - 
+  - Trash_Item
+  - Bin
   - 
   - 
   - 
