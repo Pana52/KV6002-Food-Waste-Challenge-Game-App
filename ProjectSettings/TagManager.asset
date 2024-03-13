@@ -12,6 +12,8 @@ TagManager:
   - Food Bin
   - Metal Bin
   - Hazardous Bin
+  - DialogueManager
+  - GameManager
   layers:
   - Default
   - TransparentFX

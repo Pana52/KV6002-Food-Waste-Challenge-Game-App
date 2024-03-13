@@ -1,20 +1,20 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DialogueManager : GameManager
+public class DialogueManager : MonoBehaviour
 {
     [SerializeField] private GameObject dialogueBox;
     [SerializeField] private Text dialogueText;
 
-    void playDialogue(string type)
+    public void playDialogue(string type)
     {
         if(type == "welcome")
         {
             welcomeDialogue();
         }
-        if (type == "succes")
+        if (type == "success")
         {
-            successDiaglgue();
+            successDiaglogue();
         }
         if (type == "fail")
         {
@@ -35,7 +35,7 @@ public class DialogueManager : GameManager
         showDialogue(message[Random.Range(0, message.Length)]);
         Debug.Log(message[Random.Range(0, message.Length)]);
     }
-    void successDiaglgue()
+    void successDiaglogue()
     {
         if (PlayerPrefs.GetInt("ComboValue") == 5)
         {
@@ -44,10 +44,10 @@ public class DialogueManager : GameManager
             Debug.Log(message[Random.Range(0, message.Length)]);
         }
         else
-        {
+        {   
             string[] message = { "Welldone!", "Good Job!" };
-            showDialogue(message[Random.Range(0, message.Length)]);
             Debug.Log(message[Random.Range(0, message.Length)]);
+            showDialogue(message[Random.Range(0, message.Length)]);
         }
     }
     void failDialogue()

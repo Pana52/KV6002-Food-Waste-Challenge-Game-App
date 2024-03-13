@@ -41,7 +41,7 @@ public class TrashManager : GameManager
     private void Start()
     {
         resetPlayerPrefs();
-
+        Dialogue = GameObject.FindGameObjectWithTag("DialogueManager").GetComponent<DialogueManager>();
         GameObject[] trashItems = Resources.LoadAll<GameObject>("Prefabs/Trash_Items");
         trash = new GameObject[trashItems.Length];
         for (int i = 0; i < trashItems.Length; i++)
@@ -50,6 +50,9 @@ public class TrashManager : GameManager
         }
         StartCoroutine(GenerateTrashCoroutine());
         StartCoroutine(EndLevelCoroutine());
+
+        //Play dialogue. 
+        Dialogue.playDialogue("welcome");
 
         //--------Work in progress.
         /**
@@ -76,9 +79,11 @@ public class TrashManager : GameManager
             generateTrash();
         }
         //Loss condition;
-        if (PlayerPrefs.GetInt("IncorrectGuesses") >= incorrectGuessesLimit)
+        if (PlayerPrefs.GetInt("IncorrectGuesses") >= incorrectGuessesLimit && levelActive == true)
         {
+            levelActive = false;
             GameOver(PlayerPrefs.GetInt("PlayerScore"), PlayerPrefs.GetInt("HighScore"));
+            
         }
     }
 
@@ -176,8 +181,10 @@ public class TrashManager : GameManager
         // Increment the current level number
         currentLevel++;
         Debug.Log("END OF LEVEL. Level " + currentLevel + " active.");
+        //Play dialogue. 
+        Dialogue.playDialogue("level");
         // Check if the current level number exceeds the maximum number of levels
-        if (currentLevel == 3)
+        if (currentLevel == 4)
         {
             //Endless
             
@@ -205,8 +212,9 @@ public class TrashManager : GameManager
 
         //Pause Gameplay. 
         Time.timeScale = 0f;
-        
-       //Set game over UI visibility to true.  
+        //Play dialogue. 
+        Dialogue.playDialogue("gameOver");
+        //Set game over UI visibility to true.  
         GameOverUI.SetActive(true);
         int previousHighScore = PlayerPrefs.GetInt("PreviousHighScore", highScore);
         //Set new high score. 
