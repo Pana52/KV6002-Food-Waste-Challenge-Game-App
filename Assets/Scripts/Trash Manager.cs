@@ -40,6 +40,8 @@ public class TrashManager : GameManager
 
     private void Start()
     {
+        resetPlayerPrefs();
+
         GameObject[] trashItems = Resources.LoadAll<GameObject>("Prefabs/Trash_Items");
         trash = new GameObject[trashItems.Length];
         for (int i = 0; i < trashItems.Length; i++)
@@ -226,5 +228,13 @@ public class TrashManager : GameManager
             Debug.Log("You scored " + score + " The current high score is " + highScore + ".");
         }
         PlayerPrefs.Save();
+    }
+    void resetPlayerPrefs()
+    {
+        PlayerPrefs.SetInt("IncorrectGuesses", 0);
+        PlayerPrefs.SetInt("PlayerScore", 0);
+        PlayerPrefs.SetInt("ComboValue", 1);
+        PlayerPrefs.Save();
+        Debug.Log("New game started, PlayerPrefs reset.");
     }
 }
