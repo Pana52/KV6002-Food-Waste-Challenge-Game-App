@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TrashManager : GameManager
 {
@@ -10,12 +11,18 @@ public class TrashManager : GameManager
     private float trashInterval = 5f;
     private float levelInterval = 10f;
     private bool levelActive = true;
+    private int incorrectGuessesLimit = 5;
+    
 
     //Boolean to indicate if the coroutine is paused.
     private bool coroutinePaused = false;
     private int currentLevel = 1;
 
     public GameObject spawnLocation;
+
+    [SerializeField] private GameObject GameOverUI;
+    [SerializeField] private Text GameOverMessgae;
+    private bool isNewHighScore = false;
 
 
     //Ensure only one instance of TrashManager exists.
@@ -65,6 +72,11 @@ public class TrashManager : GameManager
         if (Input.GetKeyDown(KeyCode.Space))
         {
             generateTrash();
+        }
+        //Loss condition;
+        if (PlayerPrefs.GetInt("IncorrectGuesses") >= incorrectGuessesLimit)
+        {
+            EndGame();
         }
     }
 
@@ -188,6 +200,34 @@ public class TrashManager : GameManager
 
     void EndGame()
     {
-        // Perform end-game logic here...
+        //Pause Gameplay. 
+        Time.timeScale = 1f;
+        //Execute GameOver()
+        GameOver(PlayerPrefs.GetInt("PlayerScore"), PlayerPrefs.GetInt("HighScore"));
+    }
+    void GameOver(int score, int highScore)
+    {
+        //Set game over UI visibility to true.  
+        GameOverUI.SetActive(true);
+        int previousHighScore = PlayerPrefs.GetInt("PreviousHighScore", highScore);
+        //Set new high score. 
+        if (score > highScore)
+        {
+            PlayerPrefs.SetInt("HighScore", score);
+            isNewHighScore = true;
+        }
+        //Message if new high score achieved.  
+        if (isNewHighScore == true)
+        {
+            GameOverMessgae.text = "Well Done! " + score +  " is a new record! " + "The previous high score was " + previousHighScore + ".";
+            Debug.Log("Well Done! " + score + " is a new record! " + "The previous high score was " + previousHighScore + ".");
+        }
+        //Message if highscore is not beat. 
+        else
+        {
+            GameOverMessgae.text = "You scored " + score + " The current high score is " + highScore + ".";
+            Debug.Log("You scored " + score + " The current high score is " + highScore + ".");
+        }
+        PlayerPrefs.Save();
     }
 }
