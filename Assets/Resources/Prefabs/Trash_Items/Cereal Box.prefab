@@ -14,16 +14,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 616137912041605036, guid: cce61e898e3504747b1f051abf7e4a13, type: 3}
       propertyPath: m_Materials.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 616137912041605036, guid: cce61e898e3504747b1f051abf7e4a13, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 8831754025916190238, guid: efd9e90c9d6ca26468b77e6160b84875, type: 3}
+      objectReference: {fileID: 2100000, guid: 1bf5c1d25c2750243ad6790a5892ebdc, type: 2}
     - target: {fileID: 616137912041605036, guid: cce61e898e3504747b1f051abf7e4a13, type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
-      objectReference: {fileID: 2100000, guid: 1bf5c1d25c2750243ad6790a5892ebdc, type: 2}
+      objectReference: {fileID: 8831754025916190238, guid: efd9e90c9d6ca26468b77e6160b84875, type: 3}
     - target: {fileID: 2884196174685695089, guid: cce61e898e3504747b1f051abf7e4a13, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.8
