@@ -76,7 +76,7 @@ public class TrashManager : GameManager
         //Loss condition;
         if (PlayerPrefs.GetInt("IncorrectGuesses") >= incorrectGuessesLimit)
         {
-            EndGame();
+            GameOver(PlayerPrefs.GetInt("PlayerScore"), PlayerPrefs.GetInt("HighScore"));
         }
     }
 
@@ -126,7 +126,7 @@ public class TrashManager : GameManager
         Debug.Log("Trash Generated");
         int randomIndex = Random.Range(0, trash.Length);
         Vector3 targetPosition = spawnLocation.transform.position;
-        Instantiate(trash[randomIndex], targetPosition, Quaternion.identity);
+        Instantiate(trash[randomIndex], targetPosition, Quaternion.Euler(0, 0, 0)); //Random.Range(0, 360), 0));
 
     }
 
@@ -198,16 +198,13 @@ public class TrashManager : GameManager
         StartCoroutine(EndLevelCoroutine());
     }
 
-    void EndGame()
-    {
-        //Pause Gameplay. 
-        Time.timeScale = 1f;
-        //Execute GameOver()
-        GameOver(PlayerPrefs.GetInt("PlayerScore"), PlayerPrefs.GetInt("HighScore"));
-    }
     void GameOver(int score, int highScore)
     {
-        //Set game over UI visibility to true.  
+
+        //Pause Gameplay. 
+        Time.timeScale = 0f;
+        
+       //Set game over UI visibility to true.  
         GameOverUI.SetActive(true);
         int previousHighScore = PlayerPrefs.GetInt("PreviousHighScore", highScore);
         //Set new high score. 
