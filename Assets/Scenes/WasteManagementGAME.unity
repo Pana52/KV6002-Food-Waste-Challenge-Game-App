@@ -310,6 +310,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 649233534132929089, guid: e6e885d9f574eee48a7b3b5d367ab334, type: 3}
+      propertyPath: m_TagString
+      value: General Waste
+      objectReference: {fileID: 0}
     - target: {fileID: 763458364909211601, guid: e6e885d9f574eee48a7b3b5d367ab334, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -350,6 +354,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1376600358479300213, guid: e6e885d9f574eee48a7b3b5d367ab334, type: 3}
+      propertyPath: m_TagString
+      value: Glass Bin
+      objectReference: {fileID: 0}
     - target: {fileID: 2776249576491652603, guid: e6e885d9f574eee48a7b3b5d367ab334, type: 3}
       propertyPath: m_Size.x
       value: 11.289419
@@ -369,6 +377,10 @@ PrefabInstance:
     - target: {fileID: 3047707916534668251, guid: e6e885d9f574eee48a7b3b5d367ab334, type: 3}
       propertyPath: m_Name
       value: GameManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 3814089966819329143, guid: e6e885d9f574eee48a7b3b5d367ab334, type: 3}
+      propertyPath: m_TagString
+      value: Blue Bin
       objectReference: {fileID: 0}
     - target: {fileID: 5455071864730735113, guid: e6e885d9f574eee48a7b3b5d367ab334, type: 3}
       propertyPath: m_Size.z

@@ -4,7 +4,7 @@ public class Metal : Trash
 {
     private void OnTriggerEnter(Collider trigger)
     {
-        checkTrash(trigger.gameObject.tag, "Metal Bin");
+        checkTrash(trigger.gameObject.tag, "Blue Bin");
     }
 }
 

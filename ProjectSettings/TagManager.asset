@@ -14,6 +14,8 @@ TagManager:
   - Hazardous Bin
   - DialogueManager
   - GameManager
+  - Blue Bin
+  - General Waste
   layers:
   - Default
   - TransparentFX

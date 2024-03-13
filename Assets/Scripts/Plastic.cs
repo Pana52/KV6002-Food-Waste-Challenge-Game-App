@@ -4,6 +4,6 @@ public class Plastic : Trash
 {
     private void OnTriggerEnter(Collider trigger)
     {
-        checkTrash(trigger.gameObject.tag, "Plastic Bin");
+        checkTrash(trigger.gameObject.tag, "Blue Bin");
     }
 }
