@@ -76,7 +76,7 @@ public class DialogueManager : MonoBehaviour
     {
         string[] message = {"Alright, get outta here, you're messing up the place."};
         showDialogue(message[Random.Range(0, message.Length)]);
-        Debug.Log("GAME OVER" + message[Random.Range(0, message.Length)]);
+        Debug.Log("GAME OVER: " + message[Random.Range(0, message.Length)]);
     }
 
     void showDialogue(string message)

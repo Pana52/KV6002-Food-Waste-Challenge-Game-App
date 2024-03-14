@@ -4,6 +4,6 @@ public class Paper : Trash
 {
     private void OnTriggerEnter(Collider trigger)
     {
-        checkTrash(trigger.gameObject.tag, "Paper Bin");  
+        checkCollider(trigger, "Bin_Paper");
     }
 }

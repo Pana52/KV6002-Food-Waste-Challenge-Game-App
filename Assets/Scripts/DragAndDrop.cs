@@ -122,9 +122,9 @@ public class DragAndDrop : GameManager
         RaycastHit hit;
         if (Physics.Raycast(transform.position, Vector3.down, out hit))
         {
-            if (hit.collider != null)
+            if ( hit.collider.CompareTag("Bin"))
             {
-                return hit.collider.CompareTag("Paper Bin") || hit.collider.CompareTag("Plastic Bin") || hit.collider.CompareTag("Glass Bin");
+                return true;         
             }
         }
         return false;

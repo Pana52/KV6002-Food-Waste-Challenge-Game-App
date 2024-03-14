@@ -5,17 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - MoveableObject
-  - Paper Bin
-  - Plastic Bin
-  - Glass Bin
   - Incinerator
-  - Food Bin
-  - Metal Bin
-  - Hazardous Bin
   - DialogueManager
   - GameManager
-  - Blue Bin
-  - General Waste
   - Bin
   layers:
   - Default
