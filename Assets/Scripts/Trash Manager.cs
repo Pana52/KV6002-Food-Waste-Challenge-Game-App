@@ -1,4 +1,6 @@
+using System;
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,7 +12,7 @@ public class TrashManager : GameManager
     //Interval of trash generation. 
     private float trashInterval = 5f;
     //Length of level in seconds. 
-    private float levelInterval = 20f;
+    private float levelInterval = 5f;
     private bool levelActive = true;
     //Number of consectutive guesses until game over is triggered. 
     private int incorrectGuessesLimit = 5;
@@ -25,9 +27,7 @@ public class TrashManager : GameManager
     //UI element references. 
     [SerializeField] private GameObject GameOverUI;
     [SerializeField] private Text GameOverMessgae;
-    
-
-
+   
     //Ensure only one instance of TrashManager exists.
     private void Awake()
     {
@@ -44,39 +44,62 @@ public class TrashManager : GameManager
     private void Start()
     {
         resetPlayerPrefs();
-        Dialogue = GameObject.FindGameObjectWithTag("DialogueManager").GetComponent<DialogueManager>();
-        GameObject[] trashItems = Resources.LoadAll<GameObject>("Prefabs/Trash_Items");
-        trash = new GameObject[trashItems.Length];
-        for (int i = 0; i < trashItems.Length; i++)
-        {
-            trash[i] = trashItems[i];
-        }
-        StartCoroutine(GenerateTrashCoroutine());
-        StartCoroutine(EndLevelCoroutine());
+        //Reset level to 1 - for testing only. The currennt level PlayerPref will be set by the main menu at the start of a game. 
+        PlayerPrefs.SetInt("CurrentLevel", 1);
 
+        Dialogue = GameObject.FindGameObjectWithTag("DialogueManager").GetComponent<DialogueManager>();
+        StartCoroutine(EndLevelCoroutine());
+        StartCoroutine(GenerateTrashCoroutine());
         //Play dialogue. 
         Dialogue.playDialogue("welcome");
+    }
 
 
-
-
-
-
-        //--------Work in progress.
-        /**
-        foreach (GameObject trashObject in trash)
+    void createTrashArray(int level)
+    { 
+        if (level == 4)
         {
-            // Get the component with the script containing the trashType variable
-            Trash trashScript = trashObject.GetComponent<Trash>();
-
-            // Check if the trashScript is not null and if its trashType matches the desired value
-            if (trashScript != null && trashScript.trashType == "Paper")
+            //Array.Clear(trash, 0, trash.Length);
+            GameObject[] trashItems = Resources.LoadAll<GameObject>("Prefabs/Trash_Items");
+            trash = new GameObject[trashItems.Length];
+            for (int i = 0; i < trashItems.Length; i++)
             {
-                // Instantiate the trashObject if it meets the desired criteria
-                Instantiate(trashObject, transform.position, Quaternion.identity);
+                trash[i] = trashItems[i];
             }
-        }**/
-        //--------------
+            Debug.Log("All Trash Objects loaded into the array.");
+        }
+        if (level == 1)
+        {
+            GameObject[] trashItems = Resources.LoadAll<GameObject>("Prefabs/Trash_Items/Level_1");
+            trash = new GameObject[trashItems.Length];
+            for (int i = 0; i < trashItems.Length; i++)
+            {
+                trash[i] = trashItems[i];
+            }
+            Debug.Log("Level 1 Trash Objects loaded into the array.");
+        }
+        if (level == 2)
+        {
+            Array.Clear(trash, 0, trash.Length);
+            GameObject[] trashItems = Resources.LoadAll<GameObject>("Prefabs/Trash_Items/Level_2");
+            trash = new GameObject[trashItems.Length];
+            for (int i = 0; i < trashItems.Length; i++)
+            {
+                trash[i] = trashItems[i];
+            }
+            Debug.Log("Level 2 Trash Objects loaded into the array.");
+        }
+        if (level == 3)
+        { 
+            Array.Clear(trash, 0, trash.Length);
+            GameObject[] trashItems = Resources.LoadAll<GameObject>("Prefabs/Trash_Items/Level_3");
+            trash = new GameObject[trashItems.Length];
+            for (int i = 0; i < trashItems.Length; i++)
+            {
+                trash[i] = trashItems[i];
+            }
+            Debug.Log("Level 3 Trash Objects loaded into the array.");
+        }
 
     }
     private void Update()
@@ -94,58 +117,13 @@ public class TrashManager : GameManager
             
         }
     }
-
-    public void levelOneTrash()
-    {
-        /**foreach (GameObject trashObject in trash)
-        {
-            // Get the component with the script containing the trashType variable
-            Trash trashScript = trashObject.GetComponent<Trash>();
-
-            // Check if the trashScript is not null and if its trashType matches the desired value
-            if (trashScript != null && trashScript.trashType == "Paper" || trashScript.trashType == "Glass")
-            {
-                // Instantiate the trashObject if it meets the desired criteria
-                Instantiate(trashObject, transform.position, Quaternion.identity);
-            }
-        }**/
-    }
-    public void levelTwoTrash()
-    {
-
-    }
-
-    public void levelThreeTrash()
-    {
-
-    }
-
     public void generateTrash()
     {
-        currentLevel = PlayerPrefs.GetInt("CurrentLevel");
-        if (currentLevel == 1)
-        {
-            levelOneTrash();
-        }
-        if (currentLevel == 2)
-        {
-            levelTwoTrash();
-        }
-        if (currentLevel == 3)
-        {
-            levelThreeTrash();
-        }
-        if (currentLevel > 4)
-        {
-            Dialogue.playDialogue("level");
-            //Debug.Log("Trash Generated");
-            int randomIndex = Random.Range(0, trash.Length);
-            Vector3 targetPosition = spawnLocation.transform.position;
-            Instantiate(trash[randomIndex], targetPosition, Quaternion.Euler(0, 0, 0)); //Random.Range(0, 360), 0));
-        }
-
+        //Debug.Log("Trash Generated");
+        int randomIndex = new System.Random().Next(0, trash.Length);
+        Vector3 targetPosition = spawnLocation.transform.position;
+        Instantiate(trash[randomIndex], targetPosition, Quaternion.Euler(0, 0, 0)); //Random.Range(0, 360), 0));
     }
-
     IEnumerator GenerateTrashCoroutine()
     {
         while (levelActive)
@@ -159,8 +137,6 @@ public class TrashManager : GameManager
             yield return null;
         }
     }
-
-
 
     // Method to pause the coroutine
     public void PauseCoroutine()
@@ -176,6 +152,7 @@ public class TrashManager : GameManager
 
     IEnumerator EndLevelCoroutine()
     {
+        createTrashArray(PlayerPrefs.GetInt("CurrentLevel"));
         //Lenght of level in seconds. 
         yield return new WaitForSeconds(levelInterval);
         EndLevel();
@@ -183,23 +160,25 @@ public class TrashManager : GameManager
 
     void EndLevel()
     {
-        //Increment urrent level number.
-        currentLevel++;
-        PlayerPrefs.SetInt("CurrentLevel", currentLevel);
-        Debug.Log("END OF LEVEL. Level " + currentLevel + " active.");
-        //Play dialogue. 
-        Dialogue.playDialogue("level");
-        //Check if current level number exceeds maximum number of levels.
-        if (currentLevel == 4)
+        if (PlayerPrefs.GetInt("CurrentLevel") < 4)
         {
-            //Endless  
-        }
-        else
-        {
+            //Increment urrent level number.
+            currentLevel++;
+
+            PlayerPrefs.SetInt("CurrentLevel", currentLevel);
+            Debug.Log("END OF LEVEL. Level " + currentLevel + " active.");
+            //Play dialogue. 
+            Dialogue.playDialogue("level");
+            //Check if current level number exceeds maximum number of levels.
             DestroyAllTrashObjects();
             StartNextLevel();
         }
-        PlayerPrefs.Save();
+        if (currentLevel == 4)
+        {
+            //ScoreText.text = "Score: " + PlayerPrefs.GetInt("PlayerScore").ToString();
+            StartNextLevel();//Endless  
+        }     
+        PlayerPrefs.Save();  
     }
     void StartNextLevel()
     {
@@ -222,6 +201,8 @@ public class TrashManager : GameManager
         {
             Destroy(trashObject);
         }
+        Cursor.visible = true;
+        SetIsDragging(false);
     }
     void GameOver(int score, int highScore)
     {

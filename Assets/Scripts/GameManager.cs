@@ -1,5 +1,7 @@
 
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -7,6 +9,8 @@ public class GameManager : MonoBehaviour
     private bool isDragging;
     private const int baseScoreValue = 10;
     private bool isClean;
+
+    private TextMeshProUGUI ScoreText;
     //Initialize class reference. 
     DialogueManager dialogue;
 
@@ -35,6 +39,7 @@ public class GameManager : MonoBehaviour
         int playerScore = PlayerPrefs.GetInt("PlayerScore", 0);
         int comboValue = PlayerPrefs.GetInt("ComboValue", 1); 
         int incorrectGuesses = PlayerPrefs.GetInt("IncorrectGuesses", 0);
+        ScoreText = GameObject.Find("ScoreText").GetComponent<TextMeshProUGUI>();
         //Reference to DiologueManager class. 
         Dialogue = GameObject.FindGameObjectWithTag("DialogueManager").GetComponent<DialogueManager>();
     }
@@ -82,17 +87,24 @@ public class GameManager : MonoBehaviour
     }
     private void calculateScore(int score)
     {
-        int playerScore = PlayerPrefs.GetInt("PlayerScore", 0);
-        int comboValue = PlayerPrefs.GetInt("ComboValue", 1);
+        if (PlayerPrefs.GetInt("CurrentLevel") > 3)
+        {
+            int playerScore = PlayerPrefs.GetInt("PlayerScore", 0);
+            int comboValue = PlayerPrefs.GetInt("ComboValue", 1);
 
-        int scoreToAdd = score * comboValue;
-        playerScore += scoreToAdd;
-        comboValue++;
+            int scoreToAdd = score * comboValue;
+            playerScore += scoreToAdd;
+            comboValue++;
 
-        PlayerPrefs.SetInt("PlayerScore", playerScore);
-        PlayerPrefs.SetInt("ComboValue", comboValue);
-        PlayerPrefs.Save();
-
-        Debug.Log((scoreToAdd) + " points added. Current score: " + playerScore + ". Combo Value: " + comboValue + ".");
+            PlayerPrefs.SetInt("PlayerScore", playerScore);
+            PlayerPrefs.SetInt("ComboValue", comboValue);
+            PlayerPrefs.Save();
+            ScoreText.text = "Score: " + playerScore.ToString(); 
+            Debug.Log((scoreToAdd) + " points added. Current score: " + playerScore + ". Combo Value: " + comboValue + ".");
+        }
+        else
+        {
+            ScoreText.text = "";
+        }
     }
 }
