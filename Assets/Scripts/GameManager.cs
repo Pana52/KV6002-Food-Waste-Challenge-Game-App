@@ -1,6 +1,8 @@
 
 using TMPro;
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour
 {
@@ -34,7 +36,7 @@ public class GameManager : MonoBehaviour
     
     private void Start()
     {
-        //Get playerPrefs. 
+        //Get playerPrefs
         int playerScore = PlayerPrefs.GetInt("PlayerScore", 0);
         int comboValue = PlayerPrefs.GetInt("ComboValue", 1); 
         int incorrectGuesses = PlayerPrefs.GetInt("IncorrectGuesses", 0);
@@ -52,14 +54,14 @@ public class GameManager : MonoBehaviour
         //Reference to DiologueManager class. 
         Dialogue = GameObject.FindGameObjectWithTag("DialogueManager").GetComponent<DialogueManager>();
     }
-    
+
     public void checkTrash(string binType, string correctBinType)
     {
         int comboValue = PlayerPrefs.GetInt("ComboValue", 0);
         int incorrectGuesses = PlayerPrefs.GetInt("IncorrectGuesses", 0);
 
         if (binType == correctBinType)
-            {
+        {
             Debug.Log("CORRECT");
             calculateScore(baseScoreValue);
             SetIsDragging(false);
@@ -67,17 +69,17 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.SetInt("IncorrectGuesses", incorrectGuesses);
             //Play dialogue. 
             Dialogue.playDialogue("success");
-            }
+        }
 
         else if (binType == "Incinerator")
         {
             Debug.Log("Trash item added to general waste.");
-                
+
             comboValue = 1;
             incorrectGuesses += 1;
             PlayerPrefs.SetInt("ComboValue", comboValue);
             PlayerPrefs.SetInt("IncorrectGuesses", incorrectGuesses);
-           
+
         }
         else
         {
@@ -90,11 +92,12 @@ public class GameManager : MonoBehaviour
             //Play dialogue. 
             Dialogue.playDialogue("fail");
 
-        }       
+        }
         PlayerPrefs.Save();
         Destroy(gameObject);
     }
-    private void calculateScore(int score)
+
+    public void calculateScore(int score)
     {
         if (PlayerPrefs.GetInt("CurrentLevel") > 3)
         {

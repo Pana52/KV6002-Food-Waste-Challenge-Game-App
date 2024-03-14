@@ -71,7 +71,7 @@ public class DragAndDrop : GameManager
 
     void CheckForBinBelow()
     {
-        float radius = 0.25f; // Adjust as needed
+        float radius = 0.1f; // Adjust as needed
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, radius);
         HashSet<Animator> currentlyHoveredBins = new HashSet<Animator>();
 

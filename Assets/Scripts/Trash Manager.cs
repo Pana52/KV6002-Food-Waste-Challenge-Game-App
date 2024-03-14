@@ -54,7 +54,7 @@ public class TrashManager : GameManager
         Dialogue.playDialogue("welcome");
     }
 
-
+    
     void createTrashArray(int level)
     { 
         if (level == 4)
