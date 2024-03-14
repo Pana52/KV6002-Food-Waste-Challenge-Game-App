@@ -7,22 +7,25 @@ public class TrashManager : GameManager
     //Singleton instance.
     private static TrashManager instance;
     private GameObject[] trash;
-
+    //Interval of trash generation. 
     private float trashInterval = 5f;
-    private float levelInterval = 10f;
+    //Length of level in seconds. 
+    private float levelInterval = 20f;
     private bool levelActive = true;
+    //Number of consectutive guesses until game over is triggered. 
     private int incorrectGuessesLimit = 5;
-    
+    //Boolean if player achieves new high score. 
+    private bool isNewHighScore = false;
 
     //Boolean to indicate if the coroutine is paused.
     private bool coroutinePaused = false;
     private int currentLevel = 1;
 
     public GameObject spawnLocation;
-
+    //UI element references. 
     [SerializeField] private GameObject GameOverUI;
     [SerializeField] private Text GameOverMessgae;
-    private bool isNewHighScore = false;
+    
 
 
     //Ensure only one instance of TrashManager exists.
@@ -54,6 +57,11 @@ public class TrashManager : GameManager
         //Play dialogue. 
         Dialogue.playDialogue("welcome");
 
+
+
+
+
+
         //--------Work in progress.
         /**
         foreach (GameObject trashObject in trash)
@@ -78,8 +86,8 @@ public class TrashManager : GameManager
         {
             generateTrash();
         }
-        //Loss condition;
-        if (PlayerPrefs.GetInt("IncorrectGuesses") >= incorrectGuessesLimit && levelActive == true)
+        //Loss condition - Can't be triggered during tutorial levels. 
+        if (PlayerPrefs.GetInt("IncorrectGuesses") >= incorrectGuessesLimit && levelActive == true && currentLevel > 3)
         {
             levelActive = false;
             GameOver(PlayerPrefs.GetInt("PlayerScore"), PlayerPrefs.GetInt("HighScore"));
@@ -114,8 +122,7 @@ public class TrashManager : GameManager
 
     public void generateTrash()
     {
-
-
+        currentLevel = PlayerPrefs.GetInt("CurrentLevel");
         if (currentLevel == 1)
         {
             levelOneTrash();
@@ -128,12 +135,14 @@ public class TrashManager : GameManager
         {
             levelThreeTrash();
         }
-
-
-        Debug.Log("Trash Generated");
-        int randomIndex = Random.Range(0, trash.Length);
-        Vector3 targetPosition = spawnLocation.transform.position;
-        Instantiate(trash[randomIndex], targetPosition, Quaternion.Euler(0, 0, 0)); //Random.Range(0, 360), 0));
+        if (currentLevel > 4)
+        {
+            Dialogue.playDialogue("level");
+            //Debug.Log("Trash Generated");
+            int randomIndex = Random.Range(0, trash.Length);
+            Vector3 targetPosition = spawnLocation.transform.position;
+            Instantiate(trash[randomIndex], targetPosition, Quaternion.Euler(0, 0, 0)); //Random.Range(0, 360), 0));
+        }
 
     }
 
@@ -165,35 +174,32 @@ public class TrashManager : GameManager
         coroutinePaused = false;
     }
 
-
-
     IEnumerator EndLevelCoroutine()
     {
-        // Wait for 30 seconds before ending the level
+        //Lenght of level in seconds. 
         yield return new WaitForSeconds(levelInterval);
-
-        // End the level
         EndLevel();
     }
 
     void EndLevel()
     {
-        // Increment the current level number
+        //Increment urrent level number.
         currentLevel++;
+        PlayerPrefs.SetInt("CurrentLevel", currentLevel);
         Debug.Log("END OF LEVEL. Level " + currentLevel + " active.");
         //Play dialogue. 
         Dialogue.playDialogue("level");
-        // Check if the current level number exceeds the maximum number of levels
+        //Check if current level number exceeds maximum number of levels.
         if (currentLevel == 4)
         {
-            //Endless
-            
+            //Endless  
         }
         else
         {
-            // If not, start the next level
+            DestroyAllTrashObjects();
             StartNextLevel();
         }
+        PlayerPrefs.Save();
     }
     void StartNextLevel()
     {
@@ -206,10 +212,19 @@ public class TrashManager : GameManager
         // Start the coroutine to end the level after 30 seconds
         StartCoroutine(EndLevelCoroutine());
     }
+    public void DestroyAllTrashObjects()
+    {
+        //Add trash object to array. 
+        GameObject[] trashObjects = GameObject.FindGameObjectsWithTag("MoveableObject");
 
+        //Destroy objects. 
+        foreach (GameObject trashObject in trashObjects)
+        {
+            Destroy(trashObject);
+        }
+    }
     void GameOver(int score, int highScore)
     {
-
         //Pause Gameplay. 
         Time.timeScale = 0f;
         //Play dialogue. 

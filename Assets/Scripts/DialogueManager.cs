@@ -68,9 +68,18 @@ public class DialogueManager : MonoBehaviour
     }
     void levelComplete()
     {
-        string[] message = {"Good Job, now lets how you do with this new trash delivery that just arrived." };
-        showDialogue(message[Random.Range(0, message.Length)]);
-        Debug.Log(message[Random.Range(0, message.Length)]);
+        if (PlayerPrefs.GetInt("CurrentLevel") == 4)
+        {
+            string[] message = { "Endless Mode" };
+            showDialogue(message[Random.Range(0, message.Length)]);
+            Debug.Log(message[Random.Range(0, message.Length)]);
+        }
+        else
+        {
+            string[] message = { "Good Job, now lets how you do with this new trash delivery that just arrived." };
+            showDialogue(message[Random.Range(0, message.Length)]);
+            Debug.Log(message[Random.Range(0, message.Length)]);
+        }
     }
     void GameOverDialogue()
     {
