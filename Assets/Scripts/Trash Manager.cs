@@ -152,6 +152,10 @@ public class TrashManager : GameManager
 
     IEnumerator EndLevelCoroutine()
     {
+        if (PlayerPrefs.GetInt("CurrentLevel") == 4)
+        {
+            levelInterval = 20;
+        }
         createTrashArray(PlayerPrefs.GetInt("CurrentLevel"));
         //Lenght of level in seconds. 
         yield return new WaitForSeconds(levelInterval);

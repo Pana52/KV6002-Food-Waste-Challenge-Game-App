@@ -1,7 +1,6 @@
 
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -40,6 +39,16 @@ public class GameManager : MonoBehaviour
         int comboValue = PlayerPrefs.GetInt("ComboValue", 1); 
         int incorrectGuesses = PlayerPrefs.GetInt("IncorrectGuesses", 0);
         ScoreText = GameObject.Find("ScoreText").GetComponent<TextMeshProUGUI>();
+        if (PlayerPrefs.GetInt("CurrentLevel") < 4)
+        {
+            PlayerPrefs.SetInt("PlayerScore", -1);
+        }
+        if (PlayerPrefs.GetInt("CurrentLevel") == 4 && (PlayerPrefs.GetInt("PlayerScore") == -1))
+        {
+            PlayerPrefs.SetInt("PlayerScore", 0);
+            ScoreText.text = "Score: " + ScoreText.text.ToString();
+        }
+        PlayerPrefs.Save();
         //Reference to DiologueManager class. 
         Dialogue = GameObject.FindGameObjectWithTag("DialogueManager").GetComponent<DialogueManager>();
     }
@@ -89,8 +98,8 @@ public class GameManager : MonoBehaviour
     {
         if (PlayerPrefs.GetInt("CurrentLevel") > 3)
         {
-            int playerScore = PlayerPrefs.GetInt("PlayerScore", 0);
-            int comboValue = PlayerPrefs.GetInt("ComboValue", 1);
+            int playerScore = PlayerPrefs.GetInt("PlayerScore");
+            int comboValue = PlayerPrefs.GetInt("ComboValue");
 
             int scoreToAdd = score * comboValue;
             playerScore += scoreToAdd;
