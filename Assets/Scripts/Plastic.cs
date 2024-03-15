@@ -5,11 +5,11 @@ public class Plastic : Trash
     public string plasticSubType;
     private void OnTriggerEnter(Collider trigger)
     {
-        if (plasticSubType == "PH")
+        if (plasticSubType == "Recyclable")
         {
             checkCollider(trigger, "Bin_Recycled");
         }
-        if (plasticSubType == "PH" || plasticSubType == null)
+        if (plasticSubType == "Non-Recyclable" || plasticSubType == null)
         {
             checkCollider(trigger, "Bin_General");
         }

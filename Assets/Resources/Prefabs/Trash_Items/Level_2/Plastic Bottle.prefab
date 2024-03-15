@@ -92,6 +92,10 @@ PrefabInstance:
       propertyPath: trashName
       value: Plastic Bottle
       objectReference: {fileID: 0}
+    - target: {fileID: 8795770878439470649, guid: e04d712a02dff74449e00bf897b44bea, type: 3}
+      propertyPath: plasticSubType
+      value: Recyclable
+      objectReference: {fileID: 0}
     - target: {fileID: 9166358100160519807, guid: e04d712a02dff74449e00bf897b44bea, type: 3}
       propertyPath: m_Size.z
       value: 1.398675

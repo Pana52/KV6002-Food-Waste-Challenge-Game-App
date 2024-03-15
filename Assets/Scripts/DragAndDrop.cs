@@ -5,11 +5,11 @@ using UnityEngine;
 public class DragAndDrop : GameManager
 {
     private Vector3 initialPosition; // Initial position when object is clicked.
-    private Vector3 initialMousePosition; // Initial mouse position in world space.
+    private Vector3 initialMousePosition; // Initial mouse position in world space. 
     private Collider coll;
     public float transitionTime = 0.5f;
     private Camera mainCamera;
-    float mouseSpeed = 0.2f;
+    float mouseSpeed = 1f;
 
     // New: Keep track of previously hovered bins
     private List<Animator> previouslyHoveredBins = new List<Animator>();

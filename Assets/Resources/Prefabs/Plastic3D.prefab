@@ -52,6 +52,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7137272321975275389, guid: 826a7cfd3106af442a7971d20c1895f8, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -80,4 +84,4 @@ MonoBehaviour:
   trashName: 
   trashType: Plastic
   trashDesc: 
-  plasticSubType: PH
+  plasticSubType: 

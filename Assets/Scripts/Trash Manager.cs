@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -42,13 +41,15 @@ public class TrashManager : GameManager
     }
 
     private void Start()
-    {
+    {   //Reset ComboValue, IncorrectGuesses and PlayerScore PlayerPrefs. 
         resetPlayerPrefs();
         //Reset level to 1 - for testing only. The currennt level PlayerPref will be set by the main menu at the start of a game. 
         PlayerPrefs.SetInt("CurrentLevel", 1);
-
+        //Reference to dialogue script. 
         Dialogue = GameObject.FindGameObjectWithTag("DialogueManager").GetComponent<DialogueManager>();
+        //Star timer for level. 
         StartCoroutine(EndLevelCoroutine());
+        //Start Trash generation.
         StartCoroutine(GenerateTrashCoroutine());
         //Play dialogue. 
         Dialogue.playDialogue("welcome");
@@ -59,7 +60,7 @@ public class TrashManager : GameManager
     { 
         if (level == 4)
         {
-            //Array.Clear(trash, 0, trash.Length);
+            Array.Clear(trash, 0, trash.Length);
             GameObject[] trashItems = Resources.LoadAll<GameObject>("Prefabs/Trash_Items");
             trash = new GameObject[trashItems.Length];
             for (int i = 0; i < trashItems.Length; i++)
@@ -137,19 +138,6 @@ public class TrashManager : GameManager
             yield return null;
         }
     }
-
-    // Method to pause the coroutine
-    public void PauseCoroutine()
-    {
-        coroutinePaused = true;
-    }
-
-    // Method to resume the coroutine
-    public void ResumeCoroutine()
-    {
-        coroutinePaused = false;
-    }
-
     IEnumerator EndLevelCoroutine()
     {
         if (PlayerPrefs.GetInt("CurrentLevel") == 4)
@@ -179,20 +167,16 @@ public class TrashManager : GameManager
         }
         if (currentLevel == 4)
         {
-            //ScoreText.text = "Score: " + PlayerPrefs.GetInt("PlayerScore").ToString();
             StartNextLevel();//Endless  
         }     
         PlayerPrefs.Save();  
     }
     void StartNextLevel()
     {
-        // Reset levelActive to true for the next level
+        //Reset levelActive to true for next level.
         levelActive = true;
 
-        // Start the coroutine to generate items for the next level
-        //StartCoroutine(GenerateTrashCoroutine());
-
-        // Start the coroutine to end the level after 30 seconds
+        //Start coroutine.
         StartCoroutine(EndLevelCoroutine());
     }
     public void DestroyAllTrashObjects()

@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour
         if (PlayerPrefs.GetInt("CurrentLevel") == 4 && (PlayerPrefs.GetInt("PlayerScore") == -1))
         {
             PlayerPrefs.SetInt("PlayerScore", 0);
-            ScoreText.text = "Score: " + ScoreText.text.ToString();
+            ScoreText.text = "Score: 0" + ScoreText.text.ToString();
         }
         PlayerPrefs.Save();
         //Reference to DiologueManager class. 
