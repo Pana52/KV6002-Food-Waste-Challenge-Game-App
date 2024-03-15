@@ -14,6 +14,13 @@ public class DragAndDrop : GameManager
     // New: Keep track of previously hovered bins
     private List<Animator> previouslyHoveredBins = new List<Animator>();
 
+    AudioManager audioManager;
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
+
     private void Start()
     {
         coll = GetComponent<Collider>();
@@ -94,6 +101,7 @@ public class DragAndDrop : GameManager
             if (!currentlyHoveredBins.Contains(prevBin))
             {
                 prevBin.SetBool("isHover", false);
+                audioManager.PlaySFX(audioManager.binClose);
             }
         }
 

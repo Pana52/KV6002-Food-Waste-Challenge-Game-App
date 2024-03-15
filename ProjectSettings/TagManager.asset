@@ -9,6 +9,12 @@ TagManager:
   - DialogueManager
   - GameManager
   - Bin
+  - Food Bin
+  - Hazardous Bin
+  - Metal Bin
+  - Paper Bin
+  - Plastic Bin
+  - Audio
   layers:
   - Default
   - TransparentFX
