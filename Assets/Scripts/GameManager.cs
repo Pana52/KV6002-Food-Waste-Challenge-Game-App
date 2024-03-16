@@ -4,12 +4,9 @@ using UnityEngine;
 using System;
 
 public class GameManager : MonoBehaviour
-{
-    private float conveyorSpeed;
+{ 
     private bool isDragging;
     private const int baseScoreValue = 10;
-    private bool isClean;
-
     private TextMeshProUGUI ScoreText;
     //Initialize class reference. 
     DialogueManager dialogue;
@@ -22,18 +19,9 @@ public class GameManager : MonoBehaviour
     }
     public void SetIsDragging(bool value)
     {
-        Debug.LogWarning("is Dragging = " + value);
+        //Debug.LogWarning("is Dragging = " + value);
         isDragging = value;
     }
-    public float GetConveyorSpeed()
-    {
-        return conveyorSpeed;
-    }
-    public void SetConveyorSpeed (float value)
-    {
-        conveyorSpeed = value;
-    }
-
     /**
     private GameObject draggedObject = null;
     public void SetIsDragging(bool dragging, GameObject draggedObj)
@@ -73,10 +61,11 @@ public class GameManager : MonoBehaviour
     {
         int comboValue = PlayerPrefs.GetInt("ComboValue", 0);
         int incorrectGuesses = PlayerPrefs.GetInt("IncorrectGuesses", 0);
-
+        
         if (binType == correctBinType)
         {
-            Debug.Log("CORRECT");
+            ConveyorSpeed("correct");
+            //Debug.Log("CORRECT");
             calculateScore(baseScoreValue);
             SetIsDragging(false);
             incorrectGuesses = 0;
@@ -87,18 +76,18 @@ public class GameManager : MonoBehaviour
 
         else if (binType == "Incinerator")
         {
-            Debug.Log("Trash item added to general waste.");
-
+            //Debug.Log("Trash item added to general waste.");
+            ConveyorSpeed("mistake");
             comboValue = 1;
             incorrectGuesses += 1;
             PlayerPrefs.SetInt("ComboValue", comboValue);
             PlayerPrefs.SetInt("IncorrectGuesses", incorrectGuesses);
-
         }
         else
         {
-            Debug.Log("INCORRECT");
+            //Debug.Log("INCORRECT");
             SetIsDragging(false);
+            ConveyorSpeed("mistake");
             comboValue = 1;
             incorrectGuesses += 1;
             PlayerPrefs.SetInt("ComboValue", comboValue);
@@ -132,5 +121,37 @@ public class GameManager : MonoBehaviour
         {
             ScoreText.text = "";
         }
+    }
+   
+    public void ConveyorSpeed(string type)
+    {
+
+        float combo = PlayerPrefs.GetInt("ComboValue");
+        float value = 0.01f;
+        float speed = PlayerPrefs.GetFloat("ConveyorSpeed");
+        
+        if (PlayerPrefs.GetInt("CurrentLevel") == 4)
+        {
+            if (type == "mistake" && combo > 1)
+            {
+                speed -= value;
+                Debug.Log("Speed decreased by: " + value);
+            }
+            if (type == "correct")
+            {
+                speed += value;
+                Debug.Log("Speed increased by: " + value);
+            }
+            if (type == "level")
+            {
+                speed += value;
+                Debug.Log("Speed increased by: " + value);
+            }
+            PlayerPrefs.SetFloat("ConveyorSpeed", speed);
+            Debug.Log("Conveyor Belt Speed is now: " + speed);
+            PlayerPrefs.Save();
+        }
+
+        
     }
 }

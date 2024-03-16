@@ -21,14 +21,12 @@ public class TrashManager : GameManager
     //Boolean to indicate if the coroutine is paused.
     private bool coroutinePaused = false;
     private int currentLevel = 1;
-
+    
     public GameObject spawnLocation;
     //UI element references. 
     [SerializeField] private GameObject GameOverUI;
     [SerializeField] private Text GameOverMessgae;
 
-    private float endlessModeSpeed = 1;
-   
     //Ensure only one instance of TrashManager exists.
     private void Awake()
     {
@@ -112,6 +110,11 @@ public class TrashManager : GameManager
         {
             generateTrash();
         }
+        //For Testing. 
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            EndLevel();
+        }
         //Loss condition - Can't be triggered during tutorial levels. 
         if (PlayerPrefs.GetInt("IncorrectGuesses") >= incorrectGuessesLimit && levelActive == true && currentLevel > 3)
         {
@@ -120,6 +123,7 @@ public class TrashManager : GameManager
             
         }
     }
+
     public void generateTrash()
     {
         //Debug.Log("Trash Generated");
@@ -145,8 +149,7 @@ public class TrashManager : GameManager
         if (PlayerPrefs.GetInt("CurrentLevel") == 4)
         {
             levelInterval = 20;
-            SetConveyorSpeed(endlessModeSpeed);
-            endlessModeSpeed += 0.01f;
+            ConveyorSpeed("level");
             trashInterval -= 0.1f;
         }
         createTrashArray(PlayerPrefs.GetInt("CurrentLevel"));

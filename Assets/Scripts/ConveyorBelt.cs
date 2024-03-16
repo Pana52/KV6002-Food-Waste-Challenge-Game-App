@@ -3,9 +3,22 @@ using UnityEngine;
 public class ConveyorBelt : GameManager
 { 
     private Vector3 direction = Vector3.right;
+    private static ConveyorBelt instance;
     private void Start()
     {
-        SetConveyorSpeed(0.7f);
+        PlayerPrefs.SetFloat("ConveyorSpeed", 0.7f);
+        Debug.Log("Conveyor Speed set to " + PlayerPrefs.GetFloat("ConveyorSpeed"));
+    }
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
     void Update()
     {
@@ -16,7 +29,7 @@ public class ConveyorBelt : GameManager
             if (collider.CompareTag("MoveableObject"))
             {
                 //Debug.Log("MoveableObject detected: " + collider.name);
-                collider.transform.Translate(direction * GetConveyorSpeed() * Time.deltaTime);
+                collider.transform.Translate(direction * PlayerPrefs.GetFloat("ConveyorSpeed") * Time.deltaTime);
             }
         }
     }
