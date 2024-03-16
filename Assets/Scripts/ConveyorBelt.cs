@@ -5,7 +5,7 @@ public class ConveyorBelt : GameManager
     private Vector3 direction = Vector3.right;
     private void Start()
     {
-        SetConveyorSpeed(1f);
+        SetConveyorSpeed(0.7f);
     }
     void Update()
     {
