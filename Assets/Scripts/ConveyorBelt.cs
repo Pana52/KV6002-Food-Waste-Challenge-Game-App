@@ -1,24 +1,12 @@
 using UnityEngine;
 
-public class ConveyorBelt : GameManager
-{ 
+public class ConveyorBelt : MonoBehaviour
+{
     private Vector3 direction = Vector3.right;
-    private static ConveyorBelt instance;
     private void Start()
     {
         PlayerPrefs.SetFloat("ConveyorSpeed", 0.7f);
         Debug.Log("Conveyor Speed set to " + PlayerPrefs.GetFloat("ConveyorSpeed"));
-    }
-    private void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
     }
     void Update()
     {
@@ -32,5 +20,10 @@ public class ConveyorBelt : GameManager
                 collider.transform.Translate(direction * PlayerPrefs.GetFloat("ConveyorSpeed") * Time.deltaTime);
             }
         }
+
     }
 }
+
+
+
+

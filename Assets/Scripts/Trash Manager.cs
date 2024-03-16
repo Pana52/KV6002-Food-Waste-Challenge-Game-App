@@ -7,6 +7,7 @@ public class TrashManager : GameManager
 {
     //Singleton instance.
     private static TrashManager instance;
+    //Trash object array. 
     private GameObject[] trash;
     //Interval of trash generation. 
     private float trashInterval = 6f;
@@ -20,8 +21,10 @@ public class TrashManager : GameManager
 
     //Boolean to indicate if the coroutine is paused.
     private bool coroutinePaused = false;
+
     private int currentLevel = 1;
     
+    //Reference to spawn location of trash.
     public GameObject spawnLocation;
     //UI element references. 
     [SerializeField] private GameObject GameOverUI;
@@ -60,6 +63,7 @@ public class TrashManager : GameManager
     { 
         if (level == 4)
         {
+            //Load all items into the array.
             Array.Clear(trash, 0, trash.Length);
             GameObject[] trashItems = Resources.LoadAll<GameObject>("Prefabs/Trash_Items");
             trash = new GameObject[trashItems.Length];
@@ -70,7 +74,8 @@ public class TrashManager : GameManager
             Debug.Log("All Trash Objects loaded into the array.");
         }
         if (level == 1)
-        {
+        {   
+            //Load level 1 items into the array. 
             GameObject[] trashItems = Resources.LoadAll<GameObject>("Prefabs/Trash_Items/Level_1");
             trash = new GameObject[trashItems.Length];
             for (int i = 0; i < trashItems.Length; i++)
@@ -81,6 +86,7 @@ public class TrashManager : GameManager
         }
         if (level == 2)
         {
+            //Load level 2 items into the array.
             Array.Clear(trash, 0, trash.Length);
             GameObject[] trashItems = Resources.LoadAll<GameObject>("Prefabs/Trash_Items/Level_2");
             trash = new GameObject[trashItems.Length];
@@ -91,7 +97,8 @@ public class TrashManager : GameManager
             Debug.Log("Level 2 Trash Objects loaded into the array.");
         }
         if (level == 3)
-        { 
+        {
+            //Load level 3 items into the array.
             Array.Clear(trash, 0, trash.Length);
             GameObject[] trashItems = Resources.LoadAll<GameObject>("Prefabs/Trash_Items/Level_3");
             trash = new GameObject[trashItems.Length];
@@ -126,12 +133,13 @@ public class TrashManager : GameManager
 
     public void generateTrash()
     {
-        //Debug.Log("Trash Generated");
+        int randRot = new System.Random().Next(-180, 180);
         int randomIndex = new System.Random().Next(0, trash.Length);
         Vector3 targetPosition = spawnLocation.transform.position;
-        Instantiate(trash[randomIndex], targetPosition, Quaternion.Euler(0, 0, 0)); //Random.Range(0, 360), 0));
+        Instantiate(trash[randomIndex], targetPosition, Quaternion.Euler(0, 0, 0)); 
     }
-    IEnumerator GenerateTrashCoroutine()
+  
+    IEnumerator GenerateTrashCoroutine() //Generates trash at an interval specified by the trashInterval variable. 
     {
         while (levelActive)
         {
@@ -144,6 +152,7 @@ public class TrashManager : GameManager
             yield return null;
         }
     }
+    //Ends level after the lenght of time specified by the levelInterval variable. 
     IEnumerator EndLevelCoroutine()
     {
         if (PlayerPrefs.GetInt("CurrentLevel") == 4)
@@ -164,13 +173,10 @@ public class TrashManager : GameManager
         {
             //Increment urrent level number.
             currentLevel++;
-
             PlayerPrefs.SetInt("CurrentLevel", currentLevel);
             Debug.Log("END OF LEVEL. Level " + currentLevel + " active.");
             //Play dialogue. 
             Dialogue.playDialogue("level");
-            //Check if current level number exceeds maximum number of levels.
-            //DestroyAllTrashObjects();
             StartNextLevel();
         }
         if (currentLevel == 4)
@@ -187,7 +193,7 @@ public class TrashManager : GameManager
         //Start coroutine.
         StartCoroutine(EndLevelCoroutine());
     }
-    public void DestroyAllTrashObjects()
+    public void DestroyAllTrashObjects() //Destroys all trash objects in the scene. 
     {
         //Add trash object to array. 
         GameObject[] trashObjects = GameObject.FindGameObjectsWithTag("MoveableObject");
@@ -229,7 +235,7 @@ public class TrashManager : GameManager
         }
         PlayerPrefs.Save();
     }
-    void resetPlayerPrefs()
+    void resetPlayerPrefs() //Resets certain PlayerPrefs. 
     {
         PlayerPrefs.SetInt("IncorrectGuesses", 0);
         PlayerPrefs.SetInt("PlayerScore", 0);

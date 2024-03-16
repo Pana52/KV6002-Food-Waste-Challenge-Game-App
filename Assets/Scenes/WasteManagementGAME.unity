@@ -1432,6 +1432,10 @@ PrefabInstance:
       value: Bin
       objectReference: {fileID: 0}
     - target: {fileID: 809627932058587921, guid: e6e885d9f574eee48a7b3b5d367ab334, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 809627932058587921, guid: e6e885d9f574eee48a7b3b5d367ab334, type: 3}
       propertyPath: screenIndicatorAnim
       value: 
       objectReference: {fileID: 1260523935}

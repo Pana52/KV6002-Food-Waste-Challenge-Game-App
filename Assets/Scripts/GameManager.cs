@@ -132,7 +132,8 @@ public class GameManager : MonoBehaviour
         
         if (PlayerPrefs.GetInt("CurrentLevel") == 4)
         {
-            if (type == "mistake" && combo > 1)
+            //Condition ensure speed cannot go below default value. 
+            if (type == "mistake" && speed > 0.7)
             {
                 speed -= value;
                 Debug.Log("Speed decreased by: " + value);
