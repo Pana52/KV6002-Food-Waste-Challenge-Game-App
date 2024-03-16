@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: -3962829171098529956}
   - component: {fileID: 7137272321975275389}
   - component: {fileID: -5539593237509595575}
-  - component: {fileID: 2652986683172491844}
+  - component: {fileID: -8240549332515828413}
   m_Layer: 0
   m_Name: TrashParent3D
   m_TagString: MoveableObject
@@ -112,7 +112,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &2652986683172491844
+--- !u!114 &-8240549332515828413
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -124,8 +124,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 521b4b2bc53ca374b952f92b96782b48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transitionTime: 0.5
-  yToZThreshold: 0.5
-  yThreshold: 0.1
-  xThreshold: 0.1
-  zMovementFactor: 0.1
+  objectInfoText: {fileID: 0}

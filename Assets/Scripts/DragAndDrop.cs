@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class DragAndDrop : GameManager
@@ -7,9 +8,9 @@ public class DragAndDrop : GameManager
     private Vector3 initialPosition; // Initial position when object is clicked.
     private Vector3 initialMousePosition; // Initial mouse position in world space. 
     private Collider coll;
-    public float transitionTime = 0.5f;
+    private float transitionTime = 0.5f;
     private Camera mainCamera;
-    float mouseSpeed = 1f;
+    float mouseSpeed = 0.2f;
 
     // New: Keep track of previously hovered bins
     private List<Animator> previouslyHoveredBins = new List<Animator>();
@@ -27,9 +28,14 @@ public class DragAndDrop : GameManager
         mainCamera = Camera.main;
     }
 
+
+    //[SerializeField] private TextMeshProUGUI objectInfoText;
+
+
     void OnMouseDrag()
     {
         if (!GetIsDragging()) return;
+        { 
 
         Cursor.visible = false;
         Vector3 currentMousePosition = GetMouseWorldPos();
@@ -39,10 +45,61 @@ public class DragAndDrop : GameManager
 
         // Check and update bin hover states
         CheckForBinBelow();
+
+
+            ///---------------------Dash Display Text - Work in progress. 
+            // Check if an object is currently being dragged
+                                  /**  if (Input.GetMouseButton(0))
+                                    {
+                                        RaycastHit hit;
+                                        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+                                        if (Physics.Raycast(ray, out hit))
+                                        {
+                                            // Get the dragged object
+                                            GameObject draggedObject = hit.collider.gameObject;
+
+                                            // Check if the dragged object has a Trash component
+                                            Trash trashComponent = draggedObject.GetComponent<Trash>();
+                                            if (trashComponent != null)
+                                            {
+                                                // Get the object's name, material, and description
+                                                string trashName = trashComponent.trashName;
+                                                string trashType = trashComponent.trashType; // Replace with actual material information
+                                                string trashDesc = trashComponent.trashDesc; // Replace with actual description
+
+                                                // Build the object information string
+                                                string objectInfo = "Name: " + trashName + "\n" +
+                                                                    "Material: " + trashType + "\n" +
+                                                                    "Description: " + trashDesc;
+
+                                                // Display the object information on the UI text element
+                                                objectInfoText.text = objectInfo;
+                                            }
+                                            else
+                                            {
+                                                // Clear the UI text if no Trash component is found
+                                                objectInfoText.text = "";
+                                            }
+                                        }
+                                        else
+                                        {
+                                            // Clear the UI text if no object is hit by the raycast
+                                            objectInfoText.text = "";
+                                        }
+                                    }
+                                    else
+                                    {
+                                        // Clear the UI text if no mouse button is pressed
+                                        objectInfoText.text = "";
+                                    }
+            **/
+            //------------------------------------
+        }
     }
 
     void OnMouseDown()
-    {
+    {         
         initialPosition = transform.position;
         initialMousePosition = GetMouseWorldPos();
         SetIsDragging(true);

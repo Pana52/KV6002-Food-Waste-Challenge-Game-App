@@ -162,7 +162,7 @@ public class TrashManager : GameManager
             //Play dialogue. 
             Dialogue.playDialogue("level");
             //Check if current level number exceeds maximum number of levels.
-            DestroyAllTrashObjects();
+            //DestroyAllTrashObjects();
             StartNextLevel();
         }
         if (currentLevel == 4)

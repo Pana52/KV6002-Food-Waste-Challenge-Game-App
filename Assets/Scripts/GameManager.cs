@@ -1,8 +1,7 @@
 
 using TMPro;
 using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
+using System;
 
 public class GameManager : MonoBehaviour
 {
@@ -23,6 +22,7 @@ public class GameManager : MonoBehaviour
     }
     public void SetIsDragging(bool value)
     {
+        Debug.LogWarning("is Dragging = " + value);
         isDragging = value;
     }
     public float GetConveyorSpeed()
@@ -33,7 +33,21 @@ public class GameManager : MonoBehaviour
     {
         conveyorSpeed = value;
     }
-    
+
+    /**
+    private GameObject draggedObject = null;
+    public void SetIsDragging(bool dragging, GameObject draggedObj)
+    {
+        isDragging = dragging;
+        draggedObject = draggedObj;
+    }
+
+    // Method to get the dragged object
+    public GameObject GetDraggedObject()
+    {
+        return draggedObject;
+    }
+    **/
     private void Start()
     {
         //Get playerPrefs
