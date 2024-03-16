@@ -37,14 +37,14 @@ public class DragAndDrop : GameManager
         if (!GetIsDragging()) return;
         { 
 
-        Cursor.visible = false;
-        Vector3 currentMousePosition = GetMouseWorldPos();
-        Vector3 positionDelta = currentMousePosition - initialMousePosition;
-        Vector3 newPosition = initialPosition + new Vector3(positionDelta.x * mouseSpeed, 0, positionDelta.y * mouseSpeed);
-        transform.position = newPosition;
+            Cursor.visible = false;
+            Vector3 currentMousePosition = GetMouseWorldPos();
+            Vector3 positionDelta = currentMousePosition - initialMousePosition;
+            Vector3 newPosition = initialPosition + new Vector3(positionDelta.x * mouseSpeed, 0, positionDelta.y * mouseSpeed);
+            transform.position = newPosition;
 
         // Check and update bin hover states
-        CheckForBinBelow();
+            CheckForBinBelow();
 
 
             ///---------------------Dash Display Text - Work in progress. 
