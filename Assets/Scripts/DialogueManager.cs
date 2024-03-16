@@ -37,11 +37,9 @@ public class DialogueManager : MonoBehaviour
     }
     void successDiaglogue()
     {
-        int combo = PlayerPrefs.GetInt("ComboValue");
-        if (combo == 5 || combo == 10 )
+        if (PlayerPrefs.GetInt("ComboValue") == 5)
         {
-            string[] message = { "Nice! That's " + combo + " correct bins in a row!", 
-                                  "Keep it up, that's " + combo + " correct bins in a row! "};
+            string[] message = { "Nice! That's 5 correct bins in a row!"};
             showDialogue(message[Random.Range(0, message.Length)]);
             Debug.Log(message[Random.Range(0, message.Length)]);
         }
@@ -54,18 +52,16 @@ public class DialogueManager : MonoBehaviour
     }
     void failDialogue()
     {
-        int mistakes = PlayerPrefs.GetInt("IncorrectGuesses");
-        if (mistakes == 3 || mistakes == 5 )
+        if (PlayerPrefs.GetInt("IncorrectGuesses") == 3)
         {
-            string[] message = { "That's " + mistakes +  " mistakes in a row, please be careful. Improper recycling is harmful to the environment.",
-                                 "That's " + mistakes +  " mistakes in a row. Please refer to your guide if you get stuck." };
+            string[] message = { "That's 3 incorrect bins in a row, please be careful. Improper recycling is harmful to the environment."};
             showDialogue(message[Random.Range(0, message.Length)]);
             Debug.Log(message[Random.Range(0, message.Length)]);
         }
         else
         {
             string[] message = {"That's not the correct bin, try again.",
-                                "Hmmmm... That's not right." };
+                            "Hmmmm... That's not right." };
             showDialogue(message[Random.Range(0, message.Length)]);
             Debug.Log(message[Random.Range(0, message.Length)]);
         }
