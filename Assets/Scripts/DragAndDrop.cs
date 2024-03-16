@@ -110,7 +110,42 @@ public class DragAndDrop : GameManager
         {
             rb.isKinematic = true;
         }
+
+        PlayItemPickupSound();
     }
+
+    void PlayItemPickupSound()
+    {
+        // Log to confirm the method is called
+        Debug.Log("PlayItemPickupSound called.");
+
+        // Safely access the Trash component and its trashType
+        Trash trashComponent = this.transform.GetComponent<Trash>();
+        if (trashComponent != null)
+        {
+            string trashName = trashComponent.trashName;
+            // Log the trashType to see what we are working with
+            Debug.Log($"Attempting to play sound for trash type: {trashName}");
+
+            switch (trashName)
+            {
+                case "Newspaper":
+                    audioManager.PlaySFX(audioManager.newspaper);
+                    break;
+                case "Milk Bottle":
+                    audioManager.PlaySFX(audioManager.milkBottle);
+                    break;
+                default:
+                    Debug.Log("No sound for this item. Trash type: " + trashName);
+                    break;
+            }
+        }
+        else
+        {
+            Debug.LogError("Trash component not found on the object.");
+        }
+    }
+
 
     void OnMouseUp()
     {

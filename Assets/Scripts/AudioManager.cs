@@ -15,6 +15,8 @@ public class AudioManager : MonoBehaviour
     public AudioClip itemWrong;
     public AudioClip levelComplete;
     public AudioClip levelFail;
+    public AudioClip newspaper;
+    public AudioClip milkBottle;
 
     private void Start()
     {
