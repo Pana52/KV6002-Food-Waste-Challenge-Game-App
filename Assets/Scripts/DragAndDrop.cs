@@ -146,7 +146,6 @@ public class DragAndDrop : GameManager
         }
     }
 
-
     void OnMouseUp()
     {
         Cursor.visible = true;

@@ -1073,6 +1073,8 @@ MonoBehaviour:
   itemWrong: {fileID: 0}
   levelComplete: {fileID: 0}
   levelFail: {fileID: 0}
+  newspaper: {fileID: 8300000, guid: 562a2c5ed3df0944d9bb261aca51f973, type: 3}
+  milkBottle: {fileID: 8300000, guid: 790db85f86b237045be24ee4273ced54, type: 3}
 --- !u!4 &391972052
 Transform:
   m_ObjectHideFlags: 0
