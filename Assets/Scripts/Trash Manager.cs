@@ -9,12 +9,12 @@ public class TrashManager : GameManager
     private static TrashManager instance;
     private GameObject[] trash;
     //Interval of trash generation. 
-    private float trashInterval = 5f;
+    private float trashInterval = 6f;
     //Length of level in seconds. 
-    private float levelInterval = 5f;
+    private float levelInterval = 60f;
     private bool levelActive = true;
     //Number of consectutive guesses until game over is triggered. 
-    private int incorrectGuessesLimit = 5;
+    private int incorrectGuessesLimit = 6;
     //Boolean if player achieves new high score. 
     private bool isNewHighScore = false;
 
@@ -26,6 +26,8 @@ public class TrashManager : GameManager
     //UI element references. 
     [SerializeField] private GameObject GameOverUI;
     [SerializeField] private Text GameOverMessgae;
+
+    private float endlessModeSpeed = 1;
    
     //Ensure only one instance of TrashManager exists.
     private void Awake()
@@ -143,6 +145,9 @@ public class TrashManager : GameManager
         if (PlayerPrefs.GetInt("CurrentLevel") == 4)
         {
             levelInterval = 20;
+            SetConveyorSpeed(endlessModeSpeed);
+            endlessModeSpeed += 0.01f;
+            trashInterval -= 0.1f;
         }
         createTrashArray(PlayerPrefs.GetInt("CurrentLevel"));
         //Lenght of level in seconds. 
