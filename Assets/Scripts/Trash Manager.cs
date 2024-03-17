@@ -33,6 +33,8 @@ public class TrashManager : GameManager
     [SerializeField] private GameObject GameOverUI;
     [SerializeField] private Text GameOverMessgae;
 
+    AudioManager audioManager;
+
 
     public TextMeshProUGUI objectInfoText;
 
@@ -47,6 +49,8 @@ public class TrashManager : GameManager
         {
             Instance = this;
         }
+
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
    
@@ -254,6 +258,13 @@ public class TrashManager : GameManager
     {
         //Pause Gameplay. 
         Time.timeScale = 0f;
+
+        // Access audi manager
+        AudioManager audioManager = FindObjectOfType<AudioManager>();
+        if (audioManager == null)
+        {
+            Debug.Log("Audiomanager not found in the scene");
+        }
         //Play dialogue. 
         Dialogue.playDialogue("gameOver");
         //Set game over UI visibility to true.  
@@ -264,6 +275,18 @@ public class TrashManager : GameManager
         {
             PlayerPrefs.SetInt("HighScore", score);
             isNewHighScore = true;
+
+            if(audioManager != null)
+            {
+                audioManager.PlaySFX(audioManager.levelComplete);
+            }
+        }
+        else
+        {
+            if(audioManager != null)
+            {
+                audioManager.PlaySFX(audioManager.levelFail);
+            }
         }
         //Message if new high score achieved.  
         if (isNewHighScore == true)

@@ -11,7 +11,19 @@ public class GameManager : MonoBehaviour
     //Initialize class reference. 
     DialogueManager dialogue;
 
+    AudioManager audioManager;
+
     public DialogueManager Dialogue { get => dialogue; set => dialogue = value; }
+
+    private void Awake()
+    {
+        // Attempt to find and reference the AudioManager on Awake
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+        if (audioManager == null)
+        {
+            Debug.LogWarning("Failed to find an AudioManager in the scene.");
+        }
+    }
 
     public bool GetIsDragging()
     {
@@ -72,6 +84,11 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.SetInt("IncorrectGuesses", incorrectGuesses);
             //Play dialogue. 
             Dialogue.playDialogue("success");
+
+            if (audioManager != null)
+            {
+                audioManager.PlaySFX(audioManager.itemRight);
+            }
         }
 
         else if (binType == "Incinerator")
@@ -94,6 +111,11 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.SetInt("IncorrectGuesses", incorrectGuesses);
             //Play dialogue. 
             Dialogue.playDialogue("fail");
+
+            if (audioManager != null)
+            {
+                audioManager.PlaySFX(audioManager.itemWrong);
+            }
 
         }
         PlayerPrefs.Save();

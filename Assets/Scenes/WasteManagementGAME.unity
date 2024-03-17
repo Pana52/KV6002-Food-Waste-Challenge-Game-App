@@ -273,7 +273,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -1072,10 +1072,10 @@ MonoBehaviour:
   conveyorBelt: {fileID: 8300000, guid: e8f2589080dfd114da17b25f0ca3768c, type: 3}
   binOpen: {fileID: 8300000, guid: 8ada767bceb2e68428d77091b8124481, type: 3}
   binClose: {fileID: 8300000, guid: 8ee260ecbe92eb543b57789504a25fcd, type: 3}
-  itemRight: {fileID: 0}
-  itemWrong: {fileID: 0}
-  levelComplete: {fileID: 0}
-  levelFail: {fileID: 0}
+  itemRight: {fileID: 8300000, guid: d638342f62864d64bbd7a58dede342e6, type: 3}
+  itemWrong: {fileID: 8300000, guid: a303be4941b0cc143b683ab778595d2d, type: 3}
+  levelComplete: {fileID: 8300000, guid: f8cb17f0cf4082b47803ed5c5bfe77a7, type: 3}
+  levelFail: {fileID: 8300000, guid: 3678cd646526bff4fa9c1e26f4cc569f, type: 3}
   newspaper: {fileID: 8300000, guid: 562a2c5ed3df0944d9bb261aca51f973, type: 3}
   milkBottle: {fileID: 8300000, guid: 790db85f86b237045be24ee4273ced54, type: 3}
 --- !u!4 &391972052
