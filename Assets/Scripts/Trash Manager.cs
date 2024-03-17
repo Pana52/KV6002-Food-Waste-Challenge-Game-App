@@ -8,7 +8,7 @@ public class TrashManager : GameManager
 {
 
     public static TrashManager Instance { get; private set; }
-
+    private System.Random _random = new System.Random();
     //Trash object array. 
     private GameObject[] trash;
     //Interval of trash generation. 
@@ -141,15 +141,40 @@ public class TrashManager : GameManager
             
         }
     }
-
     public void generateTrash()
     {
-        int randRot = new System.Random().Next(-180, 180);
-        int randomIndex = new System.Random().Next(0, trash.Length);
+        int randRot = _random.Next(-180, 180);
         Vector3 targetPosition = spawnLocation.transform.position;
-        Instantiate(trash[randomIndex], targetPosition, Quaternion.Euler(0, randRot, 0)); 
+        SpawnTrashAtPosition(targetPosition, randRot, _random.Next(0, trash.Length));
+
+        //Random chance to spawn additional items.
+        int diceRoll = rollDice();
+        if (diceRoll == 5)
+        {
+            StartCoroutine(SpawnAdditionalTrashWithDelay(targetPosition, randRot, diceRoll));
+        }
     }
-  
+
+    void SpawnTrashAtPosition(Vector3 position, int rotation, int index)
+    {
+        Instantiate(trash[index], position, Quaternion.Euler(0, rotation, 0));
+    }
+
+    IEnumerator SpawnAdditionalTrashWithDelay(Vector3 position, int rotation, int diceRoll)
+    {
+        yield return new WaitForSeconds(0.4f);
+        SpawnTrashAtPosition(position, rotation, _random.Next(0, trash.Length));
+
+        //If diceRoll was 5, there's a chance to spawn a third item
+        if (diceRoll == 5)
+        {
+            if (rollDice() == 6)
+            {
+                yield return new WaitForSeconds(0.4f);
+                SpawnTrashAtPosition(position, rotation, _random.Next(0, trash.Length));
+            }
+        }
+    }
     IEnumerator GenerateTrashCoroutine() //Generates trash at an interval specified by the trashInterval variable. 
     {
         while (levelActive)
@@ -170,7 +195,10 @@ public class TrashManager : GameManager
         {
             levelInterval = 20;
             ConveyorSpeed("level");
-            trashInterval -= 0.1f;
+            if (trashInterval > 4f)
+            {
+                trashInterval -= 0.1f;
+            }
         }
         createTrashArray(PlayerPrefs.GetInt("CurrentLevel"));
         //Lenght of level in seconds. 
@@ -182,7 +210,7 @@ public class TrashManager : GameManager
     {
         if (PlayerPrefs.GetInt("CurrentLevel") < 4)
         {
-            //Increment urrent level number.
+            //Increment current level number.
             currentLevel++;
             PlayerPrefs.SetInt("CurrentLevel", currentLevel);
             Debug.Log("END OF LEVEL. Level " + currentLevel + " active.");
@@ -253,5 +281,10 @@ public class TrashManager : GameManager
         PlayerPrefs.SetInt("ComboValue", 1);
         PlayerPrefs.Save();
         Debug.Log("New game started, PlayerPrefs reset.");
+    }
+    int rollDice()
+    {
+        int randomNum = new System.Random().Next(1, 10);
+        return randomNum;
     }
 }
