@@ -11,7 +11,7 @@ public class DragAndDrop : GameManager
     private float transitionTime = 0.5f;
     private Camera mainCamera;
     float mouseSpeed = 0.2f;
-
+    private TextMeshProUGUI objectInfoText;
     // New: Keep track of previously hovered bins
     private List<Animator> previouslyHoveredBins = new List<Animator>();
 
@@ -20,6 +20,7 @@ public class DragAndDrop : GameManager
     private void Awake()
     {
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+        objectInfoText = TrashManager.Instance.GetObjectInfoText();
     }
 
     private void Start()
@@ -27,10 +28,6 @@ public class DragAndDrop : GameManager
         coll = GetComponent<Collider>();
         mainCamera = Camera.main;
     }
-
-
-    //[SerializeField] private TextMeshProUGUI objectInfoText;
-
 
     void OnMouseDrag()
     {
@@ -43,58 +40,8 @@ public class DragAndDrop : GameManager
             Vector3 newPosition = initialPosition + new Vector3(positionDelta.x * mouseSpeed, 0, positionDelta.y * mouseSpeed);
             transform.position = newPosition;
 
-        // Check and update bin hover states
+            // Check and update bin hover states
             CheckForBinBelow();
-
-
-            ///---------------------Dash Display Text - Work in progress. 
-            // Check if an object is currently being dragged
-                                  /**  if (Input.GetMouseButton(0))
-                                    {
-                                        RaycastHit hit;
-                                        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-                                        if (Physics.Raycast(ray, out hit))
-                                        {
-                                            // Get the dragged object
-                                            GameObject draggedObject = hit.collider.gameObject;
-
-                                            // Check if the dragged object has a Trash component
-                                            Trash trashComponent = draggedObject.GetComponent<Trash>();
-                                            if (trashComponent != null)
-                                            {
-                                                // Get the object's name, material, and description
-                                                string trashName = trashComponent.trashName;
-                                                string trashType = trashComponent.trashType; // Replace with actual material information
-                                                string trashDesc = trashComponent.trashDesc; // Replace with actual description
-
-                                                // Build the object information string
-                                                string objectInfo = "Name: " + trashName + "\n" +
-                                                                    "Material: " + trashType + "\n" +
-                                                                    "Description: " + trashDesc;
-
-                                                // Display the object information on the UI text element
-                                                objectInfoText.text = objectInfo;
-                                            }
-                                            else
-                                            {
-                                                // Clear the UI text if no Trash component is found
-                                                objectInfoText.text = "";
-                                            }
-                                        }
-                                        else
-                                        {
-                                            // Clear the UI text if no object is hit by the raycast
-                                            objectInfoText.text = "";
-                                        }
-                                    }
-                                    else
-                                    {
-                                        // Clear the UI text if no mouse button is pressed
-                                        objectInfoText.text = "";
-                                    }
-            **/
-            //------------------------------------
         }
     }
 
@@ -110,7 +57,15 @@ public class DragAndDrop : GameManager
         {
             rb.isKinematic = true;
         }
-
+        Debug.Log($"objectInfoText is null? {objectInfoText == null}");
+        if (objectInfoText != null)
+        {
+            UpdateUIWithTrashInfo();
+        }
+        else
+        {
+            Debug.LogError("objectInfoText not assigned in OnMouseDown");
+        }
         PlayItemPickupSound();
     }
 
@@ -164,6 +119,15 @@ public class DragAndDrop : GameManager
         if (!IsValidDropLocation())
         {
             StartCoroutine(FloatBackToInitialPosition());
+        }
+        Debug.Log($"objectInfoText is null? {objectInfoText == null}");
+        if (objectInfoText != null)
+        {
+            ClearUI();
+        }
+        else
+        {
+            Debug.LogError("objectInfoText not assigned in OnMouseUp");
         }
     }
 
@@ -243,4 +207,31 @@ public class DragAndDrop : GameManager
 
         transform.position = initialPosition;
     }
+
+    void UpdateUIWithTrashInfo()
+    {
+        Trash trashComponent = GetComponent<Trash>();
+        if (TrashManager.Instance != null && TrashManager.Instance.objectInfoText != null)
+        {
+            string objectInfo = $"Name: {trashComponent.trashName}\nMaterial: {trashComponent.trashType}\nDescription: {trashComponent.trashDesc}";
+            //Update the UI element
+            TrashManager.Instance.objectInfoText.text = objectInfo;
+        }
+        else
+        {
+            Debug.LogError("TrashManager instance or objectInfoText is not set");
+        }
+    }
+
+    void ClearUI()
+    {
+        Debug.Log($"objectInfoText is null? {objectInfoText == null}");
+        if (objectInfoText == null)
+        {
+            Debug.LogError("objectInfoText not assigned in ClearUI");
+            return;
+        }
+        objectInfoText.text = "";
+    }
+
 }

@@ -1,12 +1,14 @@
 using System;
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class TrashManager : GameManager
 {
-    //Singleton instance.
-    private static TrashManager instance;
+
+    public static TrashManager Instance { get; private set; }
+
     //Trash object array. 
     private GameObject[] trash;
     //Interval of trash generation. 
@@ -30,17 +32,26 @@ public class TrashManager : GameManager
     [SerializeField] private GameObject GameOverUI;
     [SerializeField] private Text GameOverMessgae;
 
+
+    public TextMeshProUGUI objectInfoText;
+
     //Ensure only one instance of TrashManager exists.
     private void Awake()
     {
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else
+        if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
         }
+        else
+        {
+            Instance = this;
+        }
+    }
+
+   
+    public TextMeshProUGUI GetObjectInfoText()
+    {
+        return objectInfoText;
     }
 
     private void Start()
