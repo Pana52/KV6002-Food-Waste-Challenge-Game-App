@@ -147,7 +147,7 @@ public class TrashManager : GameManager
         int randRot = new System.Random().Next(-180, 180);
         int randomIndex = new System.Random().Next(0, trash.Length);
         Vector3 targetPosition = spawnLocation.transform.position;
-        Instantiate(trash[randomIndex], targetPosition, Quaternion.Euler(0, 0, 0)); 
+        Instantiate(trash[randomIndex], targetPosition, Quaternion.Euler(0, randRot, 0)); 
     }
   
     IEnumerator GenerateTrashCoroutine() //Generates trash at an interval specified by the trashInterval variable. 

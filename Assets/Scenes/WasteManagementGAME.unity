@@ -1869,6 +1869,37 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 740649215807620137, guid: e6e885d9f574eee48a7b3b5d367ab334, type: 3}
   m_PrefabInstance: {fileID: 409244647210259190}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1270809438
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1270809439}
+  m_Layer: 5
+  m_Name: ObjectCopy
+  m_TagString: CopyLocation
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1270809439
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1270809438}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 378, y: -4, z: -240}
+  m_LocalScale: {x: 160.00002, y: 160.00002, z: 160.00002}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 2133484543}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1334963543
 GameObject:
   m_ObjectHideFlags: 0
@@ -3182,6 +3213,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2221360219355212597, guid: 6575c7cd2607018469273de24bd6ac4f, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 288
+      objectReference: {fileID: 0}
     - target: {fileID: 4195708402056098992, guid: 6575c7cd2607018469273de24bd6ac4f, type: 3}
       propertyPath: m_AdditionalShaderChannelsFlag
       value: 25
@@ -3232,6 +3267,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8388801694053386564, guid: 6575c7cd2607018469273de24bd6ac4f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 876559821}
+    - targetCorrespondingSourceObject: {fileID: 8388801694053386564, guid: 6575c7cd2607018469273de24bd6ac4f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1270809439}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6575c7cd2607018469273de24bd6ac4f, type: 3}
 --- !u!1001 &5299603751318079574
@@ -3260,7 +3298,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1585170762610014272, guid: da8cd76f5b8fb6548bec645b77ed3ece, type: 3}
       propertyPath: m_CullingMask.m_Bits
-      value: 223
+      value: 479
       objectReference: {fileID: 0}
     - target: {fileID: 8516847113449171771, guid: da8cd76f5b8fb6548bec645b77ed3ece, type: 3}
       propertyPath: m_LocalPosition.x

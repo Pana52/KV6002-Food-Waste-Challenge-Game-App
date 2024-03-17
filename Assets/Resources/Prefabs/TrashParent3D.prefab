@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7137272321975275389}
   - component: {fileID: -5539593237509595575}
   - component: {fileID: -8240549332515828413}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TrashParent3D
   m_TagString: MoveableObject
   m_Icon: {fileID: 0}
