@@ -13,6 +13,8 @@ public class DragAndDrop : GameManager
     float mouseSpeed = 0.2f;
     private TextMeshProUGUI objectInfoText;
 
+    private bool hoverSoundPlayed = false;
+
 
     private GameObject itemCopy = null;
     private static Transform copyLocation;
@@ -170,18 +172,30 @@ public class DragAndDrop : GameManager
         float radius = 0.1f; // Adjust as needed
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, radius);
         HashSet<Animator> currentlyHoveredBins = new HashSet<Animator>();
+        bool isCurrentlyHoveringOverBin = false;
 
         foreach (var hitCollider in hitColliders)
         {
             if (hitCollider.CompareTag("Bin"))
             {
+                isCurrentlyHoveringOverBin = true;
                 Animator binAnimator = hitCollider.GetComponent<Animator>();
                 if (binAnimator != null)
                 {
                     binAnimator.SetBool("isHover", true);
                     currentlyHoveredBins.Add(binAnimator);
+                    if(!hoverSoundPlayed)
+                    {
+                        audioManager.PlaySFX(audioManager.binOpen);
+                        hoverSoundPlayed = true;
+                    }
                 }
             }
+        }
+
+        if(!isCurrentlyHoveringOverBin)
+        {
+            hoverSoundPlayed = false;
         }
 
         // Reset bins that are no longer hovered over
