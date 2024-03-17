@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class TrashManager : GameManager
@@ -132,6 +133,10 @@ public class TrashManager : GameManager
         if (Input.GetKeyDown(KeyCode.K))
         {
             EndLevel();
+        }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene(0);
         }
         //Loss condition - Can't be triggered during tutorial levels. 
         if (PlayerPrefs.GetInt("IncorrectGuesses") >= incorrectGuessesLimit && levelActive == true && currentLevel > 3)
