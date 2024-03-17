@@ -464,6 +464,7 @@ GameObject:
   - component: {fileID: 147155603}
   - component: {fileID: 147155602}
   - component: {fileID: 147155605}
+  - component: {fileID: 147155606}
   m_Layer: 5
   m_Name: Level 1
   m_TagString: Untagged
@@ -610,6 +611,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delayBeforeSceneLoads: 0.5
+--- !u!114 &147155606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 147155600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7a85f878d95e0d43815e0c8c8dcbc92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &177255493
 GameObject:
   m_ObjectHideFlags: 0
@@ -900,6 +913,7 @@ GameObject:
   - component: {fileID: 321620501}
   - component: {fileID: 321620500}
   - component: {fileID: 321620503}
+  - component: {fileID: 321620504}
   m_Layer: 5
   m_Name: Level 3
   m_TagString: Untagged
@@ -1046,6 +1060,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delayBeforeSceneLoads: 0.5
+--- !u!114 &321620504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 321620498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7a85f878d95e0d43815e0c8c8dcbc92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &349080409
 GameObject:
   m_ObjectHideFlags: 0
@@ -1059,6 +1085,7 @@ GameObject:
   - component: {fileID: 349080412}
   - component: {fileID: 349080411}
   - component: {fileID: 349080414}
+  - component: {fileID: 349080415}
   m_Layer: 5
   m_Name: TutorialButton
   m_TagString: Untagged
@@ -1193,6 +1220,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetGameObject: {fileID: 855629975}
+--- !u!114 &349080415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 349080409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7a85f878d95e0d43815e0c8c8dcbc92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &384453221
 GameObject:
   m_ObjectHideFlags: 0
@@ -1575,6 +1614,7 @@ GameObject:
   - component: {fileID: 581731023}
   - component: {fileID: 581731022}
   - component: {fileID: 581731025}
+  - component: {fileID: 581731026}
   m_Layer: 5
   m_Name: ExitButton
   m_TagString: Untagged
@@ -1709,6 +1749,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delayBeforeSceneLoads: 0.5
+--- !u!114 &581731026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 581731020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7a85f878d95e0d43815e0c8c8dcbc92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &614449064
 GameObject:
   m_ObjectHideFlags: 0
@@ -2546,6 +2598,7 @@ GameObject:
   - component: {fileID: 1211528804}
   - component: {fileID: 1211528803}
   - component: {fileID: 1211528806}
+  - component: {fileID: 1211528807}
   m_Layer: 5
   m_Name: PlayButton
   m_TagString: Untagged
@@ -2692,6 +2745,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delayBeforeSceneLoads: 0.5
+--- !u!114 &1211528807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1211528801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7a85f878d95e0d43815e0c8c8dcbc92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1254097680
 GameObject:
   m_ObjectHideFlags: 0
@@ -3827,6 +3892,7 @@ GameObject:
   - component: {fileID: 2085862630}
   - component: {fileID: 2085862629}
   - component: {fileID: 2085862632}
+  - component: {fileID: 2085862633}
   m_Layer: 5
   m_Name: Level 2
   m_TagString: Untagged
@@ -3973,6 +4039,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delayBeforeSceneLoads: 0.5
+--- !u!114 &2085862633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2085862627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7a85f878d95e0d43815e0c8c8dcbc92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2103064313
 GameObject:
   m_ObjectHideFlags: 0
