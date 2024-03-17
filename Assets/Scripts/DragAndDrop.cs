@@ -12,6 +12,11 @@ public class DragAndDrop : GameManager
     private Camera mainCamera;
     float mouseSpeed = 0.2f;
     private TextMeshProUGUI objectInfoText;
+
+
+    private GameObject itemCopy = null;
+    private static Transform copyLocation;
+
     // New: Keep track of previously hovered bins
     private List<Animator> previouslyHoveredBins = new List<Animator>();
 
@@ -19,6 +24,20 @@ public class DragAndDrop : GameManager
 
     private void Awake()
     {
+
+        if (copyLocation == null) //Find copy location.
+        {
+            GameObject locationMarker = GameObject.FindGameObjectWithTag("CopyLocation");
+            if (locationMarker != null)
+            {
+                copyLocation = locationMarker.transform;
+            }
+            else
+            {
+                Debug.LogError("Copy location marker not found. Ensure it's tagged correctly.");
+            }
+        }
+
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
         objectInfoText = TrashManager.Instance.GetObjectInfoText();
     }
@@ -46,7 +65,8 @@ public class DragAndDrop : GameManager
     }
 
     void OnMouseDown()
-    {         
+    {
+
         initialPosition = transform.position;
         initialMousePosition = GetMouseWorldPos();
         SetIsDragging(true);
@@ -67,6 +87,15 @@ public class DragAndDrop : GameManager
             Debug.LogError("objectInfoText not assigned in OnMouseDown");
         }
         PlayItemPickupSound();
+
+
+        if (itemCopy == null && copyLocation != null)
+        {
+            itemCopy = Instantiate(gameObject, copyLocation.position, Quaternion.identity, copyLocation);
+            DisableComponentsForDisplay(itemCopy);
+        }
+
+
     }
 
     void PlayItemPickupSound()
@@ -128,6 +157,11 @@ public class DragAndDrop : GameManager
         else
         {
             Debug.LogError("objectInfoText not assigned in OnMouseUp");
+        }
+        if (itemCopy != null)
+        {
+            Destroy(itemCopy);
+            itemCopy = null;
         }
     }
 
@@ -213,8 +247,8 @@ public class DragAndDrop : GameManager
         Trash trashComponent = GetComponent<Trash>();
         if (TrashManager.Instance != null && TrashManager.Instance.objectInfoText != null)
         {
-            string objectInfo = $"Name: {trashComponent.trashName}\nMaterial: {trashComponent.trashType}\nDescription: {trashComponent.trashDesc}";
-            //Update the UI element
+            string objectInfo = $"{trashComponent.trashName}\n{trashComponent.trashType}\n{trashComponent.trashDesc}";
+            //Update the UI element.
             TrashManager.Instance.objectInfoText.text = objectInfo;
         }
         else
@@ -232,6 +266,21 @@ public class DragAndDrop : GameManager
             return;
         }
         objectInfoText.text = "";
+    }
+
+    private void DisableComponentsForDisplay(GameObject obj)
+    {
+        //Disable Rigidbody.
+        var rb = obj.GetComponent<Rigidbody>();
+        if (rb != null)
+        {
+            rb.isKinematic = true;
+        }
+
+        var rotateScript = obj.AddComponent<RotateObject>();
+        rotateScript.rotateSpeedX = 60f;
+        rotateScript.rotateSpeedY = 50f;
+        rotateScript.rotateSpeedZ = 30f;
     }
 
 }
