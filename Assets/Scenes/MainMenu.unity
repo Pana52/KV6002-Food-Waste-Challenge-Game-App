@@ -463,6 +463,7 @@ GameObject:
   - component: {fileID: 147155604}
   - component: {fileID: 147155603}
   - component: {fileID: 147155602}
+  - component: {fileID: 147155605}
   m_Layer: 5
   m_Name: Level 1
   m_TagString: Untagged
@@ -546,6 +547,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 147155605}
+        m_TargetAssemblyTypeName: SceneTransitionManager, Assembly-CSharp
+        m_MethodName: LoadSceneWithDelay
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: WasteManagementGAME
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &147155603
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -584,6 +597,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 147155600}
   m_CullTransparentMesh: 1
+--- !u!114 &147155605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 147155600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7c82616c2e670e49a23872c952ee8b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delayBeforeSceneLoads: 0.5
 --- !u!1 &177255493
 GameObject:
   m_ObjectHideFlags: 0
@@ -873,6 +899,7 @@ GameObject:
   - component: {fileID: 321620502}
   - component: {fileID: 321620501}
   - component: {fileID: 321620500}
+  - component: {fileID: 321620503}
   m_Layer: 5
   m_Name: Level 3
   m_TagString: Untagged
@@ -956,6 +983,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 321620503}
+        m_TargetAssemblyTypeName: SceneTransitionManager, Assembly-CSharp
+        m_MethodName: LoadSceneWithDelay
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: WasteManagementGAME
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &321620501
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -994,6 +1033,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 321620498}
   m_CullTransparentMesh: 1
+--- !u!114 &321620503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 321620498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7c82616c2e670e49a23872c952ee8b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delayBeforeSceneLoads: 0.5
 --- !u!1 &349080409
 GameObject:
   m_ObjectHideFlags: 0
@@ -1174,8 +1226,8 @@ MonoBehaviour:
   SFXSource: {fileID: 1118103681}
   mainMenu: {fileID: 8300000, guid: ea4edb1c8bd0cb4468b5436b2a2c1806, type: 3}
   mainGame: {fileID: 8300000, guid: a03287e4db56dd34fb86d5677b0f6890, type: 3}
-  buttonPressed: {fileID: 0}
-  buttonHover: {fileID: 0}
+  buttonPressed: {fileID: 8300000, guid: 164f71f3ee2599941b4a5a848ff430d5, type: 3}
+  buttonHover: {fileID: 8300000, guid: 894c85445e1768743b4c656f4943041a, type: 3}
   conveyorBelt: {fileID: 8300000, guid: e8f2589080dfd114da17b25f0ca3768c, type: 3}
   binOpen: {fileID: 8300000, guid: 8ada767bceb2e68428d77091b8124481, type: 3}
   binClose: {fileID: 8300000, guid: 8ee260ecbe92eb543b57789504a25fcd, type: 3}
@@ -1522,6 +1574,7 @@ GameObject:
   - component: {fileID: 581731024}
   - component: {fileID: 581731023}
   - component: {fileID: 581731022}
+  - component: {fileID: 581731025}
   m_Layer: 5
   m_Name: ExitButton
   m_TagString: Untagged
@@ -1593,10 +1646,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ButtonManager, Assembly-CSharp
-        m_MethodName: ExitGame
-        m_Mode: 1
+      - m_Target: {fileID: 581731025}
+        m_TargetAssemblyTypeName: SceneTransitionManager, Assembly-CSharp
+        m_MethodName: LoadSceneWithDelay
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1643,6 +1696,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 581731020}
   m_CullTransparentMesh: 1
+--- !u!114 &581731025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 581731020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7c82616c2e670e49a23872c952ee8b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delayBeforeSceneLoads: 0.5
 --- !u!1 &614449064
 GameObject:
   m_ObjectHideFlags: 0
@@ -2479,6 +2545,7 @@ GameObject:
   - component: {fileID: 1211528805}
   - component: {fileID: 1211528804}
   - component: {fileID: 1211528803}
+  - component: {fileID: 1211528806}
   m_Layer: 5
   m_Name: PlayButton
   m_TagString: Untagged
@@ -2562,6 +2629,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1211528806}
+        m_TargetAssemblyTypeName: SceneTransitionManager, Assembly-CSharp
+        m_MethodName: LoadSceneWithDelay
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: WasteManagementGAME
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1211528804
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2600,6 +2679,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1211528801}
   m_CullTransparentMesh: 1
+--- !u!114 &1211528806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1211528801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7c82616c2e670e49a23872c952ee8b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delayBeforeSceneLoads: 0.5
 --- !u!1 &1254097680
 GameObject:
   m_ObjectHideFlags: 0
@@ -3734,6 +3826,7 @@ GameObject:
   - component: {fileID: 2085862631}
   - component: {fileID: 2085862630}
   - component: {fileID: 2085862629}
+  - component: {fileID: 2085862632}
   m_Layer: 5
   m_Name: Level 2
   m_TagString: Untagged
@@ -3817,6 +3910,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2085862632}
+        m_TargetAssemblyTypeName: SceneTransitionManager, Assembly-CSharp
+        m_MethodName: LoadSceneWithDelay
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: WasteManagementGAME
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2085862630
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3855,6 +3960,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2085862627}
   m_CullTransparentMesh: 1
+--- !u!114 &2085862632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2085862627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7c82616c2e670e49a23872c952ee8b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delayBeforeSceneLoads: 0.5
 --- !u!1 &2103064313
 GameObject:
   m_ObjectHideFlags: 0
