@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &8964473039645554012
+--- !u!1001 &7007944480462159927
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -10,11 +10,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -6091406113183075657, guid: cce61e898e3504747b1f051abf7e4a13, type: 3}
       propertyPath: trashDesc
-      value: Tetrapak
+      value: TetraPak
       objectReference: {fileID: 0}
     - target: {fileID: -6091406113183075657, guid: cce61e898e3504747b1f051abf7e4a13, type: 3}
       propertyPath: trashName
-      value: Milk Carton
+      value: Coffee Carton
       objectReference: {fileID: 0}
     - target: {fileID: 616137912041605036, guid: cce61e898e3504747b1f051abf7e4a13, type: 3}
       propertyPath: m_Materials.Array.size
@@ -23,31 +23,15 @@ PrefabInstance:
     - target: {fileID: 616137912041605036, guid: cce61e898e3504747b1f051abf7e4a13, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 5418800133210964769, guid: efd9e90c9d6ca26468b77e6160b84875, type: 3}
+      objectReference: {fileID: 2100000, guid: e3f4b275262338d4c9581381ce9e5c72, type: 2}
     - target: {fileID: 616137912041605036, guid: cce61e898e3504747b1f051abf7e4a13, type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
-      objectReference: {fileID: 2100000, guid: c408bd775f084874ba38298de56b7a08, type: 2}
+      objectReference: {fileID: -5934194151021684500, guid: efd9e90c9d6ca26468b77e6160b84875, type: 3}
     - target: {fileID: 616137912041605036, guid: cce61e898e3504747b1f051abf7e4a13, type: 3}
       propertyPath: m_Materials.Array.data[2]
       value: 
-      objectReference: {fileID: 2100000, guid: b50caa913179b7c469fae84dea7845d8, type: 2}
-    - target: {fileID: 616137912041605036, guid: cce61e898e3504747b1f051abf7e4a13, type: 3}
-      propertyPath: m_Materials.Array.data[3]
-      value: 
-      objectReference: {fileID: 2100000, guid: 86e252d16c66e254db8e45518d7d9fe7, type: 2}
-    - target: {fileID: 2884196174685695089, guid: cce61e898e3504747b1f051abf7e4a13, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2884196174685695089, guid: cce61e898e3504747b1f051abf7e4a13, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2884196174685695089, guid: cce61e898e3504747b1f051abf7e4a13, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2100000, guid: 8b889fe57040ce24fbe4e61d1d3c19c9, type: 2}
     - target: {fileID: 2884196174685695089, guid: cce61e898e3504747b1f051abf7e4a13, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -90,7 +74,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4102077551412824349, guid: cce61e898e3504747b1f051abf7e4a13, type: 3}
       propertyPath: m_Name
-      value: MilkCarton
+      value: TetraPak_Coffee
       objectReference: {fileID: 0}
     - target: {fileID: 6385875826149283480, guid: cce61e898e3504747b1f051abf7e4a13, type: 3}
       propertyPath: m_Mesh
@@ -102,20 +86,20 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4102077551412824349, guid: cce61e898e3504747b1f051abf7e4a13, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 4941947712152041855}
+      addedObject: {fileID: -6801790352724168466}
   m_SourcePrefab: {fileID: 100100000, guid: cce61e898e3504747b1f051abf7e4a13, type: 3}
---- !u!1 &4937552090457406529 stripped
+--- !u!1 &6461743716146841898 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4102077551412824349, guid: cce61e898e3504747b1f051abf7e4a13, type: 3}
-  m_PrefabInstance: {fileID: 8964473039645554012}
+  m_PrefabInstance: {fileID: 7007944480462159927}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &4941947712152041855
+--- !u!65 &-6801790352724168466
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4937552090457406529}
+  m_GameObject: {fileID: 6461743716146841898}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
