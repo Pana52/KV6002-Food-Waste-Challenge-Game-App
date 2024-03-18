@@ -1512,8 +1512,8 @@ MonoBehaviour:
   binClose: {fileID: 8300000, guid: 8ee260ecbe92eb543b57789504a25fcd, type: 3}
   itemRight: {fileID: 8300000, guid: d638342f62864d64bbd7a58dede342e6, type: 3}
   itemWrong: {fileID: 8300000, guid: a303be4941b0cc143b683ab778595d2d, type: 3}
-  levelComplete: {fileID: 8300000, guid: f8cb17f0cf4082b47803ed5c5bfe77a7, type: 3}
-  levelFail: {fileID: 8300000, guid: 3678cd646526bff4fa9c1e26f4cc569f, type: 3}
+  levelComplete: {fileID: 8300000, guid: d651da1fedd1cca49a3ce920f217f52f, type: 3}
+  levelFail: {fileID: 8300000, guid: d8de6c6eab49e02419a6defe12bc7374, type: 3}
   cerealBox: {fileID: 8300000, guid: e8e27bbf9e4adcd489307a5c55cdfb8a, type: 3}
   foodCan: {fileID: 8300000, guid: c2ba194c8cf0ce540b110416ae830834, type: 3}
   paperFlip: {fileID: 8300000, guid: 126ef2bdf15d65c48b895dc170b1fcdf, type: 3}
