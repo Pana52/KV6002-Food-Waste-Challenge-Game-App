@@ -24,6 +24,12 @@ public class AudioManager : MonoBehaviour
     public AudioClip paperFlip;
     public AudioClip milkBottle;
     public AudioClip carton;
+    public AudioClip foilTray;
+    public AudioClip plastic;
+    public AudioClip cardboardBox;
+    public AudioClip straw;
+    public AudioClip toy;
+    public AudioClip polystyrene;
 
     
     private void Awake()
