@@ -19,8 +19,11 @@ public class AudioManager : MonoBehaviour
     public AudioClip itemWrong;
     public AudioClip levelComplete;
     public AudioClip levelFail;
-    public AudioClip newspaper;
+    public AudioClip cerealBox;
+    public AudioClip foodCan;
+    public AudioClip paperFlip;
     public AudioClip milkBottle;
+    public AudioClip carton;
 
     
     private void Awake()

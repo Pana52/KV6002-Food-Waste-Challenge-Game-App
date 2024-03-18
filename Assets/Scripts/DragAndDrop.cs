@@ -115,11 +115,26 @@ public class DragAndDrop : GameManager
 
             switch (trashName)
             {
-                case "Newspaper":
-                    audioManager.PlaySFX(audioManager.newspaper);
+                case "Cereal Box":
+                    audioManager.PlaySFX(audioManager.cerealBox);
+                    break;
+                case "Food Can":
+                    audioManager.PlaySFX(audioManager.foodCan);
+                    break;
+                case "Magazine":
+                    audioManager.PlaySFX(audioManager.paperFlip);
                     break;
                 case "Milk Bottle":
                     audioManager.PlaySFX(audioManager.milkBottle);
+                    break;
+                case "Milk Carton":
+                    audioManager.PlaySFX(audioManager.carton);
+                    break;
+                case "Newspaper":
+                    audioManager.PlaySFX(audioManager.paperFlip);
+                    break;
+                case "Coffee Carton":
+                    audioManager.PlaySFX(audioManager.carton);
                     break;
                 default:
                     Debug.Log("No sound for this item. Trash type: " + trashName);
