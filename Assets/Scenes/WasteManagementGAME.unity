@@ -1471,7 +1471,19 @@ MonoBehaviour:
   m_Value: 0.58
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 391972051}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: SetSFXVolume
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &391972050
 GameObject:
   m_ObjectHideFlags: 0
@@ -1503,6 +1515,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicSource: {fileID: 108758252}
   SFXSource: {fileID: 1524590487}
+  myMixer: {fileID: 24100000, guid: 3173ab3695f586947becf5f98fda1b27, type: 2}
+  MusicSlider: {fileID: 1109727409}
+  SFXSlider: {fileID: 332641543}
   mainMenu: {fileID: 8300000, guid: ea4edb1c8bd0cb4468b5436b2a2c1806, type: 3}
   mainGame: {fileID: 8300000, guid: a03287e4db56dd34fb86d5677b0f6890, type: 3}
   buttonPressed: {fileID: 8300000, guid: 164f71f3ee2599941b4a5a848ff430d5, type: 3}
@@ -3187,7 +3202,19 @@ MonoBehaviour:
   m_Value: 0.58
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 391972051}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: SetMusicVolume
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &1132840249
 PrefabInstance:
   m_ObjectHideFlags: 0
