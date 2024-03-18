@@ -22,7 +22,6 @@ public class AudioManager : MonoBehaviour
     public AudioClip cerealBox;
     public AudioClip foodCan;
     public AudioClip paperFlip;
-    public AudioClip milkBottle;
     public AudioClip carton;
     public AudioClip foilTray;
     public AudioClip plastic;
@@ -30,8 +29,16 @@ public class AudioManager : MonoBehaviour
     public AudioClip straw;
     public AudioClip toy;
     public AudioClip polystyrene;
+    public AudioClip aerosol;
+    public AudioClip battery;
+    public AudioClip cigarette;
+    public AudioClip plasticBag;
+    public AudioClip canOpen;
+    public AudioClip glassBottle;
+    public AudioClip lightBulb;
+    public AudioClip lighter;
 
-    
+
     private void Awake()
     {
         if (FindObjectsOfType<AudioManager>().Length > 1)

@@ -126,7 +126,9 @@ public class DragAndDrop : GameManager
                     audioManager.PlaySFX(audioManager.paperFlip);
                     break;
                 case "Milk Bottle":
-                    audioManager.PlaySFX(audioManager.milkBottle);
+                case "Glass Bottle":
+                case "Bottle":
+                    audioManager.PlaySFX(audioManager.glassBottle);
                     break;
                 case "Milk Carton":
                 case "Coffee Carton":
@@ -152,6 +154,29 @@ public class DragAndDrop : GameManager
                     break;
                 case "Take-Out Container":
                     audioManager.PlaySFX(audioManager.polystyrene);
+                    break;
+                case "Aerosol Can":
+                    audioManager.PlaySFX(audioManager.aerosol);
+                    break;
+                case "AA Battery":
+                    audioManager.PlaySFX(audioManager.battery);
+                    break;
+                case "Cigarette":
+                    audioManager.PlaySFX(audioManager.cigarette);
+                    break;
+                case "Crisp Packet":
+                case "Carrier Bag":
+                case "Plastic Wrap":
+                    audioManager.PlaySFX(audioManager.plasticBag);
+                    break;
+                case "Soda Can":
+                    audioManager.PlaySFX(audioManager.canOpen);
+                    break;
+                case "Light Bulb":
+                    audioManager.PlaySFX(audioManager.lightBulb);
+                    break;
+                case "Lighter":
+                    audioManager.PlaySFX(audioManager.lighter);
                     break;
                 default:
                     Debug.Log("No sound for this item. Trash type: " + trashName);
