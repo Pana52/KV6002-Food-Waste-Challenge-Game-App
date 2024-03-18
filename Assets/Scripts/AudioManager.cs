@@ -1,11 +1,19 @@
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Audio;
+using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class AudioManager : MonoBehaviour
 {
     [Header("Audio Source")]
     [SerializeField] AudioSource musicSource;
     [SerializeField] AudioSource SFXSource;
+
+    [SerializeField] private AudioMixer myMixer;
+    [SerializeField] private Slider MusicSlider;
+    [SerializeField] private Slider SFXSlider;
 
     [Header("Audio Clip")]
     public AudioClip mainMenu;
@@ -74,6 +82,22 @@ public class AudioManager : MonoBehaviour
                 break;
         }
         musicSource.Play(); // Play the background music
+    }
+
+    private void Start()
+    {
+        SetMusicVolume(); // sets music volume at start
+        SetSFXVolume(); // sets sfx volume at start
+    }
+    public void SetMusicVolume() 
+    {
+        float volume = MusicSlider.value; 
+        myMixer.SetFloat("music", Mathf.Log10(volume) * 20);
+    }
+    public void SetSFXVolume()  
+    {
+        float volume = SFXSlider.value;
+        myMixer.SetFloat("sfx", Mathf.Log10(volume) * 20);
     }
 
     private void OnDestroy()
