@@ -15,6 +15,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private Slider MusicSlider;
     [SerializeField] private Slider SFXSlider;
 
+
     [Header("Audio Clip")]
     public AudioClip mainMenu;
     public AudioClip mainGame;
@@ -66,6 +67,9 @@ public class AudioManager : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+       
+
+
         switch (scene.name)
         {
             case "MainMenu":
@@ -81,23 +85,66 @@ public class AudioManager : MonoBehaviour
                 // Optional: handle any default case or do nothing
                 break;
         }
-        musicSource.Play(); // Play the background music
+        musicSource.Play();
+
+
+
+
     }
 
     private void Start()
     {
-        SetMusicVolume(); // sets music volume at start
-        SetSFXVolume(); // sets sfx volume at start
+ 
+
+        if (PlayerPrefs.HasKey("musicVolume"))
+        {
+            LoadVolume();
+        }
+        else
+        {
+            SetMusicVolume();
+        }
+        if (PlayerPrefs.HasKey("sfxVolume"))
+        {
+            LoadSFX();
+        }
+        else
+        {
+            SetMusicVolume();
+            SetSFXVolume();
+        }
+
+        // sets music volume at start
+        // sets sfx volume at start
     }
-    public void SetMusicVolume() 
+
+
+
+    public void SetMusicVolume()
     {
-        float volume = MusicSlider.value; 
+        float volume = MusicSlider.value;
         myMixer.SetFloat("music", Mathf.Log10(volume) * 20);
+        PlayerPrefs.SetFloat("musicVolume", volume);
     }
-    public void SetSFXVolume()  
+
+    private void LoadVolume()
+    {
+        MusicSlider.value = PlayerPrefs.GetFloat("musicVolume");
+        SetMusicVolume();
+    }
+
+
+    public void SetSFXVolume()
     {
         float volume = SFXSlider.value;
         myMixer.SetFloat("sfx", Mathf.Log10(volume) * 20);
+        PlayerPrefs.SetFloat("sfxVolume", volume);
+    }
+
+    private void LoadSFX()
+    {
+        SFXSlider.value = PlayerPrefs.GetFloat("sfxVolume");
+        SetSFXVolume();
     }
 
     private void OnDestroy()

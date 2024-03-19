@@ -1979,7 +1979,6 @@ GameObject:
   - component: {fileID: 614449066}
   - component: {fileID: 614449065}
   - component: {fileID: 614449069}
-  - component: {fileID: 614449070}
   - component: {fileID: 614449071}
   m_Layer: 5
   m_Name: Canvas
@@ -2091,20 +2090,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2d7660e487c337459bbc398b83b46e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &614449070
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 614449064}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f651d76110d1794ba4912b92b628fb1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myMixer: {fileID: 24100000, guid: a642435ec25b6404ca9702c24825012f, type: 2}
-  mySlider: {fileID: 867561610}
 --- !u!114 &614449071
 MonoBehaviour:
   m_ObjectHideFlags: 0
