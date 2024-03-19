@@ -4,7 +4,7 @@ using UnityEngine;
 using System;
 
 public class GameManager : MonoBehaviour
-{ 
+{
     private bool isDragging;
     private const int baseScoreValue = 10;
     private TextMeshProUGUI ScoreText;
@@ -127,6 +127,7 @@ public class GameManager : MonoBehaviour
             ScoreText.text = "0";
         }
     }
+
    
     public void ConveyorSpeed(string type)
     {

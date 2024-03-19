@@ -7,7 +7,8 @@ using UnityEngine.UI;
 
 public class TrashManager : GameManager
 {
-
+    public TextMeshProUGUI points;
+    public GameObject gameOverPopUp;
     public static TrashManager Instance { get; private set; }
     private System.Random _random = new System.Random();
     //Trash object array. 
@@ -21,6 +22,7 @@ public class TrashManager : GameManager
     private int incorrectGuessesLimit = 6;
     //Boolean if player achieves new high score. 
     private bool isNewHighScore = false;
+
 
     //Boolean to indicate if the coroutine is paused.
     private bool coroutinePaused = false;
@@ -147,8 +149,15 @@ public class TrashManager : GameManager
         {
             levelActive = false;
             GameOver(PlayerPrefs.GetInt("PlayerScore"), PlayerPrefs.GetInt("HighScore"));
-            
+            Setup(PlayerPrefs.GetInt("PlayerScore"), gameOverPopUp);
         }
+    }
+
+    public void Setup(int score, GameObject gameover)
+    {
+        gameover.SetActive(true);
+        points.text = score.ToString() + " POINTS";
+
     }
     public void generateTrash()
     {
@@ -260,6 +269,7 @@ public class TrashManager : GameManager
     }
     void GameOver(int score, int highScore)
     {
+        
         //Pause Gameplay. 
         Time.timeScale = 0f;
 

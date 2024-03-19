@@ -8,7 +8,7 @@ public class ButtonManager : MonoBehaviour
 
     public void GoToScene()
     {
-
+        Time.timeScale = 1f;
         SceneManager.LoadScene(1);
     }
 
@@ -18,6 +18,10 @@ public class ButtonManager : MonoBehaviour
         Debug.Log("Application closed");
     }
 
-
+    public void BackToMain()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(0);
+    }
 
 }
