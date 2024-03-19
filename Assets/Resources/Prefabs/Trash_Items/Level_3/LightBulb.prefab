@@ -12,6 +12,14 @@ PrefabInstance:
       propertyPath: trashName
       value: Light Bulb
       objectReference: {fileID: 0}
+    - target: {fileID: -7012740182115291091, guid: 08e41b17e7243cc42af8ec5b564982b6, type: 3}
+      propertyPath: isRecycleSymbol
+      value: 
+      objectReference: {fileID: 21300000, guid: 57d3e4080250a3e4199429ce7ffa4af9, type: 3}
+    - target: {fileID: -7012740182115291091, guid: 08e41b17e7243cc42af8ec5b564982b6, type: 3}
+      propertyPath: recyclingSymbol
+      value: 
+      objectReference: {fileID: 21300000, guid: fef0a360d291ccd4f89942a12f2b2f39, type: 3}
     - target: {fileID: 616137912041605036, guid: 08e41b17e7243cc42af8ec5b564982b6, type: 3}
       propertyPath: m_Materials.Array.size
       value: 2

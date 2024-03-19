@@ -12,6 +12,14 @@ PrefabInstance:
       propertyPath: trashName
       value: Food Can
       objectReference: {fileID: 0}
+    - target: {fileID: -9132741265509385899, guid: c774b9f5da11e244bb6238d977b58169, type: 3}
+      propertyPath: isRecycleSymbol
+      value: 
+      objectReference: {fileID: 21300000, guid: 05afee43e66d5b54c9e8742e53726a7e, type: 3}
+    - target: {fileID: -9132741265509385899, guid: c774b9f5da11e244bb6238d977b58169, type: 3}
+      propertyPath: recyclingSymbol
+      value: 
+      objectReference: {fileID: 21300000, guid: 018b75a273fbf83439abba531279fc6d, type: 3}
     - target: {fileID: 375501898715780455, guid: c774b9f5da11e244bb6238d977b58169, type: 3}
       propertyPath: m_Name
       value: FoodCan

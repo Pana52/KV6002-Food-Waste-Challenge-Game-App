@@ -12,6 +12,14 @@ PrefabInstance:
       propertyPath: trashName
       value: Cigarette
       objectReference: {fileID: 0}
+    - target: {fileID: -5676214035439534361, guid: 84d70c4f95672814a9b9a8abb254a777, type: 3}
+      propertyPath: isRecycleSymbol
+      value: 
+      objectReference: {fileID: 21300000, guid: 57d3e4080250a3e4199429ce7ffa4af9, type: 3}
+    - target: {fileID: -5676214035439534361, guid: 84d70c4f95672814a9b9a8abb254a777, type: 3}
+      propertyPath: recyclingSymbol
+      value: 
+      objectReference: {fileID: 21300000, guid: 57d3e4080250a3e4199429ce7ffa4af9, type: 3}
     - target: {fileID: 1905163210045840946, guid: 84d70c4f95672814a9b9a8abb254a777, type: 3}
       propertyPath: m_Materials.Array.size
       value: 3

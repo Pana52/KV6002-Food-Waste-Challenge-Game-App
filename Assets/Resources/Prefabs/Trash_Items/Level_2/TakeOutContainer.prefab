@@ -78,23 +78,39 @@ PrefabInstance:
       objectReference: {fileID: 7305918056721301337, guid: efd9e90c9d6ca26468b77e6160b84875, type: 3}
     - target: {fileID: 8795770878439470649, guid: e04d712a02dff74449e00bf897b44bea, type: 3}
       propertyPath: trashDesc
-      value: Polystyrene
+      value: cardboard
       objectReference: {fileID: 0}
     - target: {fileID: 8795770878439470649, guid: e04d712a02dff74449e00bf897b44bea, type: 3}
       propertyPath: trashName
       value: Take-Out Container
       objectReference: {fileID: 0}
     - target: {fileID: 8795770878439470649, guid: e04d712a02dff74449e00bf897b44bea, type: 3}
+      propertyPath: trashType
+      value: Paper
+      objectReference: {fileID: 0}
+    - target: {fileID: 8795770878439470649, guid: e04d712a02dff74449e00bf897b44bea, type: 3}
       propertyPath: plasticSubType
       value: Non-Recyclable
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8795770878439470649, guid: e04d712a02dff74449e00bf897b44bea, type: 3}
+      propertyPath: isRecycleSymbol
+      value: 
+      objectReference: {fileID: 2800000, guid: 57d3e4080250a3e4199429ce7ffa4af9, type: 3}
+    - target: {fileID: 8795770878439470649, guid: e04d712a02dff74449e00bf897b44bea, type: 3}
+      propertyPath: recyclingSymbol
+      value: 
+      objectReference: {fileID: 2800000, guid: e86d0bd058288244cac179fb500ced91, type: 3}
+    m_RemovedComponents:
+    - {fileID: 8795770878439470649, guid: e04d712a02dff74449e00bf897b44bea, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4102077551412824349, guid: e04d712a02dff74449e00bf897b44bea, type: 3}
       insertIndex: -1
       addedObject: {fileID: -7877856742202021728}
+    - targetCorrespondingSourceObject: {fileID: 4102077551412824349, guid: e04d712a02dff74449e00bf897b44bea, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3678905120754953189}
   m_SourcePrefab: {fileID: 100100000, guid: e04d712a02dff74449e00bf897b44bea, type: 3}
 --- !u!1 &4877045754743585113 stripped
 GameObject:
@@ -122,3 +138,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.34198335, y: 0.26344725, z: 0.54600006}
   m_Center: {x: 0.019599408, y: -0.04988819, z: 0}
+--- !u!114 &3678905120754953189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4877045754743585113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76184a6c52b1e6e469e8d6a20aba1613, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trashName: Take-Out Container
+  trashType: Paper
+  trashDesc: Cardboard
+  isRecycleSymbol: {fileID: 21300000, guid: 05afee43e66d5b54c9e8742e53726a7e, type: 3}
+  recyclingSymbol: {fileID: 21300000, guid: e86d0bd058288244cac179fb500ced91, type: 3}

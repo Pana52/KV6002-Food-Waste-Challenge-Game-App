@@ -9,6 +9,10 @@ public class TrashManager : GameManager
 {
     public TextMeshProUGUI points;
     public GameObject gameOverPopUp;
+
+    public GameObject symbol_01;
+    public GameObject symbol_02;
+
     public static TrashManager Instance { get; private set; }
     private System.Random _random = new System.Random();
     //Trash object array. 

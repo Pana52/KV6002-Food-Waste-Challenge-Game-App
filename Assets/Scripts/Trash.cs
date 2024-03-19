@@ -6,6 +6,9 @@ public class Trash : GameManager
     public string trashType;
     public string trashDesc;
 
+    public Sprite isRecycleSymbol;
+    public Sprite recyclingSymbol;
+
     public void checkCollider(Collider trigger, string bin)
     { 
         checkTrash(trigger.gameObject.name, bin);     

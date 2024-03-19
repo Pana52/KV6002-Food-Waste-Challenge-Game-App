@@ -86,8 +86,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8795770878439470649, guid: e04d712a02dff74449e00bf897b44bea, type: 3}
       propertyPath: plasticSubType
-      value: Non-Recyclable
+      value: Recyclable
       objectReference: {fileID: 0}
+    - target: {fileID: 8795770878439470649, guid: e04d712a02dff74449e00bf897b44bea, type: 3}
+      propertyPath: isRecycleSymbol
+      value: 
+      objectReference: {fileID: 21300000, guid: 05afee43e66d5b54c9e8742e53726a7e, type: 3}
+    - target: {fileID: 8795770878439470649, guid: e04d712a02dff74449e00bf897b44bea, type: 3}
+      propertyPath: recyclingSymbol
+      value: 
+      objectReference: {fileID: 21300000, guid: c4cb71a313d2890439e77f8b9a6a44b3, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

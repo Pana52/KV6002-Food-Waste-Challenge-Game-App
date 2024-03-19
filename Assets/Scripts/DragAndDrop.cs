@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DragAndDrop : GameManager
 {
@@ -33,6 +34,7 @@ public class DragAndDrop : GameManager
             if (locationMarker != null)
             {
                 copyLocation = locationMarker.transform;
+                Debug.Log("OBJECT HERE");
             }
             else
             {
@@ -94,7 +96,8 @@ public class DragAndDrop : GameManager
         if (itemCopy == null && copyLocation != null)
         {
             itemCopy = Instantiate(gameObject, copyLocation.position, Quaternion.identity, copyLocation);
-            DisableComponentsForDisplay(itemCopy);
+            float scalerObj = 250f;
+            DisableComponentsForDisplay(itemCopy, scalerObj);
         }
 
 
@@ -321,6 +324,10 @@ public class DragAndDrop : GameManager
             string objectInfo = $"{trashComponent.trashName}\n{trashComponent.trashDesc}";
             //Update the UI element.
             TrashManager.Instance.objectInfoText.text = objectInfo;
+
+            ApplySpriteToSymbol(TrashManager.Instance.symbol_01, trashComponent.isRecycleSymbol);
+            ApplySpriteToSymbol(TrashManager.Instance.symbol_02, trashComponent.recyclingSymbol);
+            
         }
         else
         {
@@ -328,8 +335,25 @@ public class DragAndDrop : GameManager
         }
     }
 
+    void ApplySpriteToSymbol(GameObject symbol, Sprite sprite)
+    {
+        // Assuming the GameObject has an Image component
+        Image image = symbol.GetComponent<Image>();
+        if (image != null)
+        {
+            image.sprite = sprite;
+        }
+        else
+        {
+            Debug.LogError("Image component not found on the symbol GameObject.");
+        }
+    }
+
     void ClearUI()
     {
+        TrashManager.Instance.symbol_01.GetComponent<Image>().sprite = null;
+        TrashManager.Instance.symbol_02.GetComponent<Image>().sprite = null;
+
         Debug.Log($"objectInfoText is null? {objectInfoText == null}");
         if (objectInfoText == null)
         {
@@ -337,21 +361,27 @@ public class DragAndDrop : GameManager
             return;
         }
         objectInfoText.text = "";
+
     }
 
-    private void DisableComponentsForDisplay(GameObject obj)
+    private void DisableComponentsForDisplay(GameObject obj, float scaleMultiplier = 10f) // Added a scaleMultiplier parameter with a default value
     {
-        //Disable Rigidbody.
+        // Disable Rigidbody.
         var rb = obj.GetComponent<Rigidbody>();
         if (rb != null)
         {
             rb.isKinematic = true;
         }
 
+        // Add and configure RotateObject script.
         var rotateScript = obj.AddComponent<RotateObject>();
-        rotateScript.rotateSpeedX = 60f;
-        rotateScript.rotateSpeedY = 50f;
-        rotateScript.rotateSpeedZ = 30f;
+        rotateScript.rotateSpeedX = 0f;
+        rotateScript.rotateSpeedY = 15f;
+        rotateScript.rotateSpeedZ = 10f;
+
+        // Rescale the object.
+        obj.transform.localScale *= scaleMultiplier;
     }
+
 
 }

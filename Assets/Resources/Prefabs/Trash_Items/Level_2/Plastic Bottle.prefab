@@ -96,6 +96,14 @@ PrefabInstance:
       propertyPath: plasticSubType
       value: Recyclable
       objectReference: {fileID: 0}
+    - target: {fileID: 8795770878439470649, guid: e04d712a02dff74449e00bf897b44bea, type: 3}
+      propertyPath: isRecycleSymbol
+      value: 
+      objectReference: {fileID: 21300000, guid: 05afee43e66d5b54c9e8742e53726a7e, type: 3}
+    - target: {fileID: 8795770878439470649, guid: e04d712a02dff74449e00bf897b44bea, type: 3}
+      propertyPath: recyclingSymbol
+      value: 
+      objectReference: {fileID: 21300000, guid: 741cff5fcc6f02c49b79c3b0e172baa4, type: 3}
     - target: {fileID: 9166358100160519807, guid: e04d712a02dff74449e00bf897b44bea, type: 3}
       propertyPath: m_Size.z
       value: 1.398675
