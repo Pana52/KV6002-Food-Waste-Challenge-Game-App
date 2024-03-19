@@ -318,7 +318,7 @@ public class DragAndDrop : GameManager
         Trash trashComponent = GetComponent<Trash>();
         if (TrashManager.Instance != null && TrashManager.Instance.objectInfoText != null)
         {
-            string objectInfo = $"{trashComponent.trashName}\n{trashComponent.trashType}\n{trashComponent.trashDesc}";
+            string objectInfo = $"{trashComponent.trashName}\n{trashComponent.trashDesc}";
             //Update the UI element.
             TrashManager.Instance.objectInfoText.text = objectInfo;
         }

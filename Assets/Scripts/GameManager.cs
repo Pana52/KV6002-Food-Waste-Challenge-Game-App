@@ -34,36 +34,19 @@ public class GameManager : MonoBehaviour
         //Debug.LogWarning("is Dragging = " + value);
         isDragging = value;
     }
-    /**
-    private GameObject draggedObject = null;
-    public void SetIsDragging(bool dragging, GameObject draggedObj)
-    {
-        isDragging = dragging;
-        draggedObject = draggedObj;
-    }
-
-    // Method to get the dragged object
-    public GameObject GetDraggedObject()
-    {
-        return draggedObject;
-    }
-    **/
     private void Start()
     {
         //Get playerPrefs
         int playerScore = PlayerPrefs.GetInt("PlayerScore", 0);
         int comboValue = PlayerPrefs.GetInt("ComboValue", 1); 
         int incorrectGuesses = PlayerPrefs.GetInt("IncorrectGuesses", 0);
-        ScoreText = GameObject.Find("ScoreText").GetComponent<TextMeshProUGUI>();
+        ScoreText = GameObject.Find("Score").GetComponent<TextMeshProUGUI>();
         if (PlayerPrefs.GetInt("CurrentLevel") < 4)
         {
-            PlayerPrefs.SetInt("PlayerScore", -1);
-        }
-        if (PlayerPrefs.GetInt("CurrentLevel") == 4 && (PlayerPrefs.GetInt("PlayerScore") == -1))
-        {
             PlayerPrefs.SetInt("PlayerScore", 0);
-            ScoreText.text = "Score: 0" + ScoreText.text.ToString();
+            ScoreText.text = "0";
         }
+
         PlayerPrefs.Save();
         //Reference to DiologueManager class. 
         Dialogue = GameObject.FindGameObjectWithTag("DialogueManager").GetComponent<DialogueManager>();
@@ -136,12 +119,12 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.SetInt("PlayerScore", playerScore);
             PlayerPrefs.SetInt("ComboValue", comboValue);
             PlayerPrefs.Save();
-            ScoreText.text = "Score: " + playerScore.ToString(); 
+            ScoreText.text = playerScore.ToString(); 
             Debug.Log((scoreToAdd) + " points added. Current score: " + playerScore + ". Combo Value: " + comboValue + ".");
         }
         else
         {
-            ScoreText.text = "";
+            ScoreText.text = "0";
         }
     }
    

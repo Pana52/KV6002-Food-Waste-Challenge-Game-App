@@ -200,12 +200,16 @@ public class TrashManager : GameManager
     //Ends level after the lenght of time specified by the levelInterval variable. 
     IEnumerator EndLevelCoroutine()
     {
+        //Endless Mode.
         if (PlayerPrefs.GetInt("CurrentLevel") == 4)
         {
+            //Set level interval for endless mode. 
             levelInterval = 20;
             ConveyorSpeed("level");
+            //Trash interval cannot fall belwo 4 seconds. 
             if (trashInterval > 4f)
             {
+                //Reduce trash interval variable value, increasing trash spawn frequency. 
                 trashInterval -= 0.1f;
             }
         }
