@@ -166,4 +166,4 @@ MonoBehaviour:
   trashType: Paper
   trashDesc: Cardboard
   isRecycleSymbol: {fileID: 21300000, guid: 05afee43e66d5b54c9e8742e53726a7e, type: 3}
-  recyclingSymbol: {fileID: 21300000, guid: e86d0bd058288244cac179fb500ced91, type: 3}
+  recyclingSymbol: {fileID: 21300000, guid: 9410850004832d24aab6469af076228b, type: 3}

@@ -48,8 +48,6 @@ public class TrashManager : GameManager
     //Ensure only one instance of TrashManager exists.
     private void Awake()
     {
-        theReset();
-
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
