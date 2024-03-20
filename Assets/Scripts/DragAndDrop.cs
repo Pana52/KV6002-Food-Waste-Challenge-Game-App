@@ -129,6 +129,7 @@ public class DragAndDrop : GameManager
                     audioManager.PlaySFX(audioManager.paperFlip);
                     break;
                 case "Milk Bottle":
+                case "Jam Jar":
                 case "Glass Bottle":
                 case "Bottle":
                     audioManager.PlaySFX(audioManager.glassBottle);
@@ -178,7 +179,7 @@ public class DragAndDrop : GameManager
                 case "Light Bulb":
                     audioManager.PlaySFX(audioManager.lightBulb);
                     break;
-                case "Lighter":
+                case "Cigarette Lighter":
                     audioManager.PlaySFX(audioManager.lighter);
                     break;
                 default:

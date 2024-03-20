@@ -151,19 +151,6 @@ public class AudioManager : MonoBehaviour
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
-    
-    /**
-    
-    private void Start()
-    {
-        musicSource.clip = mainGame;
-        musicSource.Play();
-        SFXSource.clip = conveyorBelt;
-        SFXSource.Play();
-    }
-
-    **/
-    
 
     public void PlaySFX(AudioClip clip)
     {
