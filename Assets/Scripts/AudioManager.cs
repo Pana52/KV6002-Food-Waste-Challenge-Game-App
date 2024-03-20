@@ -79,6 +79,7 @@ public class AudioManager : MonoBehaviour
                 musicSource.clip = mainGame;
                 // Play the conveyor belt sound effect at the start of the WasteManagementGame
                 SFXSource.clip = conveyorBelt; // Assuming conveyorBelt is your AudioClip for the conveyor belt sound
+                SFXSource.loop = true;
                 SFXSource.Play(); // Play the sound effect
                 break;
             default:
