@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -3962829171098529956, guid: 826a7cfd3106af442a7971d20c1895f8, type: 3}
       propertyPath: m_Constraints
-      value: 112
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 251672348177027320, guid: 826a7cfd3106af442a7971d20c1895f8, type: 3}
       propertyPath: m_Name
@@ -84,3 +84,5 @@ MonoBehaviour:
   trashName: 
   trashType: Glass
   trashDesc: 
+  isRecycleSymbol: {fileID: 0}
+  recyclingSymbol: {fileID: 0}
