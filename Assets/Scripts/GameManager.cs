@@ -2,6 +2,8 @@
 using TMPro;
 using UnityEngine;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour
 {
@@ -19,6 +21,7 @@ public class GameManager : MonoBehaviour
     {
         // Attempt to find and reference the AudioManager on Awake
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+
         if (audioManager == null)
         {
             Debug.LogWarning("Failed to find an AudioManager in the scene.");
@@ -36,6 +39,7 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
+
         //Get playerPrefs
         int playerScore = PlayerPrefs.GetInt("PlayerScore", 0);
         int comboValue = PlayerPrefs.GetInt("ComboValue", 1); 
@@ -55,7 +59,7 @@ public class GameManager : MonoBehaviour
     public void checkTrash(string binType, string correctBinType)
     {
         int comboValue = PlayerPrefs.GetInt("ComboValue", 0);
-        int incorrectGuesses = PlayerPrefs.GetInt("IncorrectGuesses", 0);
+        int incorrectGuesses = PlayerPrefs.GetInt("IncorrectGuesses");
         
         if (binType == correctBinType)
         {
@@ -63,7 +67,6 @@ public class GameManager : MonoBehaviour
             //Debug.Log("CORRECT");
             calculateScore(baseScoreValue);
             SetIsDragging(false);
-            incorrectGuesses = 0;
             PlayerPrefs.SetInt("IncorrectGuesses", incorrectGuesses);
             //Play dialogue. 
             Dialogue.playDialogue("success");
@@ -87,9 +90,11 @@ public class GameManager : MonoBehaviour
         {
             //Debug.Log("INCORRECT");
             SetIsDragging(false);
+            
             ConveyorSpeed("mistake");
             comboValue = 1;
             incorrectGuesses += 1;
+
             PlayerPrefs.SetInt("ComboValue", comboValue);
             PlayerPrefs.SetInt("IncorrectGuesses", incorrectGuesses);
             //Play dialogue. 

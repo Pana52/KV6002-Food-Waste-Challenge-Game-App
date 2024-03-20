@@ -10,6 +10,7 @@ public class TrashManager : GameManager
     public TextMeshProUGUI points;
     public GameObject gameOverPopUp;
     public GameObject gameOverScreen;
+    public GameObject[] guiLives = new GameObject[3];
 
     public GameObject symbol_01;
     public GameObject symbol_02;
@@ -24,7 +25,7 @@ public class TrashManager : GameManager
     private float levelInterval = 60f;
     private bool levelActive = true;
     //Number of consectutive guesses until game over is triggered. 
-    private int incorrectGuessesLimit = 6;
+    private int incorrectGuessesLimit = 3;
     //Boolean if player achieves new high score. 
     private bool isNewHighScore = false;
 
@@ -68,6 +69,11 @@ public class TrashManager : GameManager
 
     private void Start()
     {
+        foreach (GameObject life in guiLives)
+        {
+            life.SetActive(false);
+        }
+
         theReset();
     }
 
@@ -161,6 +167,33 @@ public class TrashManager : GameManager
             GameOver(PlayerPrefs.GetInt("PlayerScore"), PlayerPrefs.GetInt("HighScore"));
             Setup(PlayerPrefs.GetInt("PlayerScore"), gameOverPopUp);
         }
+
+        livesChecker();
+    }
+
+
+    public void livesChecker()
+    {
+        if (currentLevel > 3)
+        {
+            switch (PlayerPrefs.GetInt("IncorrectGuesses"))
+            {
+                case 1:
+                    guiLives[0].SetActive(true);
+                    break;
+                case 2:
+                    guiLives[1].SetActive(true);
+                    break;
+                case 3:
+                    guiLives[2].SetActive(true);
+                    break;
+                default:
+                    guiLives[0].SetActive(false);
+                    guiLives[1].SetActive(false);
+                    guiLives[2].SetActive(false);
+                    break;
+            }
+        }
     }
 
     public void Setup(int score, GameObject gameover)
@@ -171,14 +204,14 @@ public class TrashManager : GameManager
     }
     public void generateTrash()
     {
-        int randRot = _random.Next(-180, 180);
+        //int randRot = _random.Next(-180, 180);
         Vector3 targetPosition = spawnLocation.transform.position;
-        Instantiate(trash[_random.Next(0, trash.Length)], targetPosition, Quaternion.Euler(0, randRot, 0));
+        Instantiate(trash[_random.Next(0, trash.Length)], targetPosition, Quaternion.Euler(0, 180, 0));
 
         //Random chance to spawn additional items.
         if (rollDice() == 5)
         {
-            StartCoroutine(SpawnAdditionalTrashWithDelay(targetPosition, randRot));
+            StartCoroutine(SpawnAdditionalTrashWithDelay(targetPosition, 0));
         }
     }
 
