@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: -6245306522220821460}
   - component: {fileID: 3117630489830339634}
   - component: {fileID: 948562601207441139}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CrispPacket
-  m_TagString: Untagged
+  m_TagString: MoveableObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -31,8 +31,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -117,7 +117,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trashName: Crisp Packet
   trashType: 
-  trashDesc: A Mixture of foil and plastic.
+  trashDesc: A mixture of foil and plastic.
   isRecycleSymbol: {fileID: 21300000, guid: 57d3e4080250a3e4199429ce7ffa4af9, type: 3}
   recyclingSymbol: {fileID: 21300000, guid: d5734db48d93dd64b95a2630f4cb8d57, type: 3}
 --- !u!65 &3117630489830339634
@@ -166,5 +166,5 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 2
-  m_Constraints: 0
+  m_Constraints: 120
   m_CollisionDetection: 0
