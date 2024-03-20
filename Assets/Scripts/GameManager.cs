@@ -81,8 +81,12 @@ public class GameManager : MonoBehaviour
         {
             //Debug.Log("Trash item added to general waste.");
             ConveyorSpeed("mistake");
-            comboValue = 1;
-            incorrectGuesses += 1;
+            
+            if (PlayerPrefs.GetInt("CurrentLevel") > 3)
+            {
+                incorrectGuesses += 1;
+                comboValue = 1;
+            }
             PlayerPrefs.SetInt("ComboValue", comboValue);
             PlayerPrefs.SetInt("IncorrectGuesses", incorrectGuesses);
         }
@@ -92,11 +96,15 @@ public class GameManager : MonoBehaviour
             SetIsDragging(false);
             
             ConveyorSpeed("mistake");
-            comboValue = 1;
-            incorrectGuesses += 1;
-
-            PlayerPrefs.SetInt("ComboValue", comboValue);
+            
+            if (PlayerPrefs.GetInt("CurrentLevel") > 3)
+            {
+                incorrectGuesses += 1;
+                comboValue = 1;
+            }
             PlayerPrefs.SetInt("IncorrectGuesses", incorrectGuesses);
+            PlayerPrefs.SetInt("ComboValue", comboValue);
+            
             //Play dialogue. 
             Dialogue.playDialogue("fail");
 
