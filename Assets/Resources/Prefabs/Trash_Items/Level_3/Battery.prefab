@@ -100,6 +100,18 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: -6867620041778106095, guid: efd9e90c9d6ca26468b77e6160b84875, type: 3}
+    - target: {fileID: 8255850986802534073, guid: 08e41b17e7243cc42af8ec5b564982b6, type: 3}
+      propertyPath: m_Interpolate
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8255850986802534073, guid: 08e41b17e7243cc42af8ec5b564982b6, type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8255850986802534073, guid: 08e41b17e7243cc42af8ec5b564982b6, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -9,6 +9,7 @@ public class TrashManager : GameManager
 {
     public TextMeshProUGUI points;
     public GameObject gameOverPopUp;
+    public GameObject gameOverScreen;
 
     public GameObject symbol_01;
     public GameObject symbol_02;
@@ -47,6 +48,8 @@ public class TrashManager : GameManager
     //Ensure only one instance of TrashManager exists.
     private void Awake()
     {
+        theReset();
+
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
@@ -66,7 +69,13 @@ public class TrashManager : GameManager
     }
 
     private void Start()
-    {   //Reset ComboValue, IncorrectGuesses and PlayerScore PlayerPrefs. 
+    {
+        theReset();
+    }
+
+    public void theReset()
+    {
+        //Reset ComboValue, IncorrectGuesses and PlayerScore PlayerPrefs. 
         resetPlayerPrefs();
         //Reset level to 1 - for testing only. The currennt level PlayerPref will be set by the main menu at the start of a game. 
         PlayerPrefs.SetInt("CurrentLevel", 1);
@@ -79,7 +88,6 @@ public class TrashManager : GameManager
         //Play dialogue. 
         Dialogue.playDialogue("welcome");
     }
-
     
     void createTrashArray(int level)
     { 
@@ -276,7 +284,7 @@ public class TrashManager : GameManager
         
         //Pause Gameplay. 
         Time.timeScale = 0f;
-
+        gameOverScreen.SetActive(true);
         // Access audi manager
         AudioManager audioManager = FindObjectOfType<AudioManager>();
         if (audioManager == null)
@@ -326,6 +334,7 @@ public class TrashManager : GameManager
         PlayerPrefs.SetInt("PlayerScore", 0);
         PlayerPrefs.SetInt("ComboValue", 1);
         PlayerPrefs.Save();
+        gameOverScreen.SetActive(false);
         Debug.Log("New game started, PlayerPrefs reset.");
     }
     int rollDice()

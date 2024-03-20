@@ -88,6 +88,18 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 700057048327415584, guid: 47c05e10812cd524aa51bcc1b7ce1f75, type: 3}
+    - target: {fileID: 8255850986802534073, guid: e04d712a02dff74449e00bf897b44bea, type: 3}
+      propertyPath: m_Interpolate
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8255850986802534073, guid: e04d712a02dff74449e00bf897b44bea, type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8255850986802534073, guid: e04d712a02dff74449e00bf897b44bea, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8795770878439470649, guid: e04d712a02dff74449e00bf897b44bea, type: 3}
       propertyPath: trashName
       value: Plastic Bottle

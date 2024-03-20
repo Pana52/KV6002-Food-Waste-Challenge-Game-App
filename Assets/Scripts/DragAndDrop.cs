@@ -11,7 +11,7 @@ public class DragAndDrop : GameManager
     private Collider coll;
     private float transitionTime = 0.5f;
     private Camera mainCamera;
-    float mouseSpeed = 0.2f;
+    float mouseSpeed = 0.8f;
     private TextMeshProUGUI objectInfoText;
 
     private bool hoverSoundPlayed = false;
@@ -55,7 +55,7 @@ public class DragAndDrop : GameManager
     void OnMouseDrag()
     {
         if (!GetIsDragging()) return;
-        { 
+        {
 
             Cursor.visible = false;
             Vector3 currentMousePosition = GetMouseWorldPos();
@@ -70,7 +70,7 @@ public class DragAndDrop : GameManager
 
     void OnMouseDown()
     {
-
+        Cursor.visible = false;
         initialPosition = transform.position;
         initialMousePosition = GetMouseWorldPos();
         SetIsDragging(true);
@@ -287,7 +287,7 @@ public class DragAndDrop : GameManager
         mousePos.z = mainCamera.WorldToScreenPoint(initialPosition).z;
         return mainCamera.ScreenToWorldPoint(mousePos);
     }
-
+    
     bool IsValidDropLocation()
     {
         RaycastHit hit;
