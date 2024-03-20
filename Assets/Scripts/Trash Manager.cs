@@ -47,9 +47,7 @@ public class TrashManager : GameManager
 
     //Ensure only one instance of TrashManager exists.
     private void Awake()
-    {
-        theReset();
-
+    { 
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
@@ -175,34 +173,25 @@ public class TrashManager : GameManager
     {
         int randRot = _random.Next(-180, 180);
         Vector3 targetPosition = spawnLocation.transform.position;
-        SpawnTrashAtPosition(targetPosition, randRot, _random.Next(0, trash.Length));
+        Instantiate(trash[_random.Next(0, trash.Length)], targetPosition, Quaternion.Euler(0, randRot, 0));
 
         //Random chance to spawn additional items.
-        int diceRoll = rollDice();
-        if (diceRoll == 5)
+        if (rollDice() == 5)
         {
-            StartCoroutine(SpawnAdditionalTrashWithDelay(targetPosition, randRot, diceRoll));
+            StartCoroutine(SpawnAdditionalTrashWithDelay(targetPosition, randRot));
         }
     }
 
-    void SpawnTrashAtPosition(Vector3 position, int rotation, int index)
+    IEnumerator SpawnAdditionalTrashWithDelay(Vector3 position, int rotation)
     {
-        Instantiate(trash[index], position, Quaternion.Euler(0, rotation, 0));
-    }
-
-    IEnumerator SpawnAdditionalTrashWithDelay(Vector3 position, int rotation, int diceRoll)
-    {
-        yield return new WaitForSeconds(0.4f);
-        SpawnTrashAtPosition(position, rotation, _random.Next(0, trash.Length));
-
-        //If diceRoll was 5, there's a chance to spawn a third item
-        if (diceRoll == 5)
-        {
-            if (rollDice() == 6)
+        yield return new WaitForSeconds(0.6f);
+        //SpawnLocation second item. 
+        Instantiate(trash[_random.Next(0, trash.Length)], position, Quaternion.Euler(0, rotation, 0));
+        //Spawn third item.
+            if (rollDice() <3)
             {
-                yield return new WaitForSeconds(0.4f);
-                SpawnTrashAtPosition(position, rotation, _random.Next(0, trash.Length));
-            }
+                yield return new WaitForSeconds(0.6f);
+            Instantiate(trash[_random.Next(0, trash.Length)], position, Quaternion.Euler(0, rotation, 0));
         }
     }
     IEnumerator GenerateTrashCoroutine() //Generates trash at an interval specified by the trashInterval variable. 

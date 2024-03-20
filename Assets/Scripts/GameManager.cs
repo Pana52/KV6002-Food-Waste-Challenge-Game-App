@@ -74,7 +74,7 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        else if (binType == "Incinerator")
+        if (binType == "ConveyorEndCollider")
         {
             //Debug.Log("Trash item added to general waste.");
             ConveyorSpeed("mistake");
@@ -83,7 +83,7 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.SetInt("ComboValue", comboValue);
             PlayerPrefs.SetInt("IncorrectGuesses", incorrectGuesses);
         }
-        else
+        else if (binType != correctBinType)
         {
             //Debug.Log("INCORRECT");
             SetIsDragging(false);

@@ -1,10 +1,11 @@
+using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
-    [SerializeField] private GameObject dialogueBox;
-    [SerializeField] private Text dialogueText;
+    [SerializeField] private TextMeshProUGUI dialogueText;
 
     public void playDialogue(string type)
     {
@@ -32,8 +33,7 @@ public class DialogueManager : MonoBehaviour
     void welcomeDialogue()
     {
         string[] message = {"Welcome!" };
-        showDialogue(message[Random.Range(0, message.Length)]);
-        Debug.Log(message[Random.Range(0, message.Length)]);
+        StartCoroutine(showDialogue(message[Random.Range(0, message.Length)], 5f));
     }
     void successDiaglogue()
     {
@@ -42,14 +42,12 @@ public class DialogueManager : MonoBehaviour
         {
             string[] message = { "Nice! That's " + combo + " correct bins in a row!", 
                                   "Keep it up, that's " + combo + " correct bins in a row! "};
-            showDialogue(message[Random.Range(0, message.Length)]);
-            Debug.Log(message[Random.Range(0, message.Length)]);
+            StartCoroutine(showDialogue(message[Random.Range(0, message.Length)], 5f));
         }
         else
         {   
             string[] message = { "Welldone!", "Good Job!" };
-            Debug.Log(message[Random.Range(0, message.Length)]);
-            showDialogue(message[Random.Range(0, message.Length)]);
+            StartCoroutine(showDialogue(message[Random.Range(0, message.Length)], 5f));
         }
     }
     void failDialogue()
@@ -59,15 +57,13 @@ public class DialogueManager : MonoBehaviour
         {
             string[] message = { "That's " + mistakes +  " mistakes in a row, please be careful. Improper recycling is harmful to the environment.",
                                  "That's " + mistakes +  " mistakes in a row. Please refer to your guide if you get stuck." };
-            showDialogue(message[Random.Range(0, message.Length)]);
-            Debug.Log(message[Random.Range(0, message.Length)]);
+            StartCoroutine(showDialogue(message[Random.Range(0, message.Length)], 5f));
         }
         else
         {
             string[] message = {"That's not the correct bin, try again.",
                                 "Hmmmm... That's not right." };
-            showDialogue(message[Random.Range(0, message.Length)]);
-            Debug.Log(message[Random.Range(0, message.Length)]);
+            StartCoroutine(showDialogue(message[Random.Range(0, message.Length)], 5f));
         }
     }
     void levelComplete()
@@ -75,27 +71,26 @@ public class DialogueManager : MonoBehaviour
         if (PlayerPrefs.GetInt("CurrentLevel") == 4)
         {
             string[] message = { "Endless Mode" };
-            showDialogue(message[Random.Range(0, message.Length)]);
-            Debug.Log(message[Random.Range(0, message.Length)]);
+            StartCoroutine(showDialogue(message[Random.Range(0, message.Length)], 5f));
         }
         else
         {
-            string[] message = { "Good Job, now lets how you do with this new trash delivery that just arrived." };
-            showDialogue(message[Random.Range(0, message.Length)]);
-            Debug.Log(message[Random.Range(0, message.Length)]);
+            string[] message = { "Level " + PlayerPrefs.GetInt("CurrentLevel").ToString() + "."};
+            StartCoroutine(showDialogue(message[Random.Range(0, message.Length)], 5f));
         }
     }
     void GameOverDialogue()
     {
         string[] message = {"Alright, get outta here, you're messing up the place."};
-        showDialogue(message[Random.Range(0, message.Length)]);
-        Debug.Log("GAME OVER: " + message[Random.Range(0, message.Length)]);
+        StartCoroutine(showDialogue(message[Random.Range(0, message.Length)], 5f));
     }
 
-    void showDialogue(string message)
+    IEnumerator showDialogue(string message, float duration)
     {
-        dialogueBox.SetActive(true);
+        
         dialogueText.text = message;
+        yield return new WaitForSeconds(duration);
+        dialogueText.text = "";
     }
     
 }
