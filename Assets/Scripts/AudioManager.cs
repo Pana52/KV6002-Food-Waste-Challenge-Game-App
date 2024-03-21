@@ -67,18 +67,20 @@ public class AudioManager : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-       
 
 
         switch (scene.name)
         {
             case "MainMenu":
                 musicSource.clip = mainMenu;
+                musicSource.volume = 0.5f;
                 break;
             case "WasteManagementGAME":
                 musicSource.clip = mainGame;
+                musicSource.volume = 0.5f;
                 // Play the conveyor belt sound effect at the start of the WasteManagementGame
                 SFXSource.clip = conveyorBelt; // Assuming conveyorBelt is your AudioClip for the conveyor belt sound
+                SFXSource.volume = 0.25f;
                 SFXSource.loop = true;
                 SFXSource.Play(); // Play the sound effect
                 break;
@@ -156,6 +158,7 @@ public class AudioManager : MonoBehaviour
     public void PlaySFX(AudioClip clip)
     {
         Debug.Log($"Attempting to play SFX: {clip.name}");
+        
         SFXSource.PlayOneShot(clip);
     }
 }
