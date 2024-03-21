@@ -81,8 +81,6 @@ public class TrashManager : GameManager
     {
         //Reset ComboValue, IncorrectGuesses and PlayerScore PlayerPrefs. 
         resetPlayerPrefs();
-        //Reset level to 1 - for testing only. The currennt level PlayerPref will be set by the main menu at the start of a game. 
-        PlayerPrefs.SetInt("CurrentLevel", 1);
         //Reference to dialogue script. 
         Dialogue = GameObject.FindGameObjectWithTag("DialogueManager").GetComponent<DialogueManager>();
         //Star timer for level. 
@@ -98,7 +96,10 @@ public class TrashManager : GameManager
         if (level == 4)
         {
             //Load all items into the array.
-            Array.Clear(trash, 0, trash.Length);
+            if (trash != null)
+            {
+                Array.Clear(trash, 0, trash.Length);
+            }
             GameObject[] trashItems = Resources.LoadAll<GameObject>("Prefabs/Trash_Items");
             trash = new GameObject[trashItems.Length];
             for (int i = 0; i < trashItems.Length; i++)
@@ -121,7 +122,10 @@ public class TrashManager : GameManager
         if (level == 2)
         {
             //Load level 2 items into the array.
-            Array.Clear(trash, 0, trash.Length);
+            if (trash != null)
+            {
+                Array.Clear(trash, 0, trash.Length);
+            }
             GameObject[] trashItems = Resources.LoadAll<GameObject>("Prefabs/Trash_Items/Level_2");
             trash = new GameObject[trashItems.Length];
             for (int i = 0; i < trashItems.Length; i++)
@@ -133,7 +137,10 @@ public class TrashManager : GameManager
         if (level == 3)
         {
             //Load level 3 items into the array.
-            Array.Clear(trash, 0, trash.Length);
+            if (trash != null)
+            {
+                Array.Clear(trash, 0, trash.Length);
+            }
             GameObject[] trashItems = Resources.LoadAll<GameObject>("Prefabs/Trash_Items/Level_3");
             trash = new GameObject[trashItems.Length];
             for (int i = 0; i < trashItems.Length; i++)

@@ -41,9 +41,9 @@ public class GameManager : MonoBehaviour
     {
 
         //Get playerPrefs
-        int playerScore = PlayerPrefs.GetInt("PlayerScore", 0);
-        int comboValue = PlayerPrefs.GetInt("ComboValue", 1); 
-        int incorrectGuesses = PlayerPrefs.GetInt("IncorrectGuesses", 0);
+        PlayerPrefs.GetInt("PlayerScore", 0);
+        PlayerPrefs.GetInt("ComboValue", 1); 
+        PlayerPrefs.GetInt("IncorrectGuesses", 0);
         ScoreText = GameObject.Find("Score").GetComponent<TextMeshProUGUI>();
         if (PlayerPrefs.GetInt("CurrentLevel") < 4)
         {
@@ -58,7 +58,7 @@ public class GameManager : MonoBehaviour
 
     public void checkTrash(string binType, string correctBinType)
     {
-        int comboValue = PlayerPrefs.GetInt("ComboValue", 0);
+        int comboValue = PlayerPrefs.GetInt("ComboValue");
         int incorrectGuesses = PlayerPrefs.GetInt("IncorrectGuesses");
         
         if (binType == correctBinType)
@@ -86,9 +86,11 @@ public class GameManager : MonoBehaviour
             {
                 incorrectGuesses += 1;
                 comboValue = 1;
+                PlayerPrefs.SetInt("ComboValue", comboValue);
+                PlayerPrefs.SetInt("IncorrectGuesses", incorrectGuesses);
+
             }
-            PlayerPrefs.SetInt("ComboValue", comboValue);
-            PlayerPrefs.SetInt("IncorrectGuesses", incorrectGuesses);
+            
         }
         else if (binType != correctBinType)
         {
@@ -101,9 +103,10 @@ public class GameManager : MonoBehaviour
             {
                 incorrectGuesses += 1;
                 comboValue = 1;
+                PlayerPrefs.SetInt("IncorrectGuesses", incorrectGuesses);
+                PlayerPrefs.SetInt("ComboValue", comboValue);
             }
-            PlayerPrefs.SetInt("IncorrectGuesses", incorrectGuesses);
-            PlayerPrefs.SetInt("ComboValue", comboValue);
+            
             
             //Play dialogue. 
             Dialogue.playDialogue("fail");
@@ -141,11 +144,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
-   
     public void ConveyorSpeed(string type)
     {
-
-        float combo = PlayerPrefs.GetInt("ComboValue");
         float value = 0.01f;
         float speed = PlayerPrefs.GetFloat("ConveyorSpeed");
         
