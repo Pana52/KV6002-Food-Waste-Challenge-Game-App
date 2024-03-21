@@ -34,7 +34,6 @@ public class DragAndDrop : GameManager
             if (locationMarker != null)
             {
                 copyLocation = locationMarker.transform;
-                Debug.Log("OBJECT HERE");
             }
             else
             {
@@ -81,7 +80,7 @@ public class DragAndDrop : GameManager
         {
             rb.isKinematic = true;
         }
-        Debug.Log($"objectInfoText is null? {objectInfoText == null}");
+
         if (objectInfoText != null)
         {
             UpdateUIWithTrashInfo();
@@ -105,16 +104,12 @@ public class DragAndDrop : GameManager
 
     void PlayItemPickupSound()
     {
-        // Log to confirm the method is called
-        Debug.Log("PlayItemPickupSound called.");
 
         // Safely access the Trash component and its trashType
         Trash trashComponent = this.transform.GetComponent<Trash>();
         if (trashComponent != null)
         {
             string trashName = trashComponent.trashName;
-            // Log the trashType to see what we are working with
-            Debug.Log($"Attempting to play sound for trash type: {trashName}");
 
             switch (trashName)
             {
@@ -212,7 +207,7 @@ public class DragAndDrop : GameManager
         {
             StartCoroutine(FloatBackToInitialPosition());
         }
-        Debug.Log($"objectInfoText is null? {objectInfoText == null}");
+
         if (objectInfoText != null)
         {
             ClearUI();
@@ -355,7 +350,6 @@ public class DragAndDrop : GameManager
         TrashManager.Instance.symbol_01.GetComponent<Image>().sprite = null;
         TrashManager.Instance.symbol_02.GetComponent<Image>().sprite = null;
 
-        Debug.Log($"objectInfoText is null? {objectInfoText == null}");
         if (objectInfoText == null)
         {
             Debug.LogError("objectInfoText not assigned in ClearUI");

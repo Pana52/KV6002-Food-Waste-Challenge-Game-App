@@ -34,7 +34,6 @@ public class GameManager : MonoBehaviour
     }
     public void SetIsDragging(bool value)
     {
-        //Debug.LogWarning("is Dragging = " + value);
         isDragging = value;
     }
     private void Start()
@@ -64,7 +63,6 @@ public class GameManager : MonoBehaviour
         if (binType == correctBinType)
         {
             ConveyorSpeed("correct");
-            //Debug.Log("CORRECT");
             calculateScore(baseScoreValue);
             SetIsDragging(false);
             PlayerPrefs.SetInt("IncorrectGuesses", incorrectGuesses);
@@ -79,7 +77,6 @@ public class GameManager : MonoBehaviour
 
         if (binType == "ConveyorEndCollider")
         {
-            //Debug.Log("Trash item added to general waste.");
             ConveyorSpeed("mistake");
             
             if (PlayerPrefs.GetInt("CurrentLevel") > 3)
@@ -93,7 +90,6 @@ public class GameManager : MonoBehaviour
         }
         else if (binType != correctBinType)
         {
-            //Debug.Log("INCORRECT");
             SetIsDragging(false);
             
             ConveyorSpeed("mistake");
@@ -135,7 +131,6 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.SetInt("ComboValue", comboValue);
             PlayerPrefs.Save();
             ScoreText.text = playerScore.ToString(); 
-            Debug.Log((scoreToAdd) + " points added. Current score: " + playerScore + ". Combo Value: " + comboValue + ".");
         }
         else
         {
@@ -154,20 +149,16 @@ public class GameManager : MonoBehaviour
             if (type == "mistake" && speed > 0.7)
             {
                 speed -= value;
-                Debug.Log("Speed decreased by: " + value);
             }
             if (type == "correct")
             {
                 speed += value;
-                Debug.Log("Speed increased by: " + value);
             }
             if (type == "level")
             {
                 speed += value;
-                Debug.Log("Speed increased by: " + value);
             }
             PlayerPrefs.SetFloat("ConveyorSpeed", speed);
-            Debug.Log("Conveyor Belt Speed is now: " + speed);
             PlayerPrefs.Save();
         }
 

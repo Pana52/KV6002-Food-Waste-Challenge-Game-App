@@ -8,7 +8,6 @@ public class ConveyorBelt : MonoBehaviour
     private void Start()
     {
         PlayerPrefs.SetFloat("ConveyorSpeed", 0.7f);
-        Debug.Log("Conveyor Speed set to " + PlayerPrefs.GetFloat("ConveyorSpeed"));
     }
     void Update()
     {

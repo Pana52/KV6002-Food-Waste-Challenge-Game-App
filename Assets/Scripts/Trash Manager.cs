@@ -107,7 +107,6 @@ public class TrashManager : GameManager
             {
                 trash[i] = trashItems[i];
             }
-            Debug.Log("All Trash Objects loaded into the array.");
         }
         if (level == 1)
         {   
@@ -118,7 +117,6 @@ public class TrashManager : GameManager
             {
                 trash[i] = trashItems[i];
             }
-            Debug.Log("Level 1 Trash Objects loaded into the array.");
         }
         if (level == 2)
         {
@@ -133,7 +131,6 @@ public class TrashManager : GameManager
             {
                 trash[i] = trashItems[i];
             }
-            Debug.Log("Level 2 Trash Objects loaded into the array.");
         }
         if (level == 3)
         {
@@ -148,13 +145,11 @@ public class TrashManager : GameManager
             {
                 trash[i] = trashItems[i];
             }
-            Debug.Log("Level 3 Trash Objects loaded into the array.");
         }
 
     }
     private void Update()
     {
-        Debug.Log(PlayerPrefs.GetInt("IncorrectGuesses"));
         //For testing
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -278,7 +273,6 @@ public class TrashManager : GameManager
             //Increment current level number.
             currentLevel++;
             PlayerPrefs.SetInt("CurrentLevel", currentLevel);
-            Debug.Log("END OF LEVEL. Level " + currentLevel + " active.");
             //Play dialogue. 
             Dialogue.playDialogue("level");
             StartNextLevel();
@@ -349,13 +343,11 @@ public class TrashManager : GameManager
         if (isNewHighScore == true)
         {
             GameOverMessgae.text = "Well Done! " + score +  " is a new record! " + "The previous high score was " + previousHighScore + ".";
-            Debug.Log("Well Done! " + score + " is a new record! " + "The previous high score was " + previousHighScore + ".");
         }
         //Message if highscore is not beat. 
         else
         {
             GameOverMessgae.text = "You scored " + score + " The current high score is " + highScore + ".";
-            Debug.Log("You scored " + score + " The current high score is " + highScore + ".");
         }
         PlayerPrefs.Save();
     }
@@ -366,7 +358,6 @@ public class TrashManager : GameManager
         PlayerPrefs.SetInt("ComboValue", 1);
         PlayerPrefs.Save();
         gameOverScreen.SetActive(false);
-        Debug.Log("New game started, PlayerPrefs reset.");
     }
     int rollDice()
     {
