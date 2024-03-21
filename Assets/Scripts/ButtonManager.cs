@@ -3,7 +3,14 @@ using UnityEngine.SceneManagement;
 
 public class ButtonManager : MonoBehaviour
 {
-
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            //Reset highscore.
+            PlayerPrefs.SetInt("HighScore", 0);
+        }
+    }
     public void GoToScene()
     {
         Time.timeScale = 1f;
