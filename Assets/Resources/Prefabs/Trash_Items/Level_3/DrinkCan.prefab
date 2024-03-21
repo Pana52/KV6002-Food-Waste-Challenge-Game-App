@@ -94,7 +94,7 @@ PrefabInstance:
       objectReference: {fileID: 6450864095116127822, guid: 47c05e10812cd524aa51bcc1b7ce1f75, type: 3}
     - target: {fileID: 5713134485102185155, guid: c774b9f5da11e244bb6238d977b58169, type: 3}
       propertyPath: m_Interpolate
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5713134485102185155, guid: c774b9f5da11e244bb6238d977b58169, type: 3}
       propertyPath: m_IsKinematic
@@ -102,7 +102,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5713134485102185155, guid: c774b9f5da11e244bb6238d977b58169, type: 3}
       propertyPath: m_CollisionDetection
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7297165150065347298, guid: c774b9f5da11e244bb6238d977b58169, type: 3}
       propertyPath: m_Mesh

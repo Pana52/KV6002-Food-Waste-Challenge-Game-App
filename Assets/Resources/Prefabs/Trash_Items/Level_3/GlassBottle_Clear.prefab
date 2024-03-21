@@ -86,7 +86,7 @@ PrefabInstance:
       objectReference: {fileID: -9044907044897341295, guid: efd9e90c9d6ca26468b77e6160b84875, type: 3}
     - target: {fileID: 8255850986802534073, guid: 5f2795d4308e40d4689043ad40d33c52, type: 3}
       propertyPath: m_Interpolate
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8255850986802534073, guid: 5f2795d4308e40d4689043ad40d33c52, type: 3}
       propertyPath: m_IsKinematic
@@ -94,7 +94,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8255850986802534073, guid: 5f2795d4308e40d4689043ad40d33c52, type: 3}
       propertyPath: m_CollisionDetection
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
