@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
 
         //Get playerPrefs
         PlayerPrefs.GetInt("PlayerScore", 0);
-        PlayerPrefs.GetInt("ComboValue", 1); 
+        PlayerPrefs.GetInt("ComboValue", 1);
         PlayerPrefs.GetInt("IncorrectGuesses", 0);
         ScoreText = GameObject.Find("Score").GetComponent<TextMeshProUGUI>();
         if (PlayerPrefs.GetInt("CurrentLevel") < 4)
@@ -86,11 +86,10 @@ public class GameManager : MonoBehaviour
             {
                 incorrectGuesses += 1;
                 comboValue = 1;
-                PlayerPrefs.SetInt("ComboValue", comboValue);
-                PlayerPrefs.SetInt("IncorrectGuesses", incorrectGuesses);
-
             }
-            
+            PlayerPrefs.SetInt("ComboValue", comboValue);
+            PlayerPrefs.SetInt("IncorrectGuesses", incorrectGuesses);
+
         }
         else if (binType != correctBinType)
         {
@@ -103,11 +102,11 @@ public class GameManager : MonoBehaviour
             {
                 incorrectGuesses += 1;
                 comboValue = 1;
-                PlayerPrefs.SetInt("IncorrectGuesses", incorrectGuesses);
-                PlayerPrefs.SetInt("ComboValue", comboValue);
             }
-            
-            
+            PlayerPrefs.SetInt("IncorrectGuesses", incorrectGuesses);
+            PlayerPrefs.SetInt("ComboValue", comboValue);
+
+
             //Play dialogue. 
             Dialogue.playDialogue("fail");
 

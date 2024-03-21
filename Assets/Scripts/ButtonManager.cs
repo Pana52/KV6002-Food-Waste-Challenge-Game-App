@@ -15,6 +15,7 @@ public class ButtonManager : MonoBehaviour
     {
         Time.timeScale = 1f;
         PlayerPrefs.SetInt("CurrentLevel", 4);
+        PlayerPrefs.Save();
         SceneManager.LoadScene(1);
     }
 
@@ -34,18 +35,21 @@ public class ButtonManager : MonoBehaviour
     {
         Time.timeScale = 1f;
         PlayerPrefs.SetInt("CurrentLevel", 1);
+        PlayerPrefs.Save();
         SceneManager.LoadScene(1);
     }
     public void LoadLevel2()
     {
         Time.timeScale = 1f;
         PlayerPrefs.SetInt("CurrentLevel", 2);
+        PlayerPrefs.Save();
         SceneManager.LoadScene(1);
     }
     public void LoadLevel3()
     {
         Time.timeScale = 1f;
         PlayerPrefs.SetInt("CurrentLevel", 3);
+        PlayerPrefs.Save();
         SceneManager.LoadScene(1);
     }
 }

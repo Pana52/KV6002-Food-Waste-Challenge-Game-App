@@ -33,7 +33,7 @@ public class TrashManager : GameManager
     //Boolean to indicate if the coroutine is paused.
     private bool coroutinePaused = false;
 
-    private int currentLevel = 1;
+    private int currentLevel;
     
     //Reference to spawn location of trash.
     public GameObject spawnLocation;
@@ -69,6 +69,7 @@ public class TrashManager : GameManager
 
     private void Start()
     {
+        currentLevel = PlayerPrefs.GetInt("CurrentLevel", 1);
         foreach (GameObject life in guiLives)
         {
             life.SetActive(false);
@@ -153,6 +154,7 @@ public class TrashManager : GameManager
     }
     private void Update()
     {
+        Debug.Log(PlayerPrefs.GetInt("IncorrectGuesses"));
         //For testing
         if (Input.GetKeyDown(KeyCode.Space))
         {
