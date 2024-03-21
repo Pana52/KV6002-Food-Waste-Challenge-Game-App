@@ -14,7 +14,7 @@ public class HoverSound : MonoBehaviour, IPointerEnterHandler
     {
         if (audioManager != null)
         {
-            audioManager.PlaySFX(audioManager.buttonHover);
+            audioManager.PlaySFX(audioManager.buttonHover, 0.75f);
         }
     }
 }

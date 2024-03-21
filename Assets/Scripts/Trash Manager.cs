@@ -329,14 +329,14 @@ public class TrashManager : GameManager
 
             if(audioManager != null)
             {
-                audioManager.PlaySFX(audioManager.levelComplete);
+                audioManager.PlaySFX(audioManager.levelComplete, 0.75f);
             }
         }
         else
         {
             if(audioManager != null)
             {
-                audioManager.PlaySFX(audioManager.levelFail);
+                audioManager.PlaySFX(audioManager.levelFail, 0.75f);
             }
         }
         //Message if new high score achieved.  
