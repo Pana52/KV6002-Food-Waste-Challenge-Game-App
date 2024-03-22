@@ -119,48 +119,48 @@ public class DragAndDrop : GameManager
                     audioManager.PlaySFX(audioManager.cerealBox, 0.75f);
                     break;
                 case "Food Can":
-                    audioManager.PlaySFX(audioManager.foodCan, 0.75f);
+                    audioManager.PlaySFX(audioManager.foodCan, 0.55f);
                     break;
                 case "Magazine":
                 case "Newspaper":
-                    audioManager.PlaySFX(audioManager.paperFlip, 0.75f);
+                    audioManager.PlaySFX(audioManager.paperFlip, 0.95f);
                     break;
                 case "Milk Bottle":
                 case "Jam Jar":
                 case "Glass Bottle":
                 case "Bottle":
-                    audioManager.PlaySFX(audioManager.glassBottle, 0.75f);
+                    audioManager.PlaySFX(audioManager.glassBottle, 0.90f);
                     break;
                 case "Milk Carton":
                 case "Coffee Carton":
                 case "Cup":
-                    audioManager.PlaySFX(audioManager.carton, 0.75f);
+                    audioManager.PlaySFX(audioManager.carton, 0.75f); // Maybe change sound
                     break;
                 case "Aluminium Tray":
                     audioManager.PlaySFX(audioManager.foilTray, 0.75f);
                     break;
                 case "Pizza Box":
-                    audioManager.PlaySFX(audioManager.cardboardBox, 0.75f);
+                    audioManager.PlaySFX(audioManager.cardboardBox, 0.75f); // Maybe change sound
                     break;
                 case "Plastic Bottle":
                 case "Plastic Cup":
                 case "Yoghurt Tub":
-                    audioManager.PlaySFX(audioManager.plastic, 0.75f);
+                    audioManager.PlaySFX(audioManager.plastic, 0.75f); // Maybe change sound
                     break;
                 case "Plastic Straw":
-                    audioManager.PlaySFX(audioManager.straw, 0.75f);
+                    audioManager.PlaySFX(audioManager.straw, 0.75f); // Change sound
                     break;
                 case "Toy Soldier":
-                    audioManager.PlaySFX(audioManager.toy, 0.75f);
+                    audioManager.PlaySFX(audioManager.toy, 0.75f); // Change sound
                     break;
                 case "Take-Out Container":
-                    audioManager.PlaySFX(audioManager.polystyrene, 0.75f);
+                    audioManager.PlaySFX(audioManager.polystyrene, 0.85f);
                     break;
                 case "Aerosol Can":
-                    audioManager.PlaySFX(audioManager.aerosol, 0.75f);
+                    audioManager.PlaySFX(audioManager.aerosol, 0.65f);
                     break;
                 case "AA Battery":
-                    audioManager.PlaySFX(audioManager.battery, 0.75f);
+                    audioManager.PlaySFX(audioManager.battery, 0.85f);
                     break;
                 case "Cigarette":
                     audioManager.PlaySFX(audioManager.cigarette, 0.75f);
@@ -168,16 +168,16 @@ public class DragAndDrop : GameManager
                 case "Crisp Packet":
                 case "Carrier Bag":
                 case "Plastic Wrap":
-                    audioManager.PlaySFX(audioManager.plasticBag, 0.75f);
+                    audioManager.PlaySFX(audioManager.plasticBag, 1.20f);  // Change sound
                     break;
                 case "Soda Can":
-                    audioManager.PlaySFX(audioManager.canOpen, 0.75f);
+                    audioManager.PlaySFX(audioManager.canOpen, 0.55f);
                     break;
                 case "Light Bulb":
-                    audioManager.PlaySFX(audioManager.lightBulb, 0.75f);
+                    audioManager.PlaySFX(audioManager.lightBulb, 0.85f);
                     break;
                 case "Cigarette Lighter":
-                    audioManager.PlaySFX(audioManager.lighter, 0.75f);
+                    audioManager.PlaySFX(audioManager.lighter, 0.85f);
                     break;
                 default:
                     Debug.Log("No sound for this item. Trash type: " + trashName);
@@ -245,7 +245,7 @@ public class DragAndDrop : GameManager
                     currentlyHoveredBins.Add(binAnimator);
                     if(!hoverSoundPlayed)
                     {
-                        audioManager.PlaySFX(audioManager.binOpen, 0.75f);
+                        audioManager.PlaySFX(audioManager.binOpen, 0.70f);
                         hoverSoundPlayed = true;
                     }
                 }
@@ -263,7 +263,7 @@ public class DragAndDrop : GameManager
             if (!currentlyHoveredBins.Contains(prevBin))
             {
                 prevBin.SetBool("isHover", false);
-                audioManager.PlaySFX(audioManager.binClose, 0.75f);
+                audioManager.PlaySFX(audioManager.binClose, 0.65f);
             }
         }
 
