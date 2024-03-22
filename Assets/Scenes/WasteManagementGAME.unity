@@ -2247,6 +2247,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicSource: {fileID: 108758252}
   SFXSource: {fileID: 1524590487}
+  conveyorBeltSource: {fileID: 1524590487}
   myMixer: {fileID: 24100000, guid: 3173ab3695f586947becf5f98fda1b27, type: 2}
   MusicSlider: {fileID: 1109727409}
   SFXSlider: {fileID: 332641543}

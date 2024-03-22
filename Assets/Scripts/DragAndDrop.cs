@@ -11,7 +11,7 @@ public class DragAndDrop : GameManager
     private Collider coll;
     private float transitionTime = 0.5f;
     private Camera mainCamera;
-    float mouseSpeed = 0.8f;
+    float mouseSpeed = 1.5f;
     private TextMeshProUGUI objectInfoText;
 
     private bool hoverSoundPlayed = false;
