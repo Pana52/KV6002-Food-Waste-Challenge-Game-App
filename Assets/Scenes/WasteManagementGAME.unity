@@ -1768,7 +1768,7 @@ GameObject:
   - component: {fileID: 332641543}
   m_Layer: 5
   m_Name: SFX Slider
-  m_TagString: Untagged
+  m_TagString: SFXSlider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2249,8 +2249,6 @@ MonoBehaviour:
   SFXSource: {fileID: 1524590487}
   conveyorBeltSource: {fileID: 1524590487}
   myMixer: {fileID: 24100000, guid: 3173ab3695f586947becf5f98fda1b27, type: 2}
-  MusicSlider: {fileID: 1109727409}
-  SFXSlider: {fileID: 332641543}
   mainMenu: {fileID: 8300000, guid: ea4edb1c8bd0cb4468b5436b2a2c1806, type: 3}
   mainGame: {fileID: 8300000, guid: a03287e4db56dd34fb86d5677b0f6890, type: 3}
   buttonPressed: {fileID: 8300000, guid: 164f71f3ee2599941b4a5a848ff430d5, type: 3}
@@ -5152,7 +5150,7 @@ GameObject:
   - component: {fileID: 1109727409}
   m_Layer: 5
   m_Name: Music Slider
-  m_TagString: Untagged
+  m_TagString: MusicSlider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

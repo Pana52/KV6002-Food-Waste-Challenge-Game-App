@@ -10,9 +10,22 @@ public class pauseMenu : MonoBehaviour
     public GameObject PauseMenu;
     public GameObject PauseBG;
     public bool isPaused;
-   void Start()
+
+    // Reference to the AudioManager instance
+    public AudioManager audioManager; // Assign this in the Unity Inspector
+
+
+    void Start()
     {
-       PauseMenu.SetActive(false);
+        if (audioManager == null)
+        {
+            audioManager = FindObjectOfType<AudioManager>();
+            if (audioManager == null)
+            {
+                Debug.LogWarning("Failed to find AudioManager.");
+            }
+        }
+        PauseMenu.SetActive(false);
     }
 
 
@@ -34,15 +47,27 @@ public class pauseMenu : MonoBehaviour
 
     public void PauseGame()
     {
+        Debug.Log("Game Paused", this);
         PauseMenu.SetActive(true);
         PauseBG.SetActive(true);
         Time.timeScale = 0f;
         isPaused = true;
-        
+
+        // Ensure the AudioManager's sliders are set up when the pause menu is opened
+        if (audioManager != null)
+        {
+            audioManager.SetupSlidersWhenMenuOpens();
+        }
+        else
+        {
+            Debug.LogWarning("AudioManager reference not set in pauseMenu script.");
+        }
+
     }
 
     public void ResumeGame()
     {
+        Debug.Log("Game Resumed", this);
         PauseMenu.SetActive(false);
         PauseBG.SetActive(false);
         Time.timeScale = 1f;

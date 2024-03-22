@@ -1919,8 +1919,6 @@ MonoBehaviour:
   SFXSource: {fileID: 838563106}
   conveyorBeltSource: {fileID: 1482357791}
   myMixer: {fileID: 24100000, guid: 3173ab3695f586947becf5f98fda1b27, type: 2}
-  MusicSlider: {fileID: 867561610}
-  SFXSlider: {fileID: 898349784}
   mainMenu: {fileID: 8300000, guid: ea4edb1c8bd0cb4468b5436b2a2c1806, type: 3}
   mainGame: {fileID: 8300000, guid: a03287e4db56dd34fb86d5677b0f6890, type: 3}
   buttonPressed: {fileID: 8300000, guid: 164f71f3ee2599941b4a5a848ff430d5, type: 3}
@@ -1938,9 +1936,9 @@ MonoBehaviour:
   carton: {fileID: 8300000, guid: f87f73adde4b4ef4d940ec784aa30378, type: 3}
   foilTray: {fileID: 8300000, guid: 5ecb9e425ce423544aac5954457d6bdc, type: 3}
   plastic: {fileID: 8300000, guid: 695f29132bb323149903b878272b09ac, type: 3}
-  cardboardBox: {fileID: 8300000, guid: b08cec0179384ff49b34e09d331ff7ca, type: 3}
+  cardboardBox: {fileID: 8300000, guid: aeb32b9842d620449bb176f0b2ba432d, type: 3}
   straw: {fileID: 8300000, guid: 1139eddca789e744fa4a91edd0f52c87, type: 3}
-  toy: {fileID: 8300000, guid: 4a01bdd085bed3c42a1c1db58ff85d04, type: 3}
+  toy: {fileID: 8300000, guid: ce8655f325b04414b816123048978ca8, type: 3}
   polystyrene: {fileID: 8300000, guid: 448805d395369ef4283e6fb82c721e4a, type: 3}
   aerosol: {fileID: 8300000, guid: 2d50bd0ceb506b6458741d1b073ad34c, type: 3}
   battery: {fileID: 8300000, guid: 4266744ff61bc2145a328c97f2f08e6b, type: 3}
@@ -1948,7 +1946,7 @@ MonoBehaviour:
   plasticBag: {fileID: 8300000, guid: eca544152322f474caf0909d26368581, type: 3}
   canOpen: {fileID: 8300000, guid: ea9e60d1b916a434c9359a84c120a675, type: 3}
   glassBottle: {fileID: 8300000, guid: 00cb0b5bc75878a4795f4797240d1195, type: 3}
-  lightBulb: {fileID: 8300000, guid: e7336fe29eeefe34abdbed33dbf53ba7, type: 3}
+  lightBulb: {fileID: 8300000, guid: 74f9779ce59d382418221839db23a027, type: 3}
   lighter: {fileID: 8300000, guid: 5b601da2fa59e8444ac2d28f9a37f835, type: 3}
 --- !u!4 &607701155
 Transform:
@@ -2357,7 +2355,7 @@ GameObject:
   - component: {fileID: 867561610}
   m_Layer: 5
   m_Name: MusicSlider
-  m_TagString: Untagged
+  m_TagString: MusicSlider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2594,7 +2592,7 @@ GameObject:
   - component: {fileID: 898349784}
   m_Layer: 5
   m_Name: SFX Slider
-  m_TagString: Untagged
+  m_TagString: SFXSlider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

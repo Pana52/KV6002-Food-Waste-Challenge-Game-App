@@ -1,7 +1,6 @@
-using Unity.VisualScripting;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Audio;
-using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -12,10 +11,12 @@ public class AudioManager : MonoBehaviour
     [SerializeField] AudioSource SFXSource;
     [SerializeField] AudioSource conveyorBeltSource;
 
+    [Header("Mixers")]
     [SerializeField] private AudioMixer myMixer;
-    [SerializeField] private Slider MusicSlider;
-    [SerializeField] private Slider SFXSlider;
 
+    [Header("Sliders")]
+    private Slider MusicSlider;
+    private Slider SFXSlider;
 
     [Header("Audio Clip")]
     public AudioClip mainMenu;
@@ -48,7 +49,6 @@ public class AudioManager : MonoBehaviour
     public AudioClip lightBulb;
     public AudioClip lighter;
 
-
     private void Awake()
     {
         if (FindObjectsOfType<AudioManager>().Length > 1)
@@ -66,9 +66,11 @@ public class AudioManager : MonoBehaviour
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
+
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
 
+        StartCoroutine(WaitAndSetupSliders());
 
         switch (scene.name)
         {
@@ -90,65 +92,47 @@ public class AudioManager : MonoBehaviour
                 break;
         }
         musicSource.Play();
-
-
-
-
     }
 
-    private void Start()
+    public void SetupSlidersWhenMenuOpens()
     {
- 
+        MusicSlider = GameObject.FindGameObjectWithTag("MusicSlider")?.GetComponent<Slider>();
+        Debug.Log($"Music Slider Found: {MusicSlider != null}", this);
+        SFXSlider = GameObject.FindGameObjectWithTag("SFXSlider")?.GetComponent<Slider>();
+        Debug.Log($"SFX Slider Found: {SFXSlider != null}", this);
 
-        if (PlayerPrefs.HasKey("musicVolume"))
+        if (MusicSlider != null)
         {
-            LoadVolume();
-        }
-        else
-        {
-            SetMusicVolume();
-        }
-        if (PlayerPrefs.HasKey("sfxVolume"))
-        {
-            LoadSFX();
-        }
-        else
-        {
-            SetMusicVolume();
-            SetSFXVolume();
+            MusicSlider.onValueChanged.RemoveAllListeners(); // Avoid duplicates
+            MusicSlider.onValueChanged.AddListener(SetMusicVolume); // Setup listener
+            MusicSlider.value = PlayerPrefs.GetFloat("musicVolume", 0.75f); // Use saved volume
         }
 
-        // sets music volume at start
-        // sets sfx volume at start
+        if (SFXSlider != null)
+        {
+            SFXSlider.onValueChanged.RemoveAllListeners(); // Avoid duplicates
+            SFXSlider.onValueChanged.AddListener(SetSFXVolume); // Setup listener
+            SFXSlider.value = PlayerPrefs.GetFloat("sfxVolume", 0.75f); // Use saved volume
+        }
     }
 
-
-
-    public void SetMusicVolume()
+    private IEnumerator WaitAndSetupSliders()
     {
-        float volume = MusicSlider.value;
+        yield return new WaitForEndOfFrame();
+        SetupSlidersWhenMenuOpens(); // Attempt to setup sliders, if available
+    }
+
+    public void SetMusicVolume(float volume)
+    {
         myMixer.SetFloat("music", Mathf.Log10(volume) * 20);
         PlayerPrefs.SetFloat("musicVolume", volume);
     }
 
-    private void LoadVolume()
-    {
-        MusicSlider.value = PlayerPrefs.GetFloat("musicVolume");
-        SetMusicVolume();
-    }
 
-
-    public void SetSFXVolume()
+    public void SetSFXVolume(float volume)
     {
-        float volume = SFXSlider.value;
         myMixer.SetFloat("sfx", Mathf.Log10(volume) * 20);
         PlayerPrefs.SetFloat("sfxVolume", volume);
-    }
-
-    private void LoadSFX()
-    {
-        SFXSlider.value = PlayerPrefs.GetFloat("sfxVolume");
-        SetSFXVolume();
     }
 
     private void OnDestroy()
@@ -159,7 +143,6 @@ public class AudioManager : MonoBehaviour
     public void PlaySFX(AudioClip clip, float volume)
     {
         Debug.Log($"Attempting to play SFX: {clip.name}");
-        SFXSource.volume = volume;
-        SFXSource.PlayOneShot(clip);
+        SFXSource.PlayOneShot(clip, volume);
     }
 }

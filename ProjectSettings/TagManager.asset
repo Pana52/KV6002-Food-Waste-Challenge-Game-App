@@ -16,6 +16,8 @@ TagManager:
   - Plastic Bin
   - Audio
   - CopyLocation
+  - MusicSlider
+  - SFXSlider
   layers:
   - Default
   - TransparentFX
