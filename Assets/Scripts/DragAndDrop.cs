@@ -57,6 +57,7 @@ public class DragAndDrop : GameManager
         {
 
             Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.None;
             Vector3 currentMousePosition = GetMouseWorldPos();
             Vector3 positionDelta = currentMousePosition - initialMousePosition;
             Vector3 newPosition = initialPosition + new Vector3(positionDelta.x * mouseSpeed, 0, positionDelta.y * mouseSpeed);
@@ -70,6 +71,7 @@ public class DragAndDrop : GameManager
     void OnMouseDown()
     {
         Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Confined;
         initialPosition = transform.position;
         initialMousePosition = GetMouseWorldPos();
         SetIsDragging(true);
@@ -191,6 +193,7 @@ public class DragAndDrop : GameManager
     void OnMouseUp()
     {
         Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.Confined;
         SetIsDragging(false);
         coll.enabled = true;
 
@@ -280,8 +283,9 @@ public class DragAndDrop : GameManager
     Vector3 GetMouseWorldPos()
     {
         Vector3 mousePos = Input.mousePosition;
-        mousePos.z = mainCamera.WorldToScreenPoint(initialPosition).z;
-        return mainCamera.ScreenToWorldPoint(mousePos);
+        // Dynamically adjust the Z based on the object's distance from the camera
+        mousePos.z = Camera.main.WorldToScreenPoint(transform.position).z;
+        return Camera.main.ScreenToWorldPoint(mousePos);
     }
     
     bool IsValidDropLocation()

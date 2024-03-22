@@ -38,4 +38,9 @@ public class SceneTransitionManager : MonoBehaviour
         // Load the scene
         SceneManager.LoadScene(sceneName);
     }
+
+    public void exitApp()
+    {
+        Application.Quit();
+    }
 }
