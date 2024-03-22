@@ -78,10 +78,10 @@ public class AudioManager : MonoBehaviour
                 break;
             case "WasteManagementGAME":
                 musicSource.clip = mainGame;
-                musicSource.volume = 0.35f;
+                musicSource.volume = 0.20f;
                 // Play the conveyor belt sound effect at the start of the WasteManagementGame
                 conveyorBeltSource.clip = conveyorBelt; // Assuming conveyorBelt is your AudioClip for the conveyor belt sound
-                conveyorBeltSource.volume = 0.25f;
+                conveyorBeltSource.volume = 0.20f;
                 conveyorBeltSource.loop = true;
                 conveyorBeltSource.Play(); // Play the sound effect
                 break;

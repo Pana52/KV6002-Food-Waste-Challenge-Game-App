@@ -134,24 +134,24 @@ public class DragAndDrop : GameManager
                 case "Milk Carton":
                 case "Coffee Carton":
                 case "Cup":
-                    audioManager.PlaySFX(audioManager.carton, 0.75f); // Maybe change sound
+                    audioManager.PlaySFX(audioManager.carton, 0.75f); 
                     break;
                 case "Aluminium Tray":
                     audioManager.PlaySFX(audioManager.foilTray, 0.75f);
                     break;
                 case "Pizza Box":
-                    audioManager.PlaySFX(audioManager.cardboardBox, 0.75f); // Maybe change sound
+                    audioManager.PlaySFX(audioManager.cardboardBox, 1.00f); 
                     break;
                 case "Plastic Bottle":
                 case "Plastic Cup":
                 case "Yoghurt Tub":
-                    audioManager.PlaySFX(audioManager.plastic, 0.75f); // Maybe change sound
+                    audioManager.PlaySFX(audioManager.plastic, 0.75f); 
                     break;
                 case "Plastic Straw":
-                    audioManager.PlaySFX(audioManager.straw, 0.75f); // Change sound
+                    audioManager.PlaySFX(audioManager.straw, 0.80f); 
                     break;
                 case "Toy Soldier":
-                    audioManager.PlaySFX(audioManager.toy, 0.75f); // Change sound
+                    audioManager.PlaySFX(audioManager.toy, 0.80f); 
                     break;
                 case "Take-Out Container":
                     audioManager.PlaySFX(audioManager.polystyrene, 0.85f);
@@ -168,13 +168,13 @@ public class DragAndDrop : GameManager
                 case "Crisp Packet":
                 case "Carrier Bag":
                 case "Plastic Wrap":
-                    audioManager.PlaySFX(audioManager.plasticBag, 1.20f);  // Change sound
+                    audioManager.PlaySFX(audioManager.plasticBag, 1.60f); 
                     break;
                 case "Soda Can":
                     audioManager.PlaySFX(audioManager.canOpen, 0.55f);
                     break;
                 case "Light Bulb":
-                    audioManager.PlaySFX(audioManager.lightBulb, 0.85f);
+                    audioManager.PlaySFX(audioManager.lightBulb, 0.95f);
                     break;
                 case "Cigarette Lighter":
                     audioManager.PlaySFX(audioManager.lighter, 0.85f);
