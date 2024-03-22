@@ -10,6 +10,7 @@ public class AudioManager : MonoBehaviour
     [Header("Audio Source")]
     [SerializeField] AudioSource musicSource;
     [SerializeField] AudioSource SFXSource;
+    [SerializeField] AudioSource conveyorBeltSource;
 
     [SerializeField] private AudioMixer myMixer;
     [SerializeField] private Slider MusicSlider;
@@ -79,10 +80,10 @@ public class AudioManager : MonoBehaviour
                 musicSource.clip = mainGame;
                 musicSource.volume = 0.35f;
                 // Play the conveyor belt sound effect at the start of the WasteManagementGame
-                SFXSource.clip = conveyorBelt; // Assuming conveyorBelt is your AudioClip for the conveyor belt sound
-                SFXSource.volume = 0.25f;
-                SFXSource.loop = true;
-                SFXSource.Play(); // Play the sound effect
+                conveyorBeltSource.clip = conveyorBelt; // Assuming conveyorBelt is your AudioClip for the conveyor belt sound
+                conveyorBeltSource.volume = 0.25f;
+                conveyorBeltSource.loop = true;
+                conveyorBeltSource.Play(); // Play the sound effect
                 break;
             default:
                 // Optional: handle any default case or do nothing

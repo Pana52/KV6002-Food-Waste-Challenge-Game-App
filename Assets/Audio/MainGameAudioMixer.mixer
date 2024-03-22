@@ -14,6 +14,20 @@ AudioMixerEffectController:
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
   m_Bypass: 0
+--- !u!244 &-4190154133337285341
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 38e6acded66dba642b1fcbebc42efc8f
+  m_EffectName: Attenuation
+  m_MixLevel: 1403c9e3bae706041bf6d614d437a5aa
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
 --- !u!243 &-1776728229250015949
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
@@ -58,6 +72,7 @@ AudioMixerController:
     - 567837abd9356aa498b86e72306b49c9
     - 545dd21d2165ae84f8f90eb064797f41
     - 313ae9fe851e551469fe750903c654a4
+    - fe824f3edd1d6b943a25d9d0ea72f706
     name: View
   m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 24500006}
@@ -73,6 +88,7 @@ AudioMixerGroupController:
   m_Children:
   - {fileID: -1776728229250015949}
   - {fileID: 1705787133136018217}
+  - {fileID: 7829871888255456319}
   m_Volume: 2fc660c5c1bff0747bf3a3f46b171815
   m_Pitch: 6cf09ad027a75b042b69ab981cd450ea
   m_Send: 00000000000000000000000000000000
@@ -141,3 +157,22 @@ AudioMixerEffectController:
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
   m_Bypass: 0
+--- !u!243 &7829871888255456319
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: conveyorBelt
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: fe824f3edd1d6b943a25d9d0ea72f706
+  m_Children: []
+  m_Volume: c2b66367ce6ca60419ae1a55c57d6f69
+  m_Pitch: 645d8f3504c146141bd2a048dfcc617b
+  m_Send: 00000000000000000000000000000000
+  m_Effects:
+  - {fileID: -4190154133337285341}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0

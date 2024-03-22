@@ -71,7 +71,7 @@ public class GameManager : MonoBehaviour
 
             if (audioManager != null)
             {
-                audioManager.PlaySFX(audioManager.itemRight, 0.75f);
+                audioManager.PlaySFX(audioManager.itemRight, 0.35f);
             }
         }
 
@@ -108,7 +108,7 @@ public class GameManager : MonoBehaviour
 
             if (audioManager != null)
             {
-                audioManager.PlaySFX(audioManager.itemWrong, 0.75f);
+                audioManager.PlaySFX(audioManager.itemWrong, 0.28f);
             }
 
         }
