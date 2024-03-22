@@ -329,7 +329,7 @@ public class TrashManager : GameManager
 
             if(audioManager != null)
             {
-                audioManager.PlaySFX(audioManager.levelComplete, 0.75f);
+                audioManager.PlaySFX(audioManager.levelComplete, 0.35f);
             }
         }
         else

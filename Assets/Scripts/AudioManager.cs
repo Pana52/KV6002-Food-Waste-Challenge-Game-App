@@ -74,7 +74,7 @@ public class AudioManager : MonoBehaviour
         {
             case "MainMenu":
                 musicSource.clip = mainMenu;
-                musicSource.volume = 0.35f;
+                musicSource.volume = 0.20f;
                 break;
             case "WasteManagementGAME":
                 musicSource.clip = mainGame;
