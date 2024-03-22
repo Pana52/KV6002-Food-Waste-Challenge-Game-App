@@ -19,7 +19,7 @@ public class SceneTransitionManager : MonoBehaviour
         {
             Debug.Log("Playing button pressed SFX");
             // Play the buttonPressed sound effect
-            audioManager.PlaySFX(audioManager.buttonPressed, 0.35f);
+            audioManager.PlaySFX(audioManager.buttonPressed, 0.30f);
         }
         else
         {

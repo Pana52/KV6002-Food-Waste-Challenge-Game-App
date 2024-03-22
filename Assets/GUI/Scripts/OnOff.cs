@@ -17,7 +17,7 @@ public class OnOff : MonoBehaviour
     {
         if(audioManager != null)
         {
-            audioManager.PlaySFX(audioManager.buttonPressed, 0.35f);
+            audioManager.PlaySFX(audioManager.buttonPressed, 0.30f);
         }
         else
         {
