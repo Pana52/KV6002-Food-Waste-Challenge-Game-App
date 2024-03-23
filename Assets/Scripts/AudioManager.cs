@@ -62,8 +62,6 @@ public class AudioManager : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
 
-        SceneManager.sceneLoaded += OnSceneLoaded;
-
         // Subscribe to the sceneLoaded event
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
@@ -74,6 +72,12 @@ public class AudioManager : MonoBehaviour
         EnsureAudioSourcesEnabled();
 
         StartCoroutine(WaitAndSetupSliders());
+
+        // Stop the conveyor belt sound if not in the main game scene
+        if (scene.name != "WasteManagementGAME" && conveyorBeltSource.isPlaying)
+        {
+            conveyorBeltSource.Stop();
+        }
 
         switch (scene.name)
         {
@@ -116,6 +120,7 @@ public class AudioManager : MonoBehaviour
             SFXSlider.onValueChanged.RemoveAllListeners(); // Avoid duplicates
             SFXSlider.onValueChanged.AddListener(SetSFXVolume); // Setup listener
             SFXSlider.value = PlayerPrefs.GetFloat("sfxVolume", 0.75f); // Use saved volume
+            SetSFXVolume(SFXSlider.value); // Apply the saved volume immediately
         }
     }
 
