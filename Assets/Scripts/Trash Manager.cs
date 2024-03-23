@@ -1,3 +1,9 @@
+/// <summary>
+/// Script Summary - Manages trash objects. Inherits from GameManager and also generates trash items,
+///                  checks bin types with items, and manages level progression. 
+/// @Author - Luke Walpole + Others
+/// </summary>
+
 using System;
 using System.Collections;
 using TMPro;
@@ -28,13 +34,9 @@ public class TrashManager : GameManager
     private int incorrectGuessesLimit = 3;
     //Boolean if player achieves new high score. 
     private bool isNewHighScore = false;
-
-
     //Boolean to indicate if the coroutine is paused.
     private bool coroutinePaused = false;
-
     private int currentLevel;
-    
     //Reference to spawn location of trash.
     public GameObject spawnLocation;
     //UI element references. 
@@ -42,7 +44,6 @@ public class TrashManager : GameManager
     [SerializeField] private Text GameOverMessgae;
 
     AudioManager audioManager;
-
 
     public TextMeshProUGUI objectInfoText;
 
@@ -58,10 +59,13 @@ public class TrashManager : GameManager
             Instance = this;
         }
 
-        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+        // Find AudioManager + Basic error handling
+        if (audioManager == null)
+        {
+            audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+        }
     }
 
-   
     public TextMeshProUGUI GetObjectInfoText()
     {
         return objectInfoText;
@@ -74,7 +78,6 @@ public class TrashManager : GameManager
         {
             life.SetActive(false);
         }
-
         theReset();
     }
 
@@ -146,8 +149,8 @@ public class TrashManager : GameManager
                 trash[i] = trashItems[i];
             }
         }
-
     }
+
     private void Update()
     {
         //For testing
@@ -171,10 +174,8 @@ public class TrashManager : GameManager
             GameOver(PlayerPrefs.GetInt("PlayerScore"), PlayerPrefs.GetInt("HighScore"));
             Setup(PlayerPrefs.GetInt("PlayerScore"), gameOverPopUp);
         }
-
         livesChecker();
     }
-
 
     public void livesChecker() //Player lives display. 
     {
@@ -204,8 +205,8 @@ public class TrashManager : GameManager
     {
         gameover.SetActive(true);
         points.text = score.ToString() + " POINTS";
-
     }
+
     public void generateTrash()
     {
         //int randRot = _random.Next(-180, 180);
@@ -231,6 +232,7 @@ public class TrashManager : GameManager
             Instantiate(trash[_random.Next(0, trash.Length)], position, Quaternion.Euler(0, rotation, 0));
         }
     }
+
     IEnumerator GenerateTrashCoroutine() //Generates trash at an interval specified by the trashInterval variable. 
     {
         while (levelActive)
@@ -240,10 +242,10 @@ public class TrashManager : GameManager
                 generateTrash();
                 yield return new WaitForSeconds(trashInterval);
             }
-
             yield return null;
         }
     }
+
     //Ends level after the lenght of time specified by the levelInterval variable. 
     IEnumerator EndLevelCoroutine()
     {
@@ -283,6 +285,7 @@ public class TrashManager : GameManager
         }     
         PlayerPrefs.Save();  
     }
+
     void StartNextLevel()
     {
         //Reset levelActive to true for next level.
@@ -291,6 +294,7 @@ public class TrashManager : GameManager
         //Start coroutine.
         StartCoroutine(EndLevelCoroutine());
     }
+
     public void DestroyAllTrashObjects() //Destroys all trash objects in the scene. 
     {
         //Add trash object to array. 
@@ -304,9 +308,9 @@ public class TrashManager : GameManager
         Cursor.visible = true;
         SetIsDragging(false);
     }
+
     void GameOver(int score, int highScore)
     {
-        
         //Pause Gameplay. 
         Time.timeScale = 0f;
         gameOverScreen.SetActive(true);
@@ -316,15 +320,7 @@ public class TrashManager : GameManager
         {
             audioManager.StopMusicAndConveyorBelt();
         }
-        else
-        {
-            Debug.LogWarning("AudioManager not found in the scene");
-        }
 
-        if (audioManager == null)
-        {
-            Debug.Log("Audiomanager not found in the scene");
-        }
         //Play dialogue. 
         Dialogue.playDialogue("gameOver");
         //Set game over UI visibility to true.  
@@ -360,6 +356,7 @@ public class TrashManager : GameManager
         }
         PlayerPrefs.Save();
     }
+
     void resetPlayerPrefs() //Resets certain PlayerPrefs. 
     {
         PlayerPrefs.SetInt("IncorrectGuesses", 0);
@@ -368,6 +365,7 @@ public class TrashManager : GameManager
         PlayerPrefs.Save();
         gameOverScreen.SetActive(false);
     }
+
     int rollDice()
     {
         int randomNum = new System.Random().Next(1, 10);
