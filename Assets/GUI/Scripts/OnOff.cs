@@ -1,3 +1,8 @@
+/// <summary>
+/// Script Summary - Toggles active state of button on and off when clicked.
+/// @Author - Luke Walpole + Others
+/// </summary>
+
 using UnityEngine;
 
 public class OnOff : MonoBehaviour

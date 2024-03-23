@@ -1,3 +1,11 @@
+/// <summary>
+/// Script Summary - Manages scene transitions. Adds a delay. This was created to allow time for button click audio
+///                  to play before the scene transitioned. 
+/// @Author - Luke Walpole + ChatGPT 
+/// AI Usage - ChatGPT was used to help come up with a solution to fix the problem the button audio not playing as 
+///            well as help debug my code that wasn't working.
+/// </summary>
+
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;

@@ -1,3 +1,8 @@
+/// <summary>
+/// Script Summary - Plays hover sound effect when the mouse cursor hovers over buttons.
+/// @Author - Luke Walpole
+/// </summary>
+
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -7,7 +12,11 @@ public class HoverSound : MonoBehaviour, IPointerEnterHandler
 
     void Start()
     {
-        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+        // Find AudioManager + Basic error handling
+        if (audioManager == null)
+        {
+            audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+        }
     }
 
     public void OnPointerEnter(PointerEventData eventData)
