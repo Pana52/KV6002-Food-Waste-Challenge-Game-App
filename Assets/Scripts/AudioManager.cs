@@ -1,3 +1,14 @@
+/// <summary>
+/// Script Summary - Manages all audio functionaility, i.e. music, sfx, volume, sliders.
+///                  Singleton structure so only one instance of audiomanager in the game.
+///                  BG music, transitions, user prefs for audio volume.
+/// @Author - Luke Walpole
+/// @Generated - ChatGPT
+/// @Generated - ChatGPT was used to help come up with the awake(), setupsliderswhenmenuopens(), 
+///              waitandsetupsliders(), ensureaudiosourcesenabled(), and stopmusicandconveyorbelt().
+///              Also helped me debug my code that wasn't working. 
+/// </summary>
+
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Audio;
@@ -51,6 +62,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip lightBulb;
     public AudioClip lighter;
 
+    // Single instance of Audiomanager
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -61,19 +73,17 @@ public class AudioManager : MonoBehaviour
 
         Instance = this;
         DontDestroyOnLoad(gameObject);
-
-        // Subscribe to the sceneLoaded event
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
-
+    // Adjusts audio sources when new scene is loaded
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         EnsureAudioSourcesEnabled();
 
         StartCoroutine(WaitAndSetupSliders());
 
-        // Stop the conveyor belt sound if not in the main game scene
+        // Stop the conveyor belt audio if not in the main game scene
         if (scene.name != "WasteManagementGAME" && conveyorBeltSource.isPlaying)
         {
             conveyorBeltSource.Stop();
@@ -88,14 +98,12 @@ public class AudioManager : MonoBehaviour
             case "WasteManagementGAME":
                 musicSource.clip = mainGame;
                 musicSource.volume = 0.20f;
-                // Play the conveyor belt sound effect at the start of the WasteManagementGame
-                conveyorBeltSource.clip = conveyorBelt; // Assuming conveyorBelt is your AudioClip for the conveyor belt sound
+                conveyorBeltSource.clip = conveyorBelt; 
                 conveyorBeltSource.volume = 0.20f;
                 conveyorBeltSource.loop = true;
-                conveyorBeltSource.Play(); // Play the sound effect
+                conveyorBeltSource.Play(); 
                 break;
             default:
-                // Optional: handle any default case or do nothing
                 break;
         }
         musicSource.Play();
@@ -104,30 +112,28 @@ public class AudioManager : MonoBehaviour
     public void SetupSlidersWhenMenuOpens()
     {
         MusicSlider = GameObject.FindGameObjectWithTag("MusicSlider")?.GetComponent<Slider>();
-        Debug.Log($"Music Slider Found: {MusicSlider != null}", this);
         SFXSlider = GameObject.FindGameObjectWithTag("SFXSlider")?.GetComponent<Slider>();
-        Debug.Log($"SFX Slider Found: {SFXSlider != null}", this);
 
         if (MusicSlider != null)
         {
-            MusicSlider.onValueChanged.RemoveAllListeners(); // Avoid duplicates
-            MusicSlider.onValueChanged.AddListener(SetMusicVolume); // Setup listener
-            MusicSlider.value = PlayerPrefs.GetFloat("musicVolume", 0.75f); // Use saved volume
+            MusicSlider.onValueChanged.RemoveAllListeners(); 
+            MusicSlider.onValueChanged.AddListener(SetMusicVolume); 
+            MusicSlider.value = PlayerPrefs.GetFloat("musicVolume", 0.75f); 
         }
 
         if (SFXSlider != null)
         {
-            SFXSlider.onValueChanged.RemoveAllListeners(); // Avoid duplicates
-            SFXSlider.onValueChanged.AddListener(SetSFXVolume); // Setup listener
-            SFXSlider.value = PlayerPrefs.GetFloat("sfxVolume", 0.75f); // Use saved volume
-            SetSFXVolume(SFXSlider.value); // Apply the saved volume immediately
+            SFXSlider.onValueChanged.RemoveAllListeners(); 
+            SFXSlider.onValueChanged.AddListener(SetSFXVolume); 
+            SFXSlider.value = PlayerPrefs.GetFloat("sfxVolume", 0.75f); 
+            SetSFXVolume(SFXSlider.value); 
         }
     }
 
     private IEnumerator WaitAndSetupSliders()
     {
         yield return new WaitForEndOfFrame();
-        SetupSlidersWhenMenuOpens(); // Attempt to setup sliders, if available
+        SetupSlidersWhenMenuOpens(); 
     }
 
     public void SetMusicVolume(float volume)
@@ -135,7 +141,6 @@ public class AudioManager : MonoBehaviour
         myMixer.SetFloat("music", Mathf.Log10(volume) * 20);
         PlayerPrefs.SetFloat("musicVolume", volume);
     }
-
 
     public void SetSFXVolume(float volume)
     {
@@ -152,30 +157,21 @@ public class AudioManager : MonoBehaviour
     {
         if (clip == null)
         {
-            Debug.LogWarning("Attempted to play a null AudioClip.");
             return;
         }
 
         if (!SFXSource.enabled)
         {
-            Debug.LogWarning("SFXSource is disabled at play time.");
-            SFXSource.enabled = true; // Ensure it's enabled
+            SFXSource.enabled = true; 
         }
-
-        Debug.Log($"Playing SFX: {clip.name} at volume: {volume}");
         SFXSource.PlayOneShot(clip, volume);
     }
 
-
-
-    // Ensure all AudioSource components are enabled
     private void EnsureAudioSourcesEnabled()
     {
         if (!musicSource.enabled) musicSource.enabled = true;
         if (!SFXSource.enabled) SFXSource.enabled = true;
         if (!conveyorBeltSource.enabled) conveyorBeltSource.enabled = true;
-
-        Debug.Log("All AudioSource components are ensured to be enabled.");
     }
 
     public void StopMusicAndConveyorBelt()
@@ -189,5 +185,4 @@ public class AudioManager : MonoBehaviour
             conveyorBeltSource.Stop();
         }
     }
-
 }
