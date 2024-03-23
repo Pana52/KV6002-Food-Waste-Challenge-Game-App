@@ -1,3 +1,8 @@
+/// <summary>
+/// Script Summary - Manages game states. item dragging, dialogue, score tracking.
+///                  Handles items going into the right bin and conveyor belt speed.
+/// @Author - Luke Walpole + Others
+/// </summary>
 
 using TMPro;
 using UnityEngine;
@@ -10,21 +15,17 @@ public class GameManager : MonoBehaviour
     private bool isDragging;
     private const int baseScoreValue = 10;
     private TextMeshProUGUI ScoreText;
-    //Initialize class reference. 
     DialogueManager dialogue;
+    public DialogueManager Dialogue { get => dialogue; set => dialogue = value; }
 
     AudioManager audioManager;
 
-    public DialogueManager Dialogue { get => dialogue; set => dialogue = value; }
-
     private void Awake()
     {
-        // Attempt to find and reference the AudioManager on Awake
-        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
-
+        // Find AudioManager + Basic error handling
         if (audioManager == null)
         {
-            Debug.LogWarning("Failed to find an AudioManager in the scene.");
+            audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
         }
     }
 
@@ -33,13 +34,14 @@ public class GameManager : MonoBehaviour
     {
         return isDragging;
     }
+
     public void SetIsDragging(bool value)
     {
         isDragging = value;
     }
+
     private void Start()
     {
-
         //Get playerPrefs.
         PlayerPrefs.GetInt("PlayerScore", 0);
         PlayerPrefs.GetInt("ComboValue", 1);
@@ -108,7 +110,6 @@ public class GameManager : MonoBehaviour
             }
             PlayerPrefs.SetInt("ComboValue", comboValue);
             PlayerPrefs.SetInt("IncorrectGuesses", incorrectGuesses);
-
         }
         //Incorrect bin. 
         else if (binType != correctBinType)
@@ -124,7 +125,6 @@ public class GameManager : MonoBehaviour
             }
             PlayerPrefs.SetInt("IncorrectGuesses", incorrectGuesses);
             PlayerPrefs.SetInt("ComboValue", comboValue);
-
 
             //Play dialogue. 
 
@@ -148,12 +148,10 @@ public class GameManager : MonoBehaviour
             {
                 Dialogue.playDialogue("greenWrong");
             }
-
             if (audioManager != null)
             {
                 audioManager.PlaySFX(audioManager.itemWrong, 0.28f);
             }
-
         }
         PlayerPrefs.Save();
         Destroy(gameObject);
@@ -204,8 +202,6 @@ public class GameManager : MonoBehaviour
             }
             PlayerPrefs.SetFloat("ConveyorSpeed", speed);
             PlayerPrefs.Save();
-        }
-
-        
+        } 
     }
 }
