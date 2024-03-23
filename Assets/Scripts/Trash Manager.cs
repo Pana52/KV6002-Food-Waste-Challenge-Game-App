@@ -89,7 +89,7 @@ public class TrashManager : GameManager
         //Start Trash generation.
         StartCoroutine(GenerateTrashCoroutine());
         //Play dialogue. 
-        Dialogue.playDialogue("welcome");
+        Dialogue.playDialogue("welcome", null);
     }
     
     void createTrashArray(int level)
@@ -274,7 +274,7 @@ public class TrashManager : GameManager
             currentLevel++;
             PlayerPrefs.SetInt("CurrentLevel", currentLevel);
             //Play dialogue. 
-            Dialogue.playDialogue("level");
+            Dialogue.playDialogue("level", null);
             StartNextLevel();
         }
         if (currentLevel == 4)
@@ -317,7 +317,7 @@ public class TrashManager : GameManager
             Debug.Log("Audiomanager not found in the scene");
         }
         //Play dialogue. 
-        Dialogue.playDialogue("gameOver");
+        Dialogue.playDialogue("gameOver", null);
         //Set game over UI visibility to true.  
         GameOverUI.SetActive(true);
         int previousHighScore = PlayerPrefs.GetInt("PreviousHighScore", highScore);

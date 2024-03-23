@@ -55,7 +55,7 @@ public class GameManager : MonoBehaviour
         Dialogue = GameObject.FindGameObjectWithTag("DialogueManager").GetComponent<DialogueManager>();
     }
 
-    public void checkTrash(string binType, string correctBinType)
+    public void checkTrash(string binType, string correctBinType, string subType)
     {
         int comboValue = PlayerPrefs.GetInt("ComboValue");
         int incorrectGuesses = PlayerPrefs.GetInt("IncorrectGuesses");
@@ -67,7 +67,27 @@ public class GameManager : MonoBehaviour
             SetIsDragging(false);
             PlayerPrefs.SetInt("IncorrectGuesses", incorrectGuesses);
             //Play dialogue. 
-            Dialogue.playDialogue("success");
+
+            if (binType == "Bin_Hazard")
+            {
+                Dialogue.playDialogue("redCorrect", null);
+            }
+            if (binType == "Bin_Paper")
+            {
+                Dialogue.playDialogue("yellowCorrect", null);
+            }
+            if (binType == "Bin_General")
+            {
+                Dialogue.playDialogue("blackCorrect", null);
+            }
+            if (binType == "Bin_Recycled")
+            {
+                Dialogue.playDialogue("blueCorrect", subType);
+            }
+            if (binType == "Bin_Glass")
+            {
+                Dialogue.playDialogue("greenCorrect", null);
+            }
 
             if (audioManager != null)
             {
@@ -104,7 +124,27 @@ public class GameManager : MonoBehaviour
 
 
             //Play dialogue. 
-            Dialogue.playDialogue("fail");
+
+            if (binType == "Bin_Hazard")
+            {
+                Dialogue.playDialogue("redWrong", null);
+            }
+            if (binType == "Bin_Paper")
+            {
+                Dialogue.playDialogue("yellowWrong", null);
+            }
+            if (binType == "Bin_General")
+            {
+                Dialogue.playDialogue("blackWrong", null);
+            }
+            if (binType == "Bin_Recycled")
+            {
+                Dialogue.playDialogue("blueWrong", null);
+            }
+            if (binType == "Bin_Glass")
+            {
+                Dialogue.playDialogue("greenWrong", null);
+            }
 
             if (audioManager != null)
             {

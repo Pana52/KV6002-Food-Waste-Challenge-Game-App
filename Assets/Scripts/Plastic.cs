@@ -7,11 +7,11 @@ public class Plastic : Trash
     {
         if (plasticSubType == "Recyclable")
         {
-            checkCollider(trigger, "Bin_Recycled");
+            checkCollider(trigger, "Bin_Recycled", "Plastic");
         }
         if (plasticSubType == "Non-Recyclable" || plasticSubType == null)
         {
-            checkCollider(trigger, "Bin_General");
+            checkCollider(trigger, "Bin_General", "Plastic");
         }
     }
 }
