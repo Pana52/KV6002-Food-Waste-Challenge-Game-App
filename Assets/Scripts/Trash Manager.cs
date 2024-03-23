@@ -310,8 +310,17 @@ public class TrashManager : GameManager
         //Pause Gameplay. 
         Time.timeScale = 0f;
         gameOverScreen.SetActive(true);
-        // Access audi manager
-        AudioManager audioManager = FindObjectOfType<AudioManager>();
+
+        // Stop music and conveyor belt sounds
+        if (audioManager != null)
+        {
+            audioManager.StopMusicAndConveyorBelt();
+        }
+        else
+        {
+            Debug.LogWarning("AudioManager not found in the scene");
+        }
+
         if (audioManager == null)
         {
             Debug.Log("Audiomanager not found in the scene");

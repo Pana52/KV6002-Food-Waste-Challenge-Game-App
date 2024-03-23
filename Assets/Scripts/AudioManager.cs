@@ -178,4 +178,16 @@ public class AudioManager : MonoBehaviour
         Debug.Log("All AudioSource components are ensured to be enabled.");
     }
 
+    public void StopMusicAndConveyorBelt()
+    {
+        if (musicSource.isPlaying)
+        {
+            musicSource.Stop();
+        }
+        if (conveyorBeltSource.isPlaying)
+        {
+            conveyorBeltSource.Stop();
+        }
+    }
+
 }
