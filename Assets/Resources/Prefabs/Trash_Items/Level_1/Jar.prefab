@@ -76,6 +76,14 @@ PrefabInstance:
       propertyPath: trashName
       value: Jam Jar
       objectReference: {fileID: 0}
+    - target: {fileID: 3492653305906789964, guid: 5f2795d4308e40d4689043ad40d33c52, type: 3}
+      propertyPath: isRecycleSymbol
+      value: 
+      objectReference: {fileID: 21300000, guid: 05afee43e66d5b54c9e8742e53726a7e, type: 3}
+    - target: {fileID: 3492653305906789964, guid: 5f2795d4308e40d4689043ad40d33c52, type: 3}
+      propertyPath: recyclingSymbol
+      value: 
+      objectReference: {fileID: 21300000, guid: c791c0b8b119206498bce14b378432cb, type: 3}
     - target: {fileID: 4102077551412824349, guid: 5f2795d4308e40d4689043ad40d33c52, type: 3}
       propertyPath: m_Name
       value: Jar

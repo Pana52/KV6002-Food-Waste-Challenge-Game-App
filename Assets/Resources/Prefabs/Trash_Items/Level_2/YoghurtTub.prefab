@@ -98,7 +98,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8795770878439470649, guid: e04d712a02dff74449e00bf897b44bea, type: 3}
       propertyPath: trashName
-      value: Yoghurt Tub
+      value: Yogurt Tub
       objectReference: {fileID: 0}
     - target: {fileID: 8795770878439470649, guid: e04d712a02dff74449e00bf897b44bea, type: 3}
       propertyPath: plasticSubType

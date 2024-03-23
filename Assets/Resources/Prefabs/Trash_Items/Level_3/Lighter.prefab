@@ -160,6 +160,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trashName: Cigarette Lighter
   trashType: Mixed
-  trashDesc: Mixed Materials of Plastic and Foil
+  trashDesc: Mixture of Plastic and Foil
   isRecycleSymbol: {fileID: 21300000, guid: 57d3e4080250a3e4199429ce7ffa4af9, type: 3}
   recyclingSymbol: {fileID: 21300000, guid: 57d3e4080250a3e4199429ce7ffa4af9, type: 3}
