@@ -17,16 +17,9 @@ public class SceneTransitionManager : MonoBehaviour
     {
         if (audioManager != null)
         {
-            Debug.Log("Playing button pressed SFX");
-            // Play the buttonPressed sound effect
-            audioManager.PlaySFX(audioManager.buttonPressed, 0.30f);
+            audioManager.PlaySFX(audioManager.buttonPressed, 0.30f); // Play the sound effect
         }
-        else
-        {
-            Debug.Log("AudioManager not found");
-        }
-
-        // Start the coroutine to delay the scene loading
+        // Existing coroutine call remains unchanged
         StartCoroutine(DelayedSceneLoad(sceneName, delayBeforeSceneLoads));
     }
 

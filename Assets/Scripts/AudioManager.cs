@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class AudioManager : MonoBehaviour
 {
+    public static AudioManager Instance { get; private set; }
+
     [Header("Audio Source")]
     [SerializeField] AudioSource musicSource;
     [SerializeField] AudioSource SFXSource;
@@ -51,16 +53,16 @@ public class AudioManager : MonoBehaviour
 
     private void Awake()
     {
-        if (FindObjectsOfType<AudioManager>().Length > 1)
+        if (Instance != null && Instance != this)
         {
-            // If another AudioManager exists, destroy this one
             Destroy(gameObject);
+            return;
         }
-        else
-        {
-            // Otherwise, make this AudioManager persistent
-            DontDestroyOnLoad(gameObject);
-        }
+
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+
+        SceneManager.sceneLoaded += OnSceneLoaded;
 
         // Subscribe to the sceneLoaded event
         SceneManager.sceneLoaded += OnSceneLoaded;
@@ -69,6 +71,7 @@ public class AudioManager : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        EnsureAudioSourcesEnabled();
 
         StartCoroutine(WaitAndSetupSliders());
 
@@ -142,7 +145,32 @@ public class AudioManager : MonoBehaviour
 
     public void PlaySFX(AudioClip clip, float volume)
     {
-        Debug.Log($"Attempting to play SFX: {clip.name}");
+        if (clip == null)
+        {
+            Debug.LogWarning("Attempted to play a null AudioClip.");
+            return;
+        }
+
+        if (!SFXSource.enabled)
+        {
+            Debug.LogWarning("SFXSource is disabled at play time.");
+            SFXSource.enabled = true; // Ensure it's enabled
+        }
+
+        Debug.Log($"Playing SFX: {clip.name} at volume: {volume}");
         SFXSource.PlayOneShot(clip, volume);
     }
+
+
+
+    // Ensure all AudioSource components are enabled
+    private void EnsureAudioSourcesEnabled()
+    {
+        if (!musicSource.enabled) musicSource.enabled = true;
+        if (!SFXSource.enabled) SFXSource.enabled = true;
+        if (!conveyorBeltSource.enabled) conveyorBeltSource.enabled = true;
+
+        Debug.Log("All AudioSource components are ensured to be enabled.");
+    }
+
 }
