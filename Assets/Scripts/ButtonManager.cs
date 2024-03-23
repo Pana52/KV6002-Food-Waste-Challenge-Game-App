@@ -1,38 +1,45 @@
+/// <summary>
+/// Script Summary - Manages button interactions. Scene transtitions and highscore resets.
+/// @Author - Luke Walpole + Others
+/// </summary>
+
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-
 public class ButtonManager : MonoBehaviour
 {
-
-    private AudioManager audioManager; // Reference to AudioManager
+    private AudioManager audioManager; 
 
     private void Start()
     {
-        // Find and store a reference to the AudioManager on start
-        audioManager = FindObjectOfType<AudioManager>();
+        // Find AudioManager + Basic error handling
+        if (audioManager == null)
+        {
+            audioManager = FindObjectOfType<AudioManager>();
+        }
     }
 
     private void Update()
     {
+        //Reset highscore with R
         if (Input.GetKeyDown(KeyCode.R))
         {
-            //Reset highscore.
             PlayerPrefs.SetInt("HighScore", 0);
         }
     }
 
-    // Coroutine to wait a little before scene load, allowing sound to play
+    // Coroutine to wait before scene load, allowing sound to play
     IEnumerator LoadSceneWithSound(string sceneName, float delay = 0.3f)
     {
-        // Play button pressed sound
-        audioManager?.PlaySFX(audioManager.buttonPressed, 0.30f);
+        // Play button pressed sound + Basic error handling
+        if (audioManager != null)
+        {
+            audioManager?.PlaySFX(audioManager.buttonPressed, 0.30f);
+        }
 
-        // Wait for the sound to play before loading the scene
+        // Wait for sound to play then load scene
         yield return new WaitForSeconds(delay);
-
-        // Load the scene
         SceneManager.LoadScene(sceneName);
     }
 
@@ -47,13 +54,12 @@ public class ButtonManager : MonoBehaviour
     public void ExitGame()
     {
         Application.Quit();
-        Debug.Log("Application closed");
     }
 
     public void BackToMain()
     {
         Time.timeScale = 1f;
-        StartCoroutine(LoadSceneWithSound("MainMenu")); // Assuming "MainMenu" is the name of your main menu scene
+        StartCoroutine(LoadSceneWithSound("MainMenu"));
     }
 
     public void LoadLevel1()
@@ -63,6 +69,7 @@ public class ButtonManager : MonoBehaviour
         PlayerPrefs.Save();
         SceneManager.LoadScene(1);
     }
+
     public void LoadLevel2()
     {
         Time.timeScale = 1f;
@@ -70,6 +77,7 @@ public class ButtonManager : MonoBehaviour
         PlayerPrefs.Save();
         SceneManager.LoadScene(1);
     }
+
     public void LoadLevel3()
     {
         Time.timeScale = 1f;
