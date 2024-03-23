@@ -2634,6 +2634,7 @@ GameObject:
   - component: {fileID: 465865374}
   - component: {fileID: 465865373}
   - component: {fileID: 465865372}
+  - component: {fileID: 465865375}
   m_Layer: 5
   m_Name: PauseButton
   m_TagString: Untagged
@@ -2755,6 +2756,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 465865370}
   m_CullTransparentMesh: 1
+--- !u!114 &465865375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 465865370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7a85f878d95e0d43815e0c8c8dcbc92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &466910570
 GameObject:
   m_ObjectHideFlags: 0
@@ -4089,6 +4102,7 @@ MonoBehaviour:
   PauseMenu: {fileID: 895654770}
   PauseBG: {fileID: 951380756}
   isPaused: 0
+  audioManager: {fileID: 0}
 --- !u!1 &820340873
 GameObject:
   m_ObjectHideFlags: 0
@@ -8341,6 +8355,7 @@ GameObject:
   - component: {fileID: 1944371715}
   - component: {fileID: 1944371714}
   - component: {fileID: 1944371713}
+  - component: {fileID: 1944371716}
   m_Layer: 5
   m_Name: ResumeButton
   m_TagString: Untagged
@@ -8462,6 +8477,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1944371711}
   m_CullTransparentMesh: 1
+--- !u!114 &1944371716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1944371711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7a85f878d95e0d43815e0c8c8dcbc92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1977331262
 GameObject:
   m_ObjectHideFlags: 0
@@ -8624,6 +8651,7 @@ GameObject:
   - component: {fileID: 2000949684}
   - component: {fileID: 2000949683}
   - component: {fileID: 2000949682}
+  - component: {fileID: 2000949685}
   m_Layer: 5
   m_Name: BacktoMainButton
   m_TagString: Untagged
@@ -8745,6 +8773,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2000949680}
   m_CullTransparentMesh: 1
+--- !u!114 &2000949685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2000949680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7a85f878d95e0d43815e0c8c8dcbc92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2034057230
 GameObject:
   m_ObjectHideFlags: 0

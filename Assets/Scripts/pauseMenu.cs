@@ -56,6 +56,7 @@ public class pauseMenu : MonoBehaviour
         // Ensure the AudioManager's sliders are set up when the pause menu is opened
         if (audioManager != null)
         {
+            audioManager.PlaySFX(audioManager.buttonPressed, 0.30f);
             audioManager.SetupSlidersWhenMenuOpens();
         }
         else
@@ -72,10 +73,30 @@ public class pauseMenu : MonoBehaviour
         PauseBG.SetActive(false);
         Time.timeScale = 1f;
         isPaused = false;
+
+        // Play button pressed sound
+        if (audioManager != null)
+        {
+            audioManager.PlaySFX(audioManager.buttonPressed, 0.30f); // Use the same volume or adjust as necessary
+        }
+        else
+        {
+            Debug.LogWarning("AudioManager reference not set in pauseMenu script.");
+        }
     }
 
    public void GoToMainMenu()
     {
+        // Play button pressed sound
+        if (audioManager != null)
+        {
+            audioManager.PlaySFX(audioManager.buttonPressed, 0.30f); // Use the same volume or adjust as necessary
+        }
+        else
+        {
+            Debug.LogWarning("AudioManager reference not set in pauseMenu script.");
+        }
+
         Time.timeScale = 1f;
         SceneManager.LoadScene("MainMenu");
 
