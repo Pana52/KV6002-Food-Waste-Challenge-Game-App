@@ -1,38 +1,32 @@
-using System.Collections;
-using System.Collections.Generic;
+/// <summary>
+/// Script Summary - Manages pause menu and pause/resume state. 
+/// @Author - Luke Walpole + Others
+/// </summary>
+
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class pauseMenu : MonoBehaviour
 {
-    // Start is called before the first frame update
-
     public GameObject PauseMenu;
     public GameObject PauseBG;
     public bool isPaused;
 
-    // Reference to the AudioManager instance
-    public AudioManager audioManager; // Assign this in the Unity Inspector
-
+    public AudioManager audioManager; 
 
     void Start()
     {
+        // Find AudioManager + Basic error handling
         if (audioManager == null)
         {
             audioManager = FindObjectOfType<AudioManager>();
-            if (audioManager == null)
-            {
-                Debug.LogWarning("Failed to find AudioManager.");
-            }
         }
         PauseMenu.SetActive(false);
     }
 
-
-
-    // Update is called once per frame
     void Update()
     {
+        // Toggle pause with P
         if(Input.GetKeyUp(KeyCode.P)) 
         {
             if(isPaused)
@@ -47,58 +41,40 @@ public class pauseMenu : MonoBehaviour
 
     public void PauseGame()
     {
-        Debug.Log("Game Paused", this);
         PauseMenu.SetActive(true);
         PauseBG.SetActive(true);
         Time.timeScale = 0f;
         isPaused = true;
 
-        // Ensure the AudioManager's sliders are set up when the pause menu is opened
+        // Play button press sound, set up sliders when pause menu opens
         if (audioManager != null)
         {
             audioManager.PlaySFX(audioManager.buttonPressed, 0.30f);
             audioManager.SetupSlidersWhenMenuOpens();
         }
-        else
-        {
-            Debug.LogWarning("AudioManager reference not set in pauseMenu script.");
-        }
-
     }
 
     public void ResumeGame()
     {
-        Debug.Log("Game Resumed", this);
         PauseMenu.SetActive(false);
         PauseBG.SetActive(false);
         Time.timeScale = 1f;
         isPaused = false;
 
-        // Play button pressed sound
         if (audioManager != null)
         {
-            audioManager.PlaySFX(audioManager.buttonPressed, 0.30f); // Use the same volume or adjust as necessary
-        }
-        else
-        {
-            Debug.LogWarning("AudioManager reference not set in pauseMenu script.");
+            audioManager.PlaySFX(audioManager.buttonPressed, 0.30f); 
         }
     }
 
    public void GoToMainMenu()
     {
-        // Play button pressed sound
         if (audioManager != null)
         {
-            audioManager.PlaySFX(audioManager.buttonPressed, 0.30f); // Use the same volume or adjust as necessary
-        }
-        else
-        {
-            Debug.LogWarning("AudioManager reference not set in pauseMenu script.");
+            audioManager.PlaySFX(audioManager.buttonPressed, 0.30f); 
         }
 
         Time.timeScale = 1f;
         SceneManager.LoadScene("MainMenu");
-
     }
 }
