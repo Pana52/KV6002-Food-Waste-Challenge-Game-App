@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
     DialogueManager dialogue;
     public DialogueManager Dialogue { get => dialogue; set => dialogue = value; }
 
-    AudioManager audioManager;
+    public AudioManager audioManager;
 
     private void Awake()
     {

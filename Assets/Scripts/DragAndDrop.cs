@@ -1,3 +1,10 @@
+/// <summary>
+/// Script Summary - Handles drag and drop feature for picking up trash items as well as bin interactions.
+///                  Objects can be picked up, dragged around, and dropped with the mouse.
+///                  Each object has a unique sound.
+/// @Author - Luke Walpole + Others
+/// </summary>
+
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -16,18 +23,14 @@ public class DragAndDrop : GameManager
 
     private bool hoverSoundPlayed = false;
 
-
     private GameObject itemCopy = null;
     private static Transform copyLocation;
 
     // New: Keep track of previously hovered bins
     private List<Animator> previouslyHoveredBins = new List<Animator>();
 
-    AudioManager audioManager;
-
     private void Awake()
     {
-
         if (copyLocation == null) //Find copy location.
         {
             GameObject locationMarker = GameObject.FindGameObjectWithTag("CopyLocation");
@@ -35,13 +38,12 @@ public class DragAndDrop : GameManager
             {
                 copyLocation = locationMarker.transform;
             }
-            else
-            {
-                Debug.LogError("Copy location marker not found. Ensure it's tagged correctly.");
-            }
         }
-
-        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+        // Find AudioManager + Basic error handling
+        if (audioManager == null)
+        {
+            audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+        }
         objectInfoText = TrashManager.Instance.GetObjectInfoText();
     }
 
@@ -55,7 +57,6 @@ public class DragAndDrop : GameManager
     {
         if (!GetIsDragging()) return;
         {
-
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.None;
             Vector3 currentMousePosition = GetMouseWorldPos();
@@ -87,12 +88,7 @@ public class DragAndDrop : GameManager
         {
             UpdateUIWithTrashInfo();
         }
-        else
-        {
-            Debug.LogError("objectInfoText not assigned in OnMouseDown");
-        }
         PlayItemPickupSound();
-
 
         if (itemCopy == null && copyLocation != null)
         {
@@ -100,14 +96,10 @@ public class DragAndDrop : GameManager
             float scalerObj = 250f;
             DisableComponentsForDisplay(itemCopy, scalerObj);
         }
-
-
     }
 
     void PlayItemPickupSound()
     {
-
-        // Safely access the Trash component and its trashType
         Trash trashComponent = this.transform.GetComponent<Trash>();
         if (trashComponent != null)
         {
@@ -180,13 +172,8 @@ public class DragAndDrop : GameManager
                     audioManager.PlaySFX(audioManager.lighter, 0.85f);
                     break;
                 default:
-                    Debug.Log("No sound for this item. Trash type: " + trashName);
                     break;
             }
-        }
-        else
-        {
-            Debug.LogError("Trash component not found on the object.");
         }
     }
 
@@ -210,7 +197,6 @@ public class DragAndDrop : GameManager
         {
             StartCoroutine(FloatBackToInitialPosition());
         }
-
         if (objectInfoText != null)
         {
             ClearUI();
@@ -266,7 +252,6 @@ public class DragAndDrop : GameManager
                 audioManager.PlaySFX(audioManager.binClose, 0.65f);
             }
         }
-
         previouslyHoveredBins = new List<Animator>(currentlyHoveredBins);
     }
 
@@ -327,11 +312,6 @@ public class DragAndDrop : GameManager
 
             ApplySpriteToSymbol(TrashManager.Instance.symbol_01, trashComponent.isRecycleSymbol);
             ApplySpriteToSymbol(TrashManager.Instance.symbol_02, trashComponent.recyclingSymbol);
-            
-        }
-        else
-        {
-            Debug.LogError("TrashManager instance or objectInfoText is not set");
         }
     }
 
@@ -343,10 +323,6 @@ public class DragAndDrop : GameManager
         {
             image.sprite = sprite;
         }
-        else
-        {
-            Debug.LogError("Image component not found on the symbol GameObject.");
-        }
     }
 
     void ClearUI()
@@ -356,7 +332,6 @@ public class DragAndDrop : GameManager
 
         if (objectInfoText == null)
         {
-            Debug.LogError("objectInfoText not assigned in ClearUI");
             return;
         }
         objectInfoText.text = "";
@@ -381,6 +356,4 @@ public class DragAndDrop : GameManager
         // Rescale the object.
         obj.transform.localScale *= scaleMultiplier;
     }
-
-
 }

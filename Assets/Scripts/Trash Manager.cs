@@ -43,8 +43,6 @@ public class TrashManager : GameManager
     [SerializeField] private GameObject GameOverUI;
     [SerializeField] private Text GameOverMessgae;
 
-    AudioManager audioManager;
-
     public TextMeshProUGUI objectInfoText;
 
     //Ensure only one instance of TrashManager exists.
