@@ -11,7 +11,7 @@ public class DialogueManager : MonoBehaviour
     private Coroutine dialogueCoroutine = null; // Reference to the currently running showDialogue coroutine
     private float textDuration = 3f;
 
-    public void playDialogue(string type, string subType)
+    public void playDialogue(string type, string subType = null)
     {
         if (type == "welcome")
         {
@@ -36,7 +36,7 @@ public class DialogueManager : MonoBehaviour
     }
 
 
-    private void welcomeDialogue()
+    private void welcomeDialogue() //Welcome message at start of game. 
     {
         string[] message = { "Welcome!" };
         ShowDialogue(message[Random.Range(0, message.Length)], textDuration);
@@ -55,7 +55,7 @@ public class DialogueManager : MonoBehaviour
         }
 
     }
-    private void successDiaglogue(string bin, string subType)
+    private void successDiaglogue(string bin, string subType) //Correct bin.  
     {
         int combo = PlayerPrefs.GetInt("ComboValue");
         string[] message;
@@ -71,11 +71,12 @@ public class DialogueManager : MonoBehaviour
         }
         else
         {
-            message = new string[] { "Welldone!", "Good Job!" };
+            message = new string[] { "Well done!", "Good Job!" };
         }
         ShowDialogue(message[Random.Range(0, message.Length)], textDuration);
     }
 
+    //Dictionary with all the incoorect bin and correct bin messages. 
     private Dictionary<string, string[]> binMessages = new Dictionary<string, string[]>
     {
         {"redWrong", new string[] { "Wrong bin. Only hazardous materials belong in the hazard bin." }},
@@ -92,7 +93,7 @@ public class DialogueManager : MonoBehaviour
         {"greenCorrect", new string[] { "Correct! Recycling glass bottles and jars save raw materials and energy, aiding environmental health." }},
     };
 
-    private void failDialogue(string bin)
+    private void failDialogue(string bin) //Wrong bin. 
     {
         int mistakes = PlayerPrefs.GetInt("IncorrectGuesses");
         string[] message;
@@ -117,7 +118,7 @@ public class DialogueManager : MonoBehaviour
         ShowDialogue(message[Random.Range(0, message.Length)], textDuration);
     }
 
-    private void GameOverDialogue()
+    private void GameOverDialogue() //Game over. 
     {
         string[] message = { "Alright, get outta here, you're messing up the place." };
         ShowDialogue(message[Random.Range(0, message.Length)], textDuration);
@@ -133,7 +134,7 @@ public class DialogueManager : MonoBehaviour
         dialogueCoroutine = StartCoroutine(ShowDialogueCoroutine(message, duration));
     }
 
-    private IEnumerator ShowDialogueCoroutine(string message, float duration)
+    private IEnumerator ShowDialogueCoroutine(string message, float duration) //Show dialogue for specified duration.
     {
         textBG.SetActive(true);
         dialogueText.text = message;

@@ -7,6 +7,7 @@ public class ConveyorBelt : MonoBehaviour
     private bool isOperating = true;
     private void Start()
     {
+        //Default conveyor speed. 
         PlayerPrefs.SetFloat("ConveyorSpeed", 0.7f);
     }
     void Update()
@@ -22,7 +23,7 @@ public class ConveyorBelt : MonoBehaviour
             ToggleConveyor();
         }
     }
-    void MoveObjectsOnBelt()
+    void MoveObjectsOnBelt() //Check for valid objects. 
     {
         Collider[] colliders = Physics.OverlapBox(transform.position, transform.localScale / 2f, Quaternion.identity, LayerMask.GetMask("MoveableObject"));
         foreach (Collider collider in colliders)

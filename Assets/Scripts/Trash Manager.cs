@@ -69,7 +69,7 @@ public class TrashManager : GameManager
 
     private void Start()
     {
-        currentLevel = PlayerPrefs.GetInt("CurrentLevel", 1);
+        currentLevel = PlayerPrefs.GetInt("CurrentLevel", 1); //Essential to functionality - Do not delete. 
         foreach (GameObject life in guiLives)
         {
             life.SetActive(false);
@@ -89,10 +89,10 @@ public class TrashManager : GameManager
         //Start Trash generation.
         StartCoroutine(GenerateTrashCoroutine());
         //Play dialogue. 
-        Dialogue.playDialogue("welcome", null);
+        Dialogue.playDialogue("welcome");
     }
     
-    void createTrashArray(int level)
+    void createTrashArray(int level) //Add trash items in to gameobject array. 
     { 
         if (level == 4)
         {
@@ -176,7 +176,7 @@ public class TrashManager : GameManager
     }
 
 
-    public void livesChecker()
+    public void livesChecker() //Player lives display. 
     {
         if (currentLevel > 3)
         {
@@ -219,7 +219,7 @@ public class TrashManager : GameManager
         }
     }
 
-    IEnumerator SpawnAdditionalTrashWithDelay(Vector3 position, int rotation)
+    IEnumerator SpawnAdditionalTrashWithDelay(Vector3 position, int rotation) //Spawn additional items. 
     {
         yield return new WaitForSeconds(0.6f);
         //SpawnLocation second item. 
@@ -274,7 +274,7 @@ public class TrashManager : GameManager
             currentLevel++;
             PlayerPrefs.SetInt("CurrentLevel", currentLevel);
             //Play dialogue. 
-            Dialogue.playDialogue("level", null);
+            Dialogue.playDialogue("level");
             StartNextLevel();
         }
         if (currentLevel == 4)
@@ -317,7 +317,7 @@ public class TrashManager : GameManager
             Debug.Log("Audiomanager not found in the scene");
         }
         //Play dialogue. 
-        Dialogue.playDialogue("gameOver", null);
+        Dialogue.playDialogue("gameOver");
         //Set game over UI visibility to true.  
         GameOverUI.SetActive(true);
         int previousHighScore = PlayerPrefs.GetInt("PreviousHighScore", highScore);

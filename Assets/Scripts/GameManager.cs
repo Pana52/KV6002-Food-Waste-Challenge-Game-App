@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    //Getters and setters for if player is dragging item. 
     public bool GetIsDragging()
     {
         return isDragging;
@@ -39,7 +40,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
 
-        //Get playerPrefs
+        //Get playerPrefs.
         PlayerPrefs.GetInt("PlayerScore", 0);
         PlayerPrefs.GetInt("ComboValue", 1);
         PlayerPrefs.GetInt("IncorrectGuesses", 0);
@@ -60,6 +61,7 @@ public class GameManager : MonoBehaviour
         int comboValue = PlayerPrefs.GetInt("ComboValue");
         int incorrectGuesses = PlayerPrefs.GetInt("IncorrectGuesses");
         
+        //Correct bin. 
         if (binType == correctBinType)
         {
             ConveyorSpeed("correct");
@@ -70,15 +72,15 @@ public class GameManager : MonoBehaviour
 
             if (binType == "Bin_Hazard")
             {
-                Dialogue.playDialogue("redCorrect", null);
+                Dialogue.playDialogue("redCorrect");
             }
             if (binType == "Bin_Paper")
             {
-                Dialogue.playDialogue("yellowCorrect", null);
+                Dialogue.playDialogue("yellowCorrect");
             }
             if (binType == "Bin_General")
             {
-                Dialogue.playDialogue("blackCorrect", null);
+                Dialogue.playDialogue("blackCorrect");
             }
             if (binType == "Bin_Recycled")
             {
@@ -86,7 +88,7 @@ public class GameManager : MonoBehaviour
             }
             if (binType == "Bin_Glass")
             {
-                Dialogue.playDialogue("greenCorrect", null);
+                Dialogue.playDialogue("greenCorrect");
             }
 
             if (audioManager != null)
@@ -94,7 +96,7 @@ public class GameManager : MonoBehaviour
                 audioManager.PlaySFX(audioManager.itemRight, 0.35f);
             }
         }
-
+        //End of conveyor belt. 
         if (binType == "ConveyorEndCollider")
         {
             ConveyorSpeed("mistake");
@@ -108,6 +110,7 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.SetInt("IncorrectGuesses", incorrectGuesses);
 
         }
+        //Incorrect bin. 
         else if (binType != correctBinType)
         {
             SetIsDragging(false);
@@ -127,23 +130,23 @@ public class GameManager : MonoBehaviour
 
             if (binType == "Bin_Hazard")
             {
-                Dialogue.playDialogue("redWrong", null);
+                Dialogue.playDialogue("redWrong");
             }
             if (binType == "Bin_Paper")
             {
-                Dialogue.playDialogue("yellowWrong", null);
+                Dialogue.playDialogue("yellowWrong");
             }
             if (binType == "Bin_General")
             {
-                Dialogue.playDialogue("blackWrong", null);
+                Dialogue.playDialogue("blackWrong");
             }
             if (binType == "Bin_Recycled")
             {
-                Dialogue.playDialogue("blueWrong", null);
+                Dialogue.playDialogue("blueWrong");
             }
             if (binType == "Bin_Glass")
             {
-                Dialogue.playDialogue("greenWrong", null);
+                Dialogue.playDialogue("greenWrong");
             }
 
             if (audioManager != null)
@@ -170,6 +173,7 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.SetInt("PlayerScore", playerScore);
             PlayerPrefs.SetInt("ComboValue", comboValue);
             PlayerPrefs.Save();
+            //Display on screen. 
             ScoreText.text = playerScore.ToString(); 
         }
         else
@@ -178,7 +182,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void ConveyorSpeed(string type)
+    public void ConveyorSpeed(string type) //Controls conveyor belt speed. 
     {
         float value = 0.01f;
         float speed = PlayerPrefs.GetFloat("ConveyorSpeed");

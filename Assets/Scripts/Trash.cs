@@ -9,7 +9,7 @@ public class Trash : GameManager
     public Sprite isRecycleSymbol;
     public Sprite recyclingSymbol;
 
-    public void checkCollider(Collider trigger, string bin, string subType)
+    public void checkCollider(Collider trigger, string bin, string subType) //Check which bin. 
     { 
         checkTrash(trigger.gameObject.name, bin, subType);
     }
