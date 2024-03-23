@@ -84,12 +84,12 @@ public class DialogueManager : MonoBehaviour
         {"blueWrong", new string[] { "Wrong bin. Only recyclable materials belong in the recycle bin" }},
         {"greenWrong", new string[] { "Wrong bin. Only glass materials belong in the green bin" }},
 
-        {"redCorrect", new string[] { "Hazardous materials must be disposed of separately to prevent harm to people, wildlife, and the environment." }},
-        {"yellowCorrect", new string[] { "Paper is recyclable as it can be processed into new products, conserving resources." }},
-        {"blackCorrect", new string[] { "Non-recyclable plastics go in the general bin to prevent recycling contamination and disruption of recycling process." }},
-        {"blueCorrectMetal", new string[] { "Recycling metal fuels circular economies, reducing virgin mining and enabling sustainable resource use." }},
-        {"blueCorrectPlastic", new string[] { "Recyclable plastics can be remelted and reshaped multiple times, preserving their quality and reducing the demand for new materials." }},
-        {"greenCorrect", new string[] { "Recycling glass bottles and jars save raw materials and energy, aiding environmental health." }},
+        {"redCorrect", new string[] { "Correct! Hazardous materials must be disposed of separately to prevent harm to people, wildlife, and the environment." }},
+        {"yellowCorrect", new string[] { "Correct! Paper is recyclable as it can be processed into new products, conserving resources." }},
+        {"blackCorrect", new string[] { "Correct! Non-recyclable plastics go in the general bin to prevent recycling contamination and disruption of recycling process." }},
+        {"blueCorrectMetal", new string[] { "Correct! Recycling metal fuels circular economies, reducing virgin mining and enabling sustainable resource use." }},
+        {"blueCorrectPlastic", new string[] { "Correct! Recyclable plastics can be remelted and reshaped multiple times, preserving their quality and reducing the demand for new materials." }},
+        {"greenCorrect", new string[] { "Correct! Recycling glass bottles and jars save raw materials and energy, aiding environmental health." }},
     };
 
     private void failDialogue(string bin)
