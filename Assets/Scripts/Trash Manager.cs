@@ -151,20 +151,6 @@ public class TrashManager : GameManager
 
     private void Update()
     {
-        //For testing
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            generateTrash();
-        }
-        //For Testing. 
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            EndLevel();
-        }
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            SceneManager.LoadScene(0);
-        }
         //Loss condition - Can't be triggered during tutorial levels. 
         if (PlayerPrefs.GetInt("IncorrectGuesses") >= incorrectGuessesLimit && levelActive == true && currentLevel > 3)
         {
