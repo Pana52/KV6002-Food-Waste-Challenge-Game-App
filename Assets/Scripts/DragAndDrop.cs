@@ -136,7 +136,7 @@ public class DragAndDrop : GameManager
                     break;
                 case "Plastic Bottle":
                 case "Plastic Cup":
-                case "Yoghurt Tub":
+                case "Yogurt Tub":
                     audioManager.PlaySFX(audioManager.plastic, 0.75f); 
                     break;
                 case "Plastic Straw":
