@@ -103,6 +103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 521b4b2bc53ca374b952f92b96782b48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioManager: {fileID: 0}
 --- !u!65 &-8912221561060952057
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -163,9 +164,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f69b84983a77214b8a715210dd715c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioManager: {fileID: 0}
   trashName: Carrier Bag
   trashType: Plastic
-  trashDesc: 
+  trashDesc: Plastic
   isRecycleSymbol: {fileID: 21300000, guid: 57d3e4080250a3e4199429ce7ffa4af9, type: 3}
   recyclingSymbol: {fileID: 21300000, guid: 54ba563055ad25e4ea4c8919c3838848, type: 3}
   plasticSubType: Non-Recyclable

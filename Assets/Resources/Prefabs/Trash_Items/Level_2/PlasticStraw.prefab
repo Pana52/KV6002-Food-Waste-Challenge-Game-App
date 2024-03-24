@@ -93,6 +93,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8795770878439470649, guid: e04d712a02dff74449e00bf897b44bea, type: 3}
+      propertyPath: trashDesc
+      value: Plastic
+      objectReference: {fileID: 0}
+    - target: {fileID: 8795770878439470649, guid: e04d712a02dff74449e00bf897b44bea, type: 3}
       propertyPath: trashName
       value: Plastic Straw
       objectReference: {fileID: 0}

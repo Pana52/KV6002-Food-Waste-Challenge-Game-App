@@ -9,6 +9,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -5676214035439534361, guid: 84d70c4f95672814a9b9a8abb254a777, type: 3}
+      propertyPath: trashDesc
+      value: Plastic
+      objectReference: {fileID: 0}
+    - target: {fileID: -5676214035439534361, guid: 84d70c4f95672814a9b9a8abb254a777, type: 3}
       propertyPath: trashName
       value: Cigarette
       objectReference: {fileID: 0}

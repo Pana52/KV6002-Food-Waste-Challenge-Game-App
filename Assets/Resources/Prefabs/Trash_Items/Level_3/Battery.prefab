@@ -9,6 +9,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -7012740182115291091, guid: 08e41b17e7243cc42af8ec5b564982b6, type: 3}
+      propertyPath: trashDesc
+      value: Hazardous
+      objectReference: {fileID: 0}
+    - target: {fileID: -7012740182115291091, guid: 08e41b17e7243cc42af8ec5b564982b6, type: 3}
       propertyPath: trashName
       value: AA Battery
       objectReference: {fileID: 0}

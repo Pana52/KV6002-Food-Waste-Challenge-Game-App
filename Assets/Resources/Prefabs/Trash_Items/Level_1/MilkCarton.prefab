@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -6091406113183075657, guid: cce61e898e3504747b1f051abf7e4a13, type: 3}
       propertyPath: trashDesc
-      value: Tetrapak
+      value: Tetrapak Paper
       objectReference: {fileID: 0}
     - target: {fileID: -6091406113183075657, guid: cce61e898e3504747b1f051abf7e4a13, type: 3}
       propertyPath: trashName

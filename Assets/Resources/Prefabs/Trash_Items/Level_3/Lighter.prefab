@@ -158,8 +158,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7342af4ed877c6a47b985ff24ffcb853, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioManager: {fileID: 0}
   trashName: Cigarette Lighter
   trashType: Mixed
-  trashDesc: Mixture of Plastic and Foil
+  trashDesc: Plastic and Metal
   isRecycleSymbol: {fileID: 21300000, guid: 57d3e4080250a3e4199429ce7ffa4af9, type: 3}
   recyclingSymbol: {fileID: 21300000, guid: 57d3e4080250a3e4199429ce7ffa4af9, type: 3}

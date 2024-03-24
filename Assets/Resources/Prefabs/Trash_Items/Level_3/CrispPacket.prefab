@@ -103,6 +103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 521b4b2bc53ca374b952f92b96782b48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioManager: {fileID: 0}
 --- !u!114 &-6245306522220821460
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,9 +116,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7342af4ed877c6a47b985ff24ffcb853, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioManager: {fileID: 0}
   trashName: Crisp Packet
   trashType: 
-  trashDesc: A mixture of foil and plastic.
+  trashDesc: Foil and Plastic
   isRecycleSymbol: {fileID: 21300000, guid: 57d3e4080250a3e4199429ce7ffa4af9, type: 3}
   recyclingSymbol: {fileID: 21300000, guid: d5734db48d93dd64b95a2630f4cb8d57, type: 3}
 --- !u!65 &3117630489830339634

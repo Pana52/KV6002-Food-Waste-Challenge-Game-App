@@ -65,6 +65,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3492653305906789964, guid: 5f2795d4308e40d4689043ad40d33c52, type: 3}
+      propertyPath: trashDesc
+      value: Glass
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492653305906789964, guid: 5f2795d4308e40d4689043ad40d33c52, type: 3}
       propertyPath: trashName
       value: Bottle
       objectReference: {fileID: 0}
